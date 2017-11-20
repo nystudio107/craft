@@ -43,19 +43,70 @@ if (file_exists(CRAFT_BASE_PATH.'/.env')) {
     echo phpinfo();
 }
 
+// See if we should just display a welcome message
+switch ($argv[1]) {
+    case 'welcome':
+        welcomeNysCraft();
+        break;
+
+    default:
+        setupNysCraft();
+        break;
+}
+
+// Display a welcome message
+function welcomeNysCraft()
+{
+    Console::output(PHP_EOL . 'After running ./craft setup to set up your Craft install,');
+    Console::output('Run ./nys-setup to set up Craft 3 Multi-Environemnt & Craft-Scripts.');
+}
+
+// Set up all the things!
+function setupNysCraft()
+{
 // Set up Craft-Scripts if the file scripts/.env.sh doesn't exist already
-Console::output(PHP_EOL.'Setting up Craft-Scripts');
-if (!file_exists('scripts/.env.sh')) {
-    // Create the scripts symlink
-    Console::output('- Creating scripts symlink');
-    if (symlink('vendor/nystudio107/craft-scripts/scripts', 'scripts')) {
-        // Create the default .env.sh
-        Console::output('- Creating default scripts/.env.sh');
-        copy('scripts/craft3-example.env.sh', 'scripts/.env.sh');
+    Console::output(PHP_EOL . 'Setting up Craft-Scripts');
+    if (!file_exists('scripts/.env.sh')) {
+        // Create the scripts symlink
+        Console::output('- Creating scripts symlink');
+        if (symlink('vendor/nystudio107/craft-scripts/scripts', 'scripts')) {
+            // Create the default .env.sh
+            Console::output('- Creating default scripts/.env.sh');
+            copy('scripts/craft3-example.env.sh', 'scripts/.env.sh');
+            // Replace the default settings from the ENV vars
+            $filePath = 'scripts/.env.sh';
+            $fileContents = file_get_contents($filePath);
+            foreach (ENV_SH_REPLACEMENTS as $findValue => $defaultValue) {
+                $envKey = substr($findValue, strpos($findValue, REPLACE_ME_PREFIX) + strlen(REPLACE_ME_PREFIX));
+                $replaceValue = getenv($envKey) ?? $defaultValue;
+                $fileContents = str_replace($findValue, $replaceValue, $fileContents);
+            }
+            // Write the file out
+            file_put_contents($filePath, $fileContents);
+        } else {
+            Console::output('### Failed to create scripts symlink.');
+        }
+    } else {
+        Console::output('scripts/.env.sh file already exists, exiting...');
+    }
+
+// Set up Craft 3 Multi-Environment if the file .env.php doesn't exist already
+    Console::output(PHP_EOL . 'Setting up Craft 3 Multi-Environment');
+    if (!file_exists('.env.php')) {
+        // Create the default Craft config files
+        Console::output('- Creating default Craft config/ files');
+        copy('vendor/nystudio107/craft3-multi-environment/config/db.php', 'config/db.php');
+        copy('vendor/nystudio107/craft3-multi-environment/config/general.php', 'config/general.php');
+        copy('vendor/nystudio107/craft3-multi-environment/config/volumes.php', 'config/volumes.php');
+        copy('vendor/nystudio107/craft3-multi-environment/web/index.php', 'web/index.php');
+        copy('vendor/nystudio107/craft3-multi-environment/craft', 'craft');
+        // Create the default .env.php
+        Console::output('- Creating default .env.php');
+        copy('vendor/nystudio107/craft3-multi-environment/example.env.php', '.env.php');
         // Replace the default settings from the ENV vars
-        $filePath = 'scripts/.env.sh';
+        $filePath = '.env.php';
         $fileContents = file_get_contents($filePath);
-        foreach (ENV_SH_REPLACEMENTS as $findValue => $defaultValue) {
+        foreach (ENV_PHP_REPLACEMENTS as $findValue => $defaultValue) {
             $envKey = substr($findValue, strpos($findValue, REPLACE_ME_PREFIX) + strlen(REPLACE_ME_PREFIX));
             $replaceValue = getenv($envKey) ?? $defaultValue;
             $fileContents = str_replace($findValue, $replaceValue, $fileContents);
@@ -63,35 +114,6 @@ if (!file_exists('scripts/.env.sh')) {
         // Write the file out
         file_put_contents($filePath, $fileContents);
     } else {
-        Console::output('### Failed to create scripts symlink.');
+        Console::output('.env.php file already exists, exiting...');
     }
-} else {
-    Console::output('scripts/.env.sh file already exists, exiting...');
-}
-
-// Set up Craft 3 Multi-Environment if the file .env.php doesn't exist already
-Console::output(PHP_EOL.'Setting up Craft 3 Multi-Environment');
-if (!file_exists('.env.php')) {
-    // Create the default Craft config files
-    Console::output('- Creating default Craft config/ files');
-    copy('vendor/nystudio107/craft3-multi-environment/config/db.php', 'config/db.php');
-    copy('vendor/nystudio107/craft3-multi-environment/config/general.php', 'config/general.php');
-    copy('vendor/nystudio107/craft3-multi-environment/config/volumes.php', 'config/volumes.php');
-    copy('vendor/nystudio107/craft3-multi-environment/web/index.php', 'web/index.php');
-    copy('vendor/nystudio107/craft3-multi-environment/craft', 'craft');
-    // Create the default .env.php
-    Console::output('- Creating default .env.php');
-    copy('vendor/nystudio107/craft3-multi-environment/example.env.php', '.env.php');
-    // Replace the default settings from the ENV vars
-    $filePath = '.env.php';
-    $fileContents = file_get_contents($filePath);
-    foreach (ENV_PHP_REPLACEMENTS as $findValue => $defaultValue) {
-        $envKey = substr($findValue, strpos($findValue, REPLACE_ME_PREFIX) + strlen(REPLACE_ME_PREFIX));
-        $replaceValue = getenv($envKey) ?? $defaultValue;
-        $fileContents = str_replace($findValue, $replaceValue, $fileContents);
-    }
-    // Write the file out
-    file_put_contents($filePath, $fileContents);
-} else {
-    Console::output('.env.php file already exists, exiting...');
 }
