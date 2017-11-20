@@ -22,7 +22,7 @@
     "craftcms/cms": "^3.0.0-beta.34",
     "vlucas/phpdotenv": "^2.4.0",
     "nystudio107/craft-scripts": "^1.2.4",
-    "nystudio107/craft3-multi-environment": "^1.0.3",
+    "nystudio107/craft3-multi-environment": "^1.0.4",
     "roave/security-advisories": "dev-master"
   },
   "config": {

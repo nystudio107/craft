@@ -11,6 +11,24 @@
 
 use yii\helpers\Console;
 
+const REPLACE_ME_PREFIX = 'REPLACE_ME_';
+
+const ENV_SH_REPLACEMENTS = [
+];
+
+const ENV_PHP_REPLACEMENTS = [
+    'REPLACE_ME_CRAFT_ENVIRONMENT' => 'local',
+    'REPLACE_ME_DB_DRIVER' => 'mysql',
+    'REPLACE_ME_DB_SERVER' => 'localhost',
+    'REPLACE_ME_DB_USER' => 'REPLACE_ME',
+    'REPLACE_ME_DB_PASSWORD' => 'REPLACE_ME',
+    'REPLACE_ME_DB_DATABASE' => 'REPLACE_ME',
+    'REPLACE_ME_DB_SCHEMA' => 'public',
+    'REPLACE_ME_DB_TABLE_PREFIX' => '',
+    'REPLACE_ME_DB_PORT' => '3306',
+    'REPLACE_ME_SECURITY_KEY' => 'REPLACE_ME',
+];
+
 // Set path constants
 define('CRAFT_BASE_PATH', __DIR__);
 define('CRAFT_VENDOR_PATH', CRAFT_BASE_PATH.'/vendor');
@@ -32,6 +50,16 @@ if (!file_exists('scripts/.env.sh')) {
         // Create the default .env.sh
         Console::output('- Creating default scripts/.env.sh');
         copy('scripts/craft3-example.env.sh', 'scripts/.env.sh');
+        // Replace the default settings from the ENV vars
+        $filePath = 'scripts/.env.sh';
+        $fileContents = file_get_contents($filePath);
+        foreach (ENV_PHP_REPLACEMENTS as $findValue => $defaultValue) {
+            $envKey = substr($findValue, strpos($findValue, REPLACE_ME_PREFIX) + 1);
+            $replaceValue = getenv($envKey)  ?? $defaultValue;
+            $fileContents = str_replace($findValue, $replaceValue, $fileContents);
+        }
+        // Write the file out
+        file_put_contents($filePath, $fileContents);
     } else {
         Console::output('### Failed to create scripts symlink.');
     }
@@ -48,6 +76,7 @@ if (!file_exists('.env.php')) {
     copy('vendor/nystudio107/craft3-multi-environment/config/general.php', 'config/general.php');
     copy('vendor/nystudio107/craft3-multi-environment/config/volumes.php', 'config/volumes.php');
     copy('vendor/nystudio107/craft3-multi-environment/web/index.php', 'web/index.php');
+    copy('vendor/nystudio107/craft3-multi-environment/craft', 'craft');
     // Create the default .env.php
     Console::output('- Creating default .env.php');
     copy('vendor/nystudio107/craft3-multi-environment/example.env.php', '.env.php');
