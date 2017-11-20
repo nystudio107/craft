@@ -29,7 +29,11 @@ Then `cd` to your new project directory, and run Craft's `setup` console command
     cd PATH
     ./craft setup
 
-Finally, run the `nys-setup` command to configure Craft-Scripts & Craft 3 Multi-Environment based on your newly created `.env` settings.
+Finally, run the `nys-setup` command to configure Craft-Scripts & Craft 3 Multi-Environment based on your newly created `.env` settings:
+
+    ./nys-setup
+
+That's it, enjoy!
 
 Below is the entire intact, unmodified `README.md` from Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft):
 
