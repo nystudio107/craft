@@ -1,0 +1,160 @@
+{
+    "name": "nystudio107",
+    "version": "1.0.0",
+    "description": "Website for nystudio107.com",
+    "main": "gulpfile.js",
+    "author": "Andrew Welch, nystudio107 <andrew@nystudio107.com>",
+    "copyright": "nystudio107",
+    "license": "UNLICENSED",
+    "private": true,
+    "paths": {
+        "src": {
+            "base": "./src/",
+            "css": "./src/css/",
+            "fontello": "./src/fontello/",
+            "fonts": "./src/fonts/",
+            "json": "./src/json/",
+            "js": "./src/js/",
+            "img": "./src/img/",
+            "scss": "./src/scss/"
+        },
+        "dist": {
+            "base": "./public/",
+            "css": "./public/css/",
+            "js": "./public/js/",
+            "fonts": "./public/fonts/",
+            "img": "./public/img/"
+        },
+        "build": {
+            "base": "./build/",
+            "css": "./build/css/",
+            "fontello": "./build/fonts/fontello/",
+            "fonts": "./build/fonts/",
+            "js": "./build/js/",
+            "html": "./build/html/",
+            "img": "./build/img/"
+        },
+        "favicon": {
+            "src": "./src/img/favicon_src.png",
+            "dest": "./public/img/site/",
+            "path": "/img/site/"
+        },
+        "scss": [],
+        "templates": "./craft/templates/"
+    },
+    "urls": {
+        "live": "https://nystudio107.com/",
+        "local": "https://nystudio107.dev/",
+        "critical": "https://nystudio107.com/"
+    },
+    "vars": {
+        "siteCssName": "site.combined.min.css",
+        "scssName": "style.scss",
+        "cssName": "style.css"
+    },
+    "globs": {
+        "distCss": [
+            "./node_modules/normalize.css/normalize.css",
+            "./build/css/*.css",
+            "./src/css/*.css"
+        ],
+        "img": [
+            "./public/img/"
+        ],
+        "components": [
+        ],
+        "fonts": [
+            "./build/fonts/fontello/font/*.{eot,ttf,woff,woff2}",
+            "./src/fonts/*.{eot,ttf,woff,woff2}"
+        ],
+        "critical": [
+            {
+                "url": "",
+                "template": "index"
+            },
+            {
+                "url": "404",
+                "template": "404"
+            }
+        ],
+        "download": [
+            {
+                "url": "https://www.google-analytics.com/analytics.js",
+                "dest": "./public/js/"
+            }
+        ],
+        "distJs": [
+            "./build/js/*.js",
+            "./node_modules/lazysizes/lazysizes.min.js",
+            "./node_modules/lazysizes/plugins/bgset/ls.bgset.min.js",
+            "./node_modules/picturefill/dist/picturefill.min.js"
+        ],
+        "babelJs": [
+            "./src/js/*.js"
+        ],
+        "inlineJs": [
+            "./node_modules/fg-loadcss/src/loadCSS.js",
+            "./node_modules/fg-loadcss/src/cssrelpreload.js",
+            "./node_modules/fontfaceobserver/fontfaceobserver.js",
+            "./node_modules/loadjs/dist/loadjs.min.js",
+            "./node_modules/tiny-cookie/tiny-cookie.min.js",
+            "./src/js/register-service-worker.js",
+            "./src/js/asyncload-site-fonts.js"
+        ],
+        "siteIcon": "./public/img/site/favicon.*"
+    },
+    "dependencies": {
+        "fg-loadcss": "^1.2.0",
+        "fontfaceobserver": "^2.0.5",
+        "lazysizes": "^2.0.6",
+        "loadjs": "^3.3.1",
+        "normalize.css": "^5.0.0",
+        "picturefill": "^3.0.2",
+        "tiny-cookie": "^1.0.1"
+    },
+    "devDependencies": {
+        "babel-plugin-transform-runtime": "^6.15.0",
+        "babel-preset-es2015": "^6.16.0",
+        "chalk": "^1.1.3",
+        "critical": "0.8.0",
+        "fancy-log": "^1.2.0",
+        "git-rev-sync": "^1.7.1",
+        "gulp": "^3.9.0",
+        "gulp-autoprefixer": "^3.1.0",
+        "gulp-babel": "^6.1.2",
+        "gulp-cached": "^1.1.1",
+        "gulp-concat": "^2.6.0",
+        "gulp-cssnano": "^2.1.2",
+        "gulp-debug": "^2.1.2",
+        "gulp-download": "^0.0.1",
+        "gulp-favicons": "^2.2.6",
+        "gulp-filter": "^5.0.1",
+        "gulp-fontello": "^0.4.6",
+        "gulp-header": "^1.8.7",
+        "gulp-if": "^2.0.1",
+        "gulp-imagemin": "^3.1.1",
+        "gulp-livereload": "^3.8.1",
+        "gulp-load-plugins": "^1.3.0",
+        "gulp-newer": "^1.2.0",
+        "gulp-plumber": "^1.1.0",
+        "gulp-print": "^2.0.1",
+        "gulp-rename": "^1.2.2",
+        "gulp-replace": "0.5.4",
+        "gulp-rev": "^7.1.0",
+        "gulp-sass": "^2.1.0",
+        "gulp-size": "^2.1.0",
+        "gulp-sourcemaps": "^2.2.1",
+        "gulp-streamify": "1.0.2",
+        "gulp-uglify": "^1.5.4",
+        "moment": "^2.14.1",
+        "pa11y": "^4.11.0",
+        "vinyl-source-stream": "^1.1.0"
+    },
+    "scripts": {
+        "start": "gulp",
+        "build": "gulp build"
+    },
+    "bugs": {
+        "email": "info@nystudio107.com"
+    }
+}

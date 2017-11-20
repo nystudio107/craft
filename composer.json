@@ -1,0 +1,48 @@
+{
+  "name": "nystudio107/craft",
+  "description": "nystudio107 Craft 3 CMS scaffolding project",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "project"
+  ],
+  "license": "MIT",
+  "homepage": "https://craftcms.com/",
+  "type": "project",
+  "support": {
+    "email": "info@nystudio107.com",
+    "issues": "https://github.com/nystudio107/craft/issues",
+    "source": "https://github.com/nystudio107/craft",
+    "docs": "https://github.com/nystudio107/craft"
+  },
+  "minimum-stability": "beta",
+  "require": {
+    "php": ">=7.0.0",
+    "craftcms/cms": "^3.0.0-beta.34",
+    "vlucas/phpdotenv": "^2.4.0",
+    "nystudio107/craft-scripts": "^1.2.4",
+    "nystudio107/craft3-multi-environment": "^1.0.3",
+    "roave/security-advisories": "dev-master"
+  },
+  "config": {
+    "optimize-autoloader": true
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+      "@php craft setup/welcome",
+      "@php -r \"echo('### Setting up Craft-Scripts\n');\"",
+      "@php -r \"symlink('vendor/nystudio107/craft-scripts/scripts', 'scripts');\"",
+      "@php -r \"echo('### Setting up Craft 3 Multi-Environment\n');\"",
+      "@php -r \"file_exists('scripts/.env.sh') || copy('scripts/craft3-example.env.sh', 'scripts/.env.sh');\"",
+      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/config/db.php', 'config/db.php');\"",
+      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/config/general.php', 'config/general.php');\"",
+      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/config/volumes.php', 'config/volumes.php');\"",
+      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/web/index.php', 'web/index.php');\"",
+      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/example.env.php', '.env.php');\""
+    ]
+  }
+}
