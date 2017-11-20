@@ -1,0 +1,56 @@
+#!/usr/bin/env php
+<?php
+/**
+ * @author    nystudio107
+ * @copyright Copyright (c) 2017 nystudio107
+ * @link      https://nystudio107.com/
+ * @package   nystudio107/craft
+ * @since     1.0.0
+ * @license   MIT
+ */
+
+use yii\helpers\Console;
+
+// Set path constants
+define('CRAFT_BASE_PATH', __DIR__);
+define('CRAFT_VENDOR_PATH', CRAFT_BASE_PATH.'/vendor');
+
+// Load Composer's autoloader
+require_once CRAFT_VENDOR_PATH.'/autoload.php';
+
+// Load the .env file Craft created
+if (file_exists(CRAFT_BASE_PATH.'/.env')) {
+    (new Dotenv\Dotenv(CRAFT_BASE_PATH))->load();
+}
+
+// Set up Craft-Scripts if the file scripts/.env.sh doesn't exist already
+Console::output(PHP_EOL.'Setting up Craft-Scripts');
+if (!file_exists('scripts/.env.sh')) {
+    // Create the scripts symlink
+    Console::output('- Creating scripts symlink');
+    if (symlink('vendor/nystudio107/craft-scripts/scripts', 'scripts')) {
+        // Create the default .env.sh
+        Console::output('- Creating default scripts/.env.sh');
+        copy('scripts/craft3-example.env.sh', 'scripts/.env.sh');
+    } else {
+        Console::output('### Failed to create scripts symlink.');
+    }
+} else {
+    Console::output('scripts/.env.sh file already exists, exiting...');
+}
+
+// Set up Craft 3 Multi-Environment if the file .env.php doesn't exist already
+Console::output(PHP_EOL.'Setting up Craft 3 Multi-Environment');
+if (!file_exists('.env.php')) {
+    // Create the default Craft config files
+    Console::output('- Creating default Craft config/ files');
+    copy('vendor/nystudio107/craft3-multi-environment/config/db.php', 'config/db.php');
+    copy('vendor/nystudio107/craft3-multi-environment/config/general.php', 'config/general.php');
+    copy('vendor/nystudio107/craft3-multi-environment/config/volumes.php', 'config/volumes.php');
+    copy('vendor/nystudio107/craft3-multi-environment/web/index.php', 'web/index.php');
+    // Create the default .env.php
+    Console::output('- Creating default .env.php');
+    copy('vendor/nystudio107/craft3-multi-environment/example.env.php', '.env.php');
+} else {
+    Console::output('.env.php file already exists, exiting...');
+}

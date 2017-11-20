@@ -34,15 +34,8 @@
     ],
     "post-create-project-cmd": [
       "@php craft setup/welcome",
-      "@php -r \"echo('### Setting up Craft-Scripts\n');\"",
-      "@php -r \"symlink('vendor/nystudio107/craft-scripts/scripts', 'scripts');\"",
-      "@php -r \"echo('### Setting up Craft 3 Multi-Environment\n');\"",
-      "@php -r \"file_exists('scripts/.env.sh') || copy('scripts/craft3-example.env.sh', 'scripts/.env.sh');\"",
-      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/config/db.php', 'config/db.php');\"",
-      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/config/general.php', 'config/general.php');\"",
-      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/config/volumes.php', 'config/volumes.php');\"",
-      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/web/index.php', 'web/index.php');\"",
-      "@php -r \"file_exists('.env.php') || copy('vendor/nystudio107/craft3-multi-environment/example.env.php', '.env.php');\""
+      "@php craft setup",
+      "@php install"
     ]
   }
 }
