@@ -38,7 +38,7 @@
     ],
     "post-create-project-cmd": [
       "@php craft setup/welcome",
-      "@php -r \"After running ./craft setup to set up your Craft install,\nrun ./install to set up Craft 3 Multi-Environemnt & Craft-Scripts.\""
+      "@php -r \"After running ./craft setup to set up your Craft install,\nrun ./nys-setup to set up Craft 3 Multi-Environemnt & Craft-Scripts.\""
     ]
   }
 }
