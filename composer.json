@@ -1,6 +1,7 @@
 {
   "name": "nystudio107/craft",
   "description": "nystudio107 Craft 3 CMS scaffolding project",
+  "version": "1.0.0-rc.1",
   "keywords": [
     "craft",
     "cms",
@@ -16,7 +17,7 @@
     "source": "https://github.com/nystudio107/craft",
     "docs": "https://github.com/nystudio107/craft"
   },
-  "minimum-stability": "beta",
+  "minimum-stability": "RC",
   "require": {
     "php": ">=7.0.0",
     "craftcms/cms": "^3.0.0-beta.34",
@@ -38,7 +39,7 @@
     ],
     "post-create-project-cmd": [
       "@php craft setup/welcome",
-      "@php -r \"After running ./craft setup to set up your Craft install,\nrun ./nys-setup to set up Craft 3 Multi-Environemnt & Craft-Scripts.\""
+      "@php -r \"echo (\"After running ./craft setup to set up your Craft install,\nrun ./nys-setup to set up Craft 3 Multi-Environemnt & Craft-Scripts.\");\""
     ]
   }
 }
