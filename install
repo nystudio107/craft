@@ -38,7 +38,9 @@ require_once CRAFT_VENDOR_PATH.'/autoload.php';
 
 // Load the .env file Craft created
 if (file_exists(CRAFT_BASE_PATH.'/.env')) {
-    (new Dotenv\Dotenv(CRAFT_BASE_PATH))->load();
+    $dotEnv = new Dotenv\Dotenv(CRAFT_BASE_PATH);
+    $dotEnv->load();
+    echo phpinfo();
 }
 
 // Set up Craft-Scripts if the file scripts/.env.sh doesn't exist already
@@ -53,9 +55,9 @@ if (!file_exists('scripts/.env.sh')) {
         // Replace the default settings from the ENV vars
         $filePath = 'scripts/.env.sh';
         $fileContents = file_get_contents($filePath);
-        foreach (ENV_PHP_REPLACEMENTS as $findValue => $defaultValue) {
-            $envKey = substr($findValue, strpos($findValue, REPLACE_ME_PREFIX) + 1);
-            $replaceValue = getenv($envKey)  ?? $defaultValue;
+        foreach (ENV_SH_REPLACEMENTS as $findValue => $defaultValue) {
+            $envKey = substr($findValue, strpos($findValue, REPLACE_ME_PREFIX) + strlen(REPLACE_ME_PREFIX));
+            $replaceValue = getenv($envKey) ?? $defaultValue;
             $fileContents = str_replace($findValue, $replaceValue, $fileContents);
         }
         // Write the file out
@@ -80,6 +82,16 @@ if (!file_exists('.env.php')) {
     // Create the default .env.php
     Console::output('- Creating default .env.php');
     copy('vendor/nystudio107/craft3-multi-environment/example.env.php', '.env.php');
+    // Replace the default settings from the ENV vars
+    $filePath = '.env.php';
+    $fileContents = file_get_contents($filePath);
+    foreach (ENV_PHP_REPLACEMENTS as $findValue => $defaultValue) {
+        $envKey = substr($findValue, strpos($findValue, REPLACE_ME_PREFIX) + strlen(REPLACE_ME_PREFIX));
+        $replaceValue = getenv($envKey) ?? $defaultValue;
+        $fileContents = str_replace($findValue, $replaceValue, $fileContents);
+    }
+    // Write the file out
+    file_put_contents($filePath, $fileContents);
 } else {
     Console::output('.env.php file already exists, exiting...');
 }
