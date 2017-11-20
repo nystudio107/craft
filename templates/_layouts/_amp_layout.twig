@@ -1,0 +1,145 @@
+{% minify %}
+{% set baseUrl = craft.config.environmentVariables.baseUrl %}
+{% set staticAssetsVersion = "." ~ craft.config.environmentVariables.staticAssetsVersion %}
+{#
+{% header "Link: <" ~ baseUrl ~ "js/system.min" ~ staticAssetsVersion ~ ".js>; rel=preload; as=script" %}
+#}
+{% header "Link: " ~
+    "<" ~ baseUrl ~ ">; rel=dns-prefetch;" ~
+    "," ~
+    "<" ~ baseUrl ~ ">; rel=preconnect;" ~
+    "," ~
+    "<" ~ baseUrl ~ ">; rel=preconnect; crossorigin;"
+%}
+<!DOCTYPE html>
+<html ⚡ lang="{{ craft.locale |slice(0,2) }}" class="fonts-loaded">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <script async custom-element="amp-analytics"
+    src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+    {% block _head_links %}
+    {% endblock %}
+
+    {% import '_base/_macros.html' as macro %}
+    {% include '_base/_global_header' %}
+
+<!-- SEO -->
+
+    {% hook 'seomaticRender' %}
+
+{# -- CRITICAL CSS -- #}
+    <style amp-custom>
+    {% block _inline_css %}
+    {% endblock %}
+
+    pre {
+        overflow-x: scroll;
+    }
+
+    ul.nav-amp {
+      color: #FFF;
+      overflow: hidden;
+      transition: all .3s ease;
+      list-style-type: none;
+      padding: 2rem;
+      margin: 0 auto;
+      font-size: 1.5rem;
+    }
+
+    ul.nav-amp li {
+      padding-top: 1rem;
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .3rem;
+    }
+
+    div.blog-wrapper ol,
+    div.blog-wrapper ul,
+    div.blog-wrapper p {
+      line-height: 1.8em;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    div.blog-wrapper ul {
+        list-style-type: circle;
+    }
+
+    div.blog-wrapper li {
+        margin-bottom: 1.0rem;
+    }
+
+{# -- Site fonts -- #}
+    {% include '_base/_inline_fonts.css' %}
+    </style>
+
+<!-- End of HTML Header -->
+
+</head>
+
+<!-- HTML Body -->
+
+<body>
+<amp-sidebar id='sidebar1' layout='nodisplay'>
+    <ul class="nav-amp">
+        <li></li>
+        <li><a class="nav-link" href="/blog/amp">Blog</a></li>
+    </ul>
+</amp-sidebar>
+
+<div id="page-container">
+
+    {% include '_base/_amp_navbar' %}
+
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+
+    {% block subcontent %}
+    {% endblock %}
+
+    {% include '_base/_amp_info_footer' %}
+
+<!-- HTML Footer -->
+
+    {% include '_base/_global_footer' %}
+
+{% if craft.config.devMode %}
+{% endif %}
+
+</div>
+
+{% block analytics %}
+<amp-analytics type="googleanalytics" id="analytics2">
+<script type="application/json">
+{
+  "vars": {
+    "account": "UA-69117511-1"
+  },
+  "triggers": {
+    "trackPageviewWithAmpdocUrl": {
+      "on": "visible",
+      "request": "pageview",
+      "vars": {
+        "title": "{{ seomaticMeta.seoTitle }}",
+        "ampdocUrl": "{{ craft.request.url }}"
+      }
+    }
+  }
+}
+</script>
+</amp-analytics>
+{% endblock %}
+
+</body>
+</html>
+{% endminify %}
