@@ -1,6 +1,6 @@
 {% minify %}
-{% set baseUrl = craft.config.baseUrl %}
-{% set staticAssetsVersion = "." ~ craft.config.environmentVariables.staticAssetsVersion %}
+{% set baseUrl = craft.config.general.baseUrl %}
+{% set staticAssetsVersion = "." ~ craft.config.general.staticAssetsVersion %}
 {% header "Link: " ~
     "<" ~ baseUrl ~ ">; rel=dns-prefetch;" ~
     "," ~
@@ -27,17 +27,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    {% import '_base/_macros.html' as macro %}
+    {% import '_base/_macros.twig' as macro %}
     {% include '_base/_global_header' %}
-
-<!-- SEO -->
-
-    {% hook 'seomaticRender' %}
 
 {# -- ServiceWorker, loadjs, and tiny-cookie -- #}
     <script>
-        {% if craft.config.isSystemOn %}
-        {{ source('_inlinejs/register-service-worker.min.js') }}
+        {% if craft.config.general.isSystemOn %}
+            {{ source('_inlinejs/register-service-worker.min.js') }}
         {% endif %}
         {{ source('_inlinejs/loadjs.min.js') }}
         {{ source('_inlinejs/tiny-cookie.min.js') }}
