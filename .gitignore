@@ -22,6 +22,7 @@
 
 # CRAFT STORAGE
 /storage/*
+!/storage/.gitkeep
 
 # ASSETS
 /web/assets/*
