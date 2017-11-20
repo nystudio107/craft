@@ -40,7 +40,6 @@ require_once CRAFT_VENDOR_PATH.'/autoload.php';
 if (file_exists(CRAFT_BASE_PATH.'/.env')) {
     $dotEnv = new Dotenv\Dotenv(CRAFT_BASE_PATH);
     $dotEnv->load();
-    echo phpinfo();
 }
 
 // See if we should just display a welcome message
