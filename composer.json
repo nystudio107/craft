@@ -26,7 +26,7 @@
     "nystudio107/craft3-cookies": "^1.1.4",
     "nystudio107/craft3-imageoptimize": "^1.3.2",
     "nystudio107/craft3-minify": "^1.2.5",
-    "nystudio107/craft3-typogrify": "^1.1.1"
+    "nystudio107/craft3-typogrify": "^1.1.1",
     "roave/security-advisories": "dev-master"
   },
   "config": {
