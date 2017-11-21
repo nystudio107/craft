@@ -11,33 +11,118 @@
 
 use yii\helpers\Console;
 
-const REPLACE_ME_PREFIX = 'REPLACE_ME_';
-
-const ENV_SH_REPLACEMENTS = [
+const CRAFT_SCRIPTS_SETUP = [
+    'srclink'      => 'vendor/nystudio107/craft-scripts/scripts',
+    'destlink'     => 'scripts',
+    'srcpath'      => 'scripts/craft3-example.env.sh',
+    'destpath'     => 'scripts/.env.sh',
+    'replacements' => [
+        'GLOBAL_DB_TABLE_PREFIX=""' => [
+            'substr'  => '""',
+            'env'     => 'DB_TABLE_PREFIX',
+            'default' => '',
+        ],
+    ],
 ];
 
-const ENV_PHP_REPLACEMENTS = [
-    'REPLACE_ME_CRAFT_ENVIRONMENT' => 'local',
-    'REPLACE_ME_DB_DRIVER' => 'mysql',
-    'REPLACE_ME_DB_SERVER' => 'localhost',
-    'REPLACE_ME_DB_USER' => 'REPLACE_ME',
-    'REPLACE_ME_DB_PASSWORD' => 'REPLACE_ME',
-    'REPLACE_ME_DB_DATABASE' => 'REPLACE_ME',
-    'REPLACE_ME_DB_SCHEMA' => 'public',
-    'REPLACE_ME_DB_TABLE_PREFIX' => '',
-    'REPLACE_ME_DB_PORT' => '3306',
-    'REPLACE_ME_SECURITY_KEY' => 'REPLACE_ME',
+const CRAFT_MULTI_ENVIRONMENT_SETUP = [
+    [
+        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/config/db.php',
+        'destpath'     => 'config/db.php',
+        'replacements' => [
+        ],
+    ],
+    [
+        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/config/general.php',
+        'destpath'     => 'config/general.php',
+        'replacements' => [
+        ],
+    ],
+    [
+        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/config/volumes.php',
+        'destpath'     => 'config/volumes.php',
+        'replacements' => [
+        ],
+    ],
+    [
+        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/web/index.php',
+        'destpath'     => 'web/index.php',
+        'replacements' => [
+        ],
+    ],
+    [
+        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/craft',
+        'destpath'     => 'craft',
+        'replacements' => [
+        ],
+    ],
+    [
+        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/example.env.php',
+        'destpath'     => '.env.php',
+        'replacements' => [
+            'REPLACE_ME_CRAFT_ENVIRONMENT' => [
+                'substr'  => '',
+                'env'     => '',
+                'default' => 'local',
+            ],
+            'REPLACE_ME_DB_DRIVER'         => [
+                'substr'  => '',
+                'env'     => 'DB_DRIVER',
+                'default' => 'mysql',
+            ],
+            'REPLACE_ME_DB_SERVER'         => [
+                'substr'  => '',
+                'env'     => 'DB_SERVER',
+                'default' => 'localhost',
+            ],
+            'REPLACE_ME_DB_USER'           => [
+                'substr'  => '',
+                'env'     => 'DB_USER',
+                'default' => 'REPLACE_ME',
+            ],
+            'REPLACE_ME_DB_PASSWORD'       => [
+                'substr'  => '',
+                'env'     => 'DB_PASSWORD',
+                'default' => 'REPLACE_ME',
+            ],
+            'REPLACE_ME_DB_DATABASE'       => [
+                'substr'  => '',
+                'env'     => 'DB_DATABASE',
+                'default' => 'REPLACE_ME',
+            ],
+            'REPLACE_ME_DB_SCHEMA'         => [
+                'substr'  => '',
+                'env'     => 'DB_SCHEMA',
+                'default' => 'public',
+            ],
+            'REPLACE_ME_DB_TABLE_PREFIX'   => [
+                'substr'  => '',
+                'env'     => 'DB_TABLE_PREFIX',
+                'default' => '',
+            ],
+            'REPLACE_ME_DB_PORT'           => [
+                'substr'  => '',
+                'env'     => 'DB_PORT',
+                'default' => '3306',
+            ],
+            'REPLACE_ME_SECURITY_KEY'      => [
+                'substr'  => '',
+                'env'     => 'SECURITY_KEY',
+                'default' => 'REPLACE_ME',
+            ],
+        ],
+    ],
 ];
 
 // Set path constants
 define('CRAFT_BASE_PATH', __DIR__);
-define('CRAFT_VENDOR_PATH', CRAFT_BASE_PATH.'/vendor');
+define('CRAFT_VENDOR_PATH', CRAFT_BASE_PATH . '/vendor');
 
 // Load Composer's autoloader
-require_once CRAFT_VENDOR_PATH.'/autoload.php';
+require_once CRAFT_VENDOR_PATH . '/autoload.php';
 
 // Load the .env file Craft created
-if (file_exists(CRAFT_BASE_PATH.'/.env')) {
+if (file_exists(CRAFT_BASE_PATH . '/.env')) {
     $dotEnv = new Dotenv\Dotenv(CRAFT_BASE_PATH);
     $dotEnv->load();
 }
@@ -53,66 +138,103 @@ switch ($argv[1]) {
         break;
 }
 
-// Display a welcome message
+/**
+ * Display a welcome message
+ */
 function welcomeNysCraft()
 {
     Console::output(PHP_EOL . 'After running ./craft setup to set up your Craft install,');
     Console::output('Run ./nys-setup to set up Craft 3 Multi-Environemnt & Craft-Scripts.');
 }
 
-// Set up all the things!
+/**
+ * Set up all the things!
+ */
 function setupNysCraft()
 {
-// Set up Craft-Scripts if the file scripts/.env.sh doesn't exist already
+    // Set up Craft-Scripts if the file scripts/.env.sh doesn't exist already
     Console::output(PHP_EOL . 'Setting up Craft-Scripts');
     if (!file_exists('scripts/.env.sh')) {
         // Create the scripts symlink
-        Console::output('- Creating scripts symlink');
-        if (symlink('vendor/nystudio107/craft-scripts/scripts', 'scripts')) {
+        $fileInfo = CRAFT_SCRIPTS_SETUP;
+        if (createSymLink($fileInfo['srclink'], $fileInfo['destlink'])) {
             // Create the default .env.sh
-            Console::output('- Creating default scripts/.env.sh');
-            copy('scripts/craft3-example.env.sh', 'scripts/.env.sh');
-            // Replace the default settings from the ENV vars
-            $filePath = 'scripts/.env.sh';
-            $fileContents = file_get_contents($filePath);
-            foreach (ENV_SH_REPLACEMENTS as $findValue => $defaultValue) {
-                $envKey = substr($findValue, strpos($findValue, REPLACE_ME_PREFIX) + strlen(REPLACE_ME_PREFIX));
-                $replaceValue = getenv($envKey) ?? $defaultValue;
-                $fileContents = str_replace($findValue, $replaceValue, $fileContents);
+            if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
+                replaceInFile($fileInfo['destpath'], $fileInfo['replacements']);
             }
-            // Write the file out
-            file_put_contents($filePath, $fileContents);
-        } else {
-            Console::output('### Failed to create scripts symlink.');
         }
     } else {
-        Console::output('scripts/.env.sh file already exists, exiting...');
+        Console::output('### scripts/.env.sh file already exists, exiting...');
     }
 
-// Set up Craft 3 Multi-Environment if the file .env.php doesn't exist already
+    // Set up Craft 3 Multi-Environment if the file .env.php doesn't exist already
     Console::output(PHP_EOL . 'Setting up Craft 3 Multi-Environment');
     if (!file_exists('.env.php')) {
         // Create the default Craft config files
-        Console::output('- Creating default Craft config/ files');
-        copy('vendor/nystudio107/craft3-multi-environment/config/db.php', 'config/db.php');
-        copy('vendor/nystudio107/craft3-multi-environment/config/general.php', 'config/general.php');
-        copy('vendor/nystudio107/craft3-multi-environment/config/volumes.php', 'config/volumes.php');
-        copy('vendor/nystudio107/craft3-multi-environment/web/index.php', 'web/index.php');
-        copy('vendor/nystudio107/craft3-multi-environment/craft', 'craft');
-        // Create the default .env.php
-        Console::output('- Creating default .env.php');
-        copy('vendor/nystudio107/craft3-multi-environment/example.env.php', '.env.php');
-        // Replace the default settings from the ENV vars
-        $filePath = '.env.php';
-        $fileContents = file_get_contents($filePath);
-        foreach (ENV_PHP_REPLACEMENTS as $findValue => $defaultValue) {
-            $envKey = substr($findValue, strpos($findValue, REPLACE_ME_PREFIX) + strlen(REPLACE_ME_PREFIX));
-            $replaceValue = getenv($envKey) ?? $defaultValue;
-            $fileContents = str_replace($findValue, $replaceValue, $fileContents);
+        foreach (CRAFT_MULTI_ENVIRONMENT_SETUP as $fileInfo) {
+            if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
+                replaceInFile($fileInfo['destpath'], $fileInfo['replacements']);
+            }
         }
-        // Write the file out
-        file_put_contents($filePath, $fileContents);
     } else {
-        Console::output('.env.php file already exists, exiting...');
+        Console::output('### .env.php file already exists, exiting...');
     }
+}
+
+/**
+ * Create a symlink from $srcPath to $destPath
+ *
+ * @param string $srcPath
+ * @param string $destPath
+ *
+ * @return bool
+ */
+function createSymLink(string $srcPath, string $destPath)
+{
+    $result = symlink($srcPath, $destPath);
+    if ($result) {
+        Console::output('- created symlink from ' . $srcPath . ' to ' . $destPath);
+    } else {
+        Console::output('### error creating symlink from ' . $srcPath . ' to ' . $destPath);
+    }
+
+    return $result;
+}
+
+/**
+ * Copy the $srcPath file to $destPath
+ *
+ * @param string $srcPath
+ * @param string $destPath
+ *
+ * @return bool
+ */
+function copyFile(string $srcPath, string $destPath)
+{
+    $result = copy($srcPath, $destPath);
+    if ($result) {
+        Console::output('- copied ' . $srcPath . ' to ' . $destPath);
+    } else {
+        Console::output('### error copying ' . $srcPath . ' to ' . $destPath);
+    }
+
+    return $result;
+}
+
+/**
+ * Replace strings in $filePath and write out the modified file
+ *
+ * @param string $filePath
+ * @param array  $replacements
+ */
+function replaceInFile(string $filePath, array $replacements)
+{
+    $fileContents = file_get_contents($filePath);
+    foreach ($replacements as $findValue => $params) {
+        $replaceValue = empty($params['env']) ? $params['default'] : getenv($params['env']) ?? $params['default'];
+        $replaceValue = empty($params['substr']) ? $replaceValue : str_replace($params['substr'], $replaceValue, $findValue);
+        $fileContents = str_replace($findValue, $replaceValue, $fileContents);
+    }
+    // Write the file out
+    file_put_contents($filePath, $fileContents);
 }
