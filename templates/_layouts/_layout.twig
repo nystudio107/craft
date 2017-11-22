@@ -41,7 +41,7 @@
     {% endminify %}
 {# -- CRITICAL CSS -- #}
 <!--# if expr="$HTTP_COOKIE=/critical\-css\={{ craft.config.environmentVariables.staticAssetsVersion }}/" -->
-    <link rel="stylesheet" href="{{ (baseUrl ~ 'css/site.combined.min.css') | append_suffix(staticAssetsVersion) }}">
+    <link rel="stylesheet" href="{{ (baseUrl ~ 'css/site.combined.min' ~ staticAssetsVersion ~'.css') }}">
 <!--# else -->
     <script>
         Cookie.set('critical-css', {{ craft.config.environmentVariables.staticAssetsVersion }}, { expires: '7D', secure: true });
