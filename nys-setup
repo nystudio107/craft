@@ -22,6 +22,21 @@ const CRAFT_SCRIPTS_SETUP = [
             'env'     => 'DB_TABLE_PREFIX',
             'default' => '',
         ],
+        'GLOBAL_DB_DRIVER="mysql"' => [
+            'substr'  => '"mysql"',
+            'env'     => 'DB_DRIVER',
+            'default' => 'mysql',
+        ],
+        'LOCAL_ROOT_PATH="REPLACE_ME"' => [
+            'substr'  => '"REPLACE_ME"',
+            'env'     => '',
+            'default' => '',
+        ],
+        'LOCAL_ASSETS_PATH=${LOCAL_ROOT_PATH}"REPLACE_ME"' => [
+            'substr'  => '"REPLACE_ME"',
+            'env'     => '',
+            'default' => 'web/assets/',
+        ],
     ],
 ];
 
@@ -168,6 +183,7 @@ function setupNysCraft()
             $replacements = $fileInfo['replacements'];
             if (!empty($replacements)) {
                 // We need to swap in some dynamic variables for specific settings replacements
+                $replacements['LOCAL_ROOT_PATH="REPLACE_ME"']['default'] = __DIR__ . DIRECTORY_SEPARATOR;
                 replaceInFile($fileInfo['destpath'], $replacements);
             }
         }
