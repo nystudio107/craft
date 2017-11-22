@@ -15,7 +15,7 @@ const CRAFT_SCRIPTS_SETUP = [
     'srclink'      => 'vendor/nystudio107/craft-scripts/scripts',
     'destlink'     => 'scripts',
     'srcpath'      => 'scripts/craft3-example.env.sh',
-    'destpath'     => 'scripts/.env.sh',
+    'destpath'     => '.env.sh',
     'replacements' => [
         'GLOBAL_DB_TABLE_PREFIX=""' => [
             'substr'  => '""',
@@ -208,15 +208,19 @@ function setupNysCraft()
         $fileInfo = CRAFT_SCRIPTS_SETUP;
         // Create the scripts symlink
         createSymLink($fileInfo['srclink'], $fileInfo['destlink']);
-        // Create the default .env.sh
-        if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
-            $replacements = $fileInfo['replacements'];
-            if (!empty($replacements)) {
-                // We need to swap in some dynamic variables for specific settings replacements
-                $replacements['LOCAL_ROOT_PATH="REPLACE_ME"']['default'] = __DIR__ . DIRECTORY_SEPARATOR;
-                replaceInFile($fileInfo['destpath'], $replacements);
+        if (!file_exists('.env.sh')) {
+            // Create the default .env.sh
+            if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
+                $replacements = $fileInfo['replacements'];
+                if (!empty($replacements)) {
+                    // We need to swap in some dynamic variables for specific settings replacements
+                    $replacements['LOCAL_ROOT_PATH="REPLACE_ME"']['default'] = CRAFT_BASE_PATH.DIRECTORY_SEPARATOR;
+                    replaceInFile($fileInfo['destpath'], $replacements);
+                }
             }
         }
+        // Create the scripts/.env.sh symlink
+        createSymLink(CRAFT_BASE_PATH.DIRECTORY_SEPARATOR.'.env.sh', 'scripts/.env.sh');
     } else {
         outputString('### scripts/.env.sh file already exists, exiting...', Console::FG_RED);
     }
