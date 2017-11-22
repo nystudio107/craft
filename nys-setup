@@ -37,6 +37,36 @@ const CRAFT_SCRIPTS_SETUP = [
             'env'     => '',
             'default' => 'web/assets/',
         ],
+        'LOCAL_DB_NAME="REPLACE_ME"' => [
+            'substr'  => '"REPLACE_ME"',
+            'env'     => 'DB_DATABASE',
+            'default' => 'REPLACE_ME',
+        ],
+        'LOCAL_DB_PASSWORD="REPLACE_ME"' => [
+            'substr'  => '"REPLACE_ME"',
+            'env'     => 'DB_PASSWORD',
+            'default' => 'REPLACE_ME',
+        ],
+        'LOCAL_DB_USER="REPLACE_ME"' => [
+            'substr'  => '"REPLACE_ME"',
+            'env'     => 'DB_USER',
+            'default' => 'REPLACE_ME',
+        ],
+        'LOCAL_DB_HOST="localhost"' => [
+            'substr'  => '"localhost"',
+            'env'     => 'DB_SERVER',
+            'default' => 'localhost',
+        ],
+        'LOCAL_DB_PORT="3306"' => [
+            'substr'  => '"3306"',
+            'env'     => 'DB_PORT',
+            'default' => '3306',
+        ],
+        'LOCAL_DB_SCHEMA="public"' => [
+            'substr'  => '"public"',
+            'env'     => 'DB_SCHEMA',
+            'default' => 'public',
+        ],
     ],
 ];
 
@@ -206,6 +236,8 @@ function setupNysCraft()
     } else {
         outputString('### .env.php file already exists, exiting...', Console::FG_RED);
     }
+    outputString(PHP_EOL.'You will still need to set up your REMOTE_ settings in scripts/env.sh', Console::FG_YELLOW);
+    outputString('Setup complete. Have a nice day!', Console::FG_YELLOW);
 }
 
 /**
