@@ -116,26 +116,31 @@ const CRAFT_MULTI_ENVIRONMENT_SETUP = [
 
 // Set path constants
 define('CRAFT_BASE_PATH', __DIR__);
-define('CRAFT_VENDOR_PATH', CRAFT_BASE_PATH . '/vendor');
+define('CRAFT_VENDOR_PATH', CRAFT_BASE_PATH.'/vendor');
 
 // Load Composer's autoloader
-require_once CRAFT_VENDOR_PATH . '/autoload.php';
+require_once CRAFT_VENDOR_PATH.'/autoload.php';
 
 // Load the .env file Craft created
-if (file_exists(CRAFT_BASE_PATH . '/.env')) {
+if (file_exists(CRAFT_BASE_PATH.'/.env')) {
     $dotEnv = new Dotenv\Dotenv(CRAFT_BASE_PATH);
     $dotEnv->load();
 }
 
-// See if we should just display a welcome message
-switch ($argv[1]) {
-    case 'welcome':
-        welcomeNysCraft();
-        break;
+// By default, run the setup script
+if (empty($argv[1])) {
+    setupNysCraft();
+} else {
+    // See what command we were passed in
+    switch ($argv[1]) {
+        case 'welcome':
+            welcomeNysCraft();
+            break;
 
-    default:
-        setupNysCraft();
-        break;
+        default:
+            setupNysCraft();
+            break;
+    }
 }
 
 /**
@@ -143,8 +148,8 @@ switch ($argv[1]) {
  */
 function welcomeNysCraft()
 {
-    Console::output(PHP_EOL . 'After running ./craft setup to set up your Craft install,');
-    Console::output('Run ./nys-setup to set up Craft 3 Multi-Environemnt & Craft-Scripts.');
+    outputString(PHP_EOL.'After running ./craft setup to set up your Craft install,', Console::FG_YELLOW);
+    outputString('Run ./nys-setup to set up Craft 3 Multi-Environemnt & Craft-Scripts.', Console::FG_YELLOW);
 }
 
 /**
@@ -153,32 +158,57 @@ function welcomeNysCraft()
 function setupNysCraft()
 {
     // Set up Craft-Scripts if the file scripts/.env.sh doesn't exist already
-    Console::output(PHP_EOL . 'Setting up Craft-Scripts');
+    outputString(PHP_EOL.'Setting up Craft-Scripts', Console::FG_YELLOW);
     if (!file_exists('scripts/.env.sh')) {
-        // Create the scripts symlink
         $fileInfo = CRAFT_SCRIPTS_SETUP;
-        if (createSymLink($fileInfo['srclink'], $fileInfo['destlink'])) {
-            // Create the default .env.sh
-            if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
-                replaceInFile($fileInfo['destpath'], $fileInfo['replacements']);
+        // Create the scripts symlink
+        createSymLink($fileInfo['srclink'], $fileInfo['destlink']);
+        // Create the default .env.sh
+        if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
+            $replacements = $fileInfo['replacements'];
+            if (!empty($replacements)) {
+                // We need to swap in some dynamic variables for specific settings replacements
+                replaceInFile($fileInfo['destpath'], $replacements);
             }
         }
     } else {
-        Console::output('### scripts/.env.sh file already exists, exiting...');
+        outputString('### scripts/.env.sh file already exists, exiting...', Console::FG_RED);
     }
 
     // Set up Craft 3 Multi-Environment if the file .env.php doesn't exist already
-    Console::output(PHP_EOL . 'Setting up Craft 3 Multi-Environment');
+    outputString(PHP_EOL.'Setting up Craft 3 Multi-Environment', Console::FG_YELLOW);
     if (!file_exists('.env.php')) {
-        // Create the default Craft config files
+        // Create the default Craft Multi-Environment setup
         foreach (CRAFT_MULTI_ENVIRONMENT_SETUP as $fileInfo) {
             if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
-                replaceInFile($fileInfo['destpath'], $fileInfo['replacements']);
+                $replacements = $fileInfo['replacements'];
+                if (!empty($replacements)) {
+                    replaceInFile($fileInfo['destpath'], $replacements);
+                }
             }
         }
     } else {
-        Console::output('### .env.php file already exists, exiting...');
+        outputString('### .env.php file already exists, exiting...', Console::FG_RED);
     }
+}
+
+/**
+ * Output a string to the console, using optional $args to color it, if supported
+ *
+ * @param string $string
+ *
+ * @return mixed
+ */
+function outputString($string)
+{
+    $stream = \STDOUT;
+    if (Console::streamSupportsAnsiColors($stream)) {
+        $args = func_get_args();
+        array_shift($args);
+        $string = Console::ansiFormat($string, $args);
+    }
+
+    return Console::stdout($string.PHP_EOL);
 }
 
 /**
@@ -191,11 +221,11 @@ function setupNysCraft()
  */
 function createSymLink(string $srcPath, string $destPath)
 {
-    $result = symlink($srcPath, $destPath);
+    $result = @symlink($srcPath, $destPath);
     if ($result) {
-        Console::output('- created symlink from ' . $srcPath . ' to ' . $destPath);
+        outputString('- created symlink from '.$srcPath.' to '.$destPath);
     } else {
-        Console::output('### error creating symlink from ' . $srcPath . ' to ' . $destPath);
+        outputString('### error creating symlink from '.$srcPath.' to '.$destPath, Console::FG_RED);
     }
 
     return $result;
@@ -211,11 +241,11 @@ function createSymLink(string $srcPath, string $destPath)
  */
 function copyFile(string $srcPath, string $destPath)
 {
-    $result = copy($srcPath, $destPath);
+    $result = @copy($srcPath, $destPath);
     if ($result) {
-        Console::output('- copied ' . $srcPath . ' to ' . $destPath);
+        outputString('- copied '.$srcPath.' to '.$destPath);
     } else {
-        Console::output('### error copying ' . $srcPath . ' to ' . $destPath);
+        outputString('### error copying '.$srcPath.' to '.$destPath, Console::FG_RED);
     }
 
     return $result;
@@ -229,12 +259,23 @@ function copyFile(string $srcPath, string $destPath)
  */
 function replaceInFile(string $filePath, array $replacements)
 {
-    $fileContents = file_get_contents($filePath);
-    foreach ($replacements as $findValue => $params) {
-        $replaceValue = empty($params['env']) ? $params['default'] : getenv($params['env']) ?? $params['default'];
-        $replaceValue = empty($params['substr']) ? $replaceValue : str_replace($params['substr'], $replaceValue, $findValue);
-        $fileContents = str_replace($findValue, $replaceValue, $fileContents);
+    if (!empty($replacements)) {
+        outputString('- setting up '.$filePath);
+        $fileContents = file_get_contents($filePath);
+        foreach ($replacements as $findValue => $params) {
+            $replaceValue = empty($params['env']) ? $params['default'] : getenv($params['env']) ?? $params['default'];
+            if (!empty($params['substr'])) {
+                $subStr = $params['substr'];
+                $wrapChar = '';
+                // If the $subStr is quoted, quote the $replaceValue, too
+                if ($subStr[0] == "'" || $subStr[0] == '"') {
+                    $wrapChar = $subStr[0];
+                }
+                $replaceValue = str_replace($subStr, $wrapChar.$replaceValue.$wrapChar, $findValue);
+            }
+            $fileContents = str_replace($findValue, $replaceValue, $fileContents);
+        }
+        // Write the file out
+        file_put_contents($filePath, $fileContents);
     }
-    // Write the file out
-    file_put_contents($filePath, $fileContents);
 }
