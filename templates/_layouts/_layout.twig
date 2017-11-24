@@ -1,6 +1,6 @@
 {% minify %}
-{% set baseUrl = craft.config.general.baseUrl %}
-{% set staticAssetsVersion = "." ~ craft.config.general.staticAssetsVersion %}
+{% set baseUrl = craft.app.config.general.baseUrl %}
+{% set staticAssetsVersion = "." ~ craft.app.config.general.staticAssetsVersion %}
 {% header "Link: " ~
     "<" ~ baseUrl ~ ">; rel=dns-prefetch;" ~
     "," ~
@@ -32,7 +32,7 @@
 
 {# -- ServiceWorker, loadjs, and tiny-cookie -- #}
     <script>
-        {% if craft.config.general.isSystemOn %}
+        {% if craft.app.config.general.isSystemOn %}
             {{ source('_inlinejs/register-service-worker.min.js') }}
         {% endif %}
         {{ source('_inlinejs/loadjs.min.js') }}
