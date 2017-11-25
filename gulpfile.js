@@ -325,7 +325,7 @@ gulp.task("favicons", ["favicons-generate"], () => {
 
 // imagemin task
 gulp.task("imagemin", () => {
-    return gulp.src(pkg.paths.dist.img + "**/*.{png,jpg,jpeg,gif,svg}")
+    return gulp.src(pkg.paths.src.img + "**/*.{png,jpg,jpeg,gif,svg}")
         .pipe($.imagemin({
             progressive: true,
             interlaced: true,
