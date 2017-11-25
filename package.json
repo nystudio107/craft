@@ -73,6 +73,18 @@
                 "template": "index"
             },
             {
+                "url": "offline",
+                "template": "offline"
+            },
+            {
+                "url": "error",
+                "template": "error"
+            },
+            {
+                "url": "503",
+                "template": "503"
+            },
+            {
                 "url": "404",
                 "template": "404"
             }

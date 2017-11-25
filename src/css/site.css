@@ -1,0 +1,58 @@
+/* -- CSS variables */
+:root {
+    --outlineColor: #5db7a5,
+}
+
+
+/* -- Global styles */
+* {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-smooth: always;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+html {
+    font-size: 14px;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* -- For screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* -- A subtle focus style for keyboard-input elements */
+.text-input:focus {
+    outline: 1px solid var(--outlineColor); /* Adjust to suit your tastes */
+}
+
+/* -- No outline for non-keyboard-inputs elements */
+button:focus,
+select:focus {
+    outline: none;
+}
+
+html.user-is-tabbing *:focus {
+    outline: 2px solid var(--outlineColor) !important; /* for non-webkit browsers */
+    outline: 5px auto -webkit-focus-ring-color !important;
+}

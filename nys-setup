@@ -11,6 +11,16 @@
 
 use yii\helpers\Console;
 
+use mikehaertl\shellcommand\Command as ShellCommand;
+
+const INSTALL_PLUGINS = [
+    'typogrify',
+    'typogrify',
+    'typogrify',
+    'typogrify',
+    'typogrify',
+];
+
 const CRAFT_SCRIPTS_SETUP = [
     'srclink'      => 'vendor/nystudio107/craft-scripts/scripts',
     'destlink'     => 'scripts',
@@ -240,7 +250,7 @@ function setupNysCraft()
     } else {
         outputString('### .env.php file already exists, exiting...', Console::FG_RED);
     }
-    outputString(PHP_EOL.'You will still need to set up your REMOTE_ settings in scripts/env.sh', Console::FG_YELLOW);
+    outputString(PHP_EOL.'You will still need to set up your REMOTE_ settings in .env.sh', Console::FG_YELLOW);
     outputString('Setup complete. Have a nice day!', Console::FG_YELLOW);
 }
 
@@ -330,4 +340,32 @@ function replaceInFile(string $filePath, array $replacements)
         // Write the file out
         file_put_contents($filePath, $fileContents);
     }
+}
+
+/**
+ * Execute a shell command
+ *
+ * @param string $command
+ *
+ * @return string
+ */
+protected function executeShellCommand(string $command): string
+{
+    // Create the shell command
+    $shellCommand = new ShellCommand();
+    $shellCommand->setCommand($command);
+
+    // If we don't have proc_open, maybe we've got exec
+    if (!function_exists('proc_open') && function_exists('exec')) {
+        $shellCommand->useExec = true;
+    }
+
+    // Return the result of the command's output or error
+    if ($shellCommand->execute()) {
+        $result = $shellCommand->getOutput();
+    } else {
+        $result = $shellCommand->getError();
+    }
+
+    return $result;
 }
