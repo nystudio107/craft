@@ -205,8 +205,13 @@ if (empty($argv[1])) {
  */
 function welcomeNysCraft()
 {
-    outputString(PHP_EOL.'After running ./craft setup to set up your Craft install,', Console::FG_YELLOW);
-    outputString('Run ./nys-setup to set up Craft 3 Multi-Environemnt & Craft-Scripts.', Console::FG_YELLOW);
+    outputString(PHP_EOL.'To set up your Craft install, from your project directory, run:', Console::FG_YELLOW);
+    $script = './craft install';
+    outputString(PHP_EOL.'    '.$script.' '.$command.PHP_EOL, Console::FG_GREEN);
+    outputString('Then to set up Craft 3 Multi-Environment & Craft-Scripts, run:', Console::FG_YELLOW);
+    $script = './nys-setup';
+    outputString(PHP_EOL.'    '.$script.' '.$command.PHP_EOL, Console::FG_GREEN);
+    outputString('Your setup is not complete until you run these two commands.', Console::FG_YELLOW);
 }
 
 /**
@@ -216,10 +221,10 @@ function setupNysCraft()
 {
     // Say hello
     outputString(PHP_EOL.'Welcome to nys-setup', Console::FG_YELLOW);
-    // Setup Craft 3 Multi-Environment
-    setupCraftMultiEnvironment();
     // Set up Craft-Scripts
     setupCraftScripts();
+    // Setup Craft 3 Multi-Environment
+    setupCraftMultiEnvironment();
     // Install the default plugins
     installPlugins();
     // Say goodbye
@@ -246,7 +251,7 @@ function setupCraftMultiEnvironment()
     } else {
         outputString('### .env.php file already exists, exiting...', Console::FG_RED);
     }
-    outputString(PHP_EOL.'You will still need to set up your REMOTE_ settings in .env.sh', Console::FG_YELLOW);
+    outputString(PHP_EOL.'You will still need to set up your REMOTE_ settings in .env.sh', Console::FG_GREEN);
 }
 
 /**
