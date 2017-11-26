@@ -207,11 +207,11 @@ function welcomeNysCraft()
 {
     outputString(PHP_EOL.'To set up your Craft install, from your project directory, run:', Console::FG_YELLOW);
     $script = './craft install';
-    outputString(PHP_EOL.'    '.$script.' '.$command.PHP_EOL, Console::FG_GREEN);
-    outputString('Then to set up Craft 3 Multi-Environment & Craft-Scripts, run:', Console::FG_YELLOW);
+    outputString(PHP_EOL.'    '.$script, Console::FG_GREEN);
+    outputString(PHP_EOL.'Then to set up Craft 3 Multi-Environment & Craft-Scripts, run:', Console::FG_YELLOW);
     $script = './nys-setup';
-    outputString(PHP_EOL.'    '.$script.' '.$command.PHP_EOL, Console::FG_GREEN);
-    outputString('Your setup is not complete until you run these two commands.', Console::FG_YELLOW);
+    outputString(PHP_EOL.'    '.$script, Console::FG_GREEN);
+    outputString(PHP_EOL.'Your setup is not complete until you run these two commands.', Console::FG_YELLOW);
 }
 
 /**
