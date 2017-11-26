@@ -206,7 +206,7 @@ if (empty($argv[1])) {
 function welcomeNysCraft()
 {
     outputString(PHP_EOL.'To set up your Craft install, from your project directory, run:', Console::FG_YELLOW);
-    $script = './craft install';
+    $script = './craft setup';
     outputString(PHP_EOL.'    '.$script, Console::FG_GREEN);
     outputString(PHP_EOL.'Then to set up Craft 3 Multi-Environment & Craft-Scripts, run:', Console::FG_YELLOW);
     $script = './nys-setup';
