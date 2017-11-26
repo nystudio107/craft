@@ -14,10 +14,10 @@ use yii\helpers\Console;
 use mikehaertl\shellcommand\Command as ShellCommand;
 
 const INSTALL_PLUGINS = [
-    'typogrify',
-    'typogrify',
-    'typogrify',
-    'typogrify',
+    'cookies',
+    'eager-beaver',
+    'image-optimize',
+    'minify',
     'typogrify',
 ];
 
@@ -189,10 +189,12 @@ if (empty($argv[1])) {
     // See what command we were passed in
     switch ($argv[1]) {
         case 'welcome':
+            // Display a welcome message
             welcomeNysCraft();
             break;
 
         default:
+            // Set up all the things!
             setupNysCraft();
             break;
     }
@@ -211,6 +213,46 @@ function welcomeNysCraft()
  * Set up all the things!
  */
 function setupNysCraft()
+{
+    // Say hello
+    outputString(PHP_EOL.'Welcome to nys-setup', Console::FG_YELLOW);
+    // Setup Craft 3 Multi-Environment
+    setupCraftMultiEnvironment();
+    // Set up Craft-Scripts
+    setupCraftScripts();
+    // Install the default plugins
+    installPlugins();
+    // Say goodbye
+    outputString(PHP_EOL.'Setup complete. Have a nice day!', Console::FG_YELLOW);
+}
+
+/**
+ * Setup Craft 3 Multi-Environment
+ */
+function setupCraftMultiEnvironment()
+{
+    // Set up Craft 3 Multi-Environment if the file .env.php doesn't exist already
+    outputString(PHP_EOL.'Setting up Craft 3 Multi-Environment', Console::FG_YELLOW);
+    if (!file_exists('.env.php')) {
+        // Create the default Craft Multi-Environment setup
+        foreach (CRAFT_MULTI_ENVIRONMENT_SETUP as $fileInfo) {
+            if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
+                $replacements = $fileInfo['replacements'];
+                if (!empty($replacements)) {
+                    replaceInFile($fileInfo['destpath'], $replacements);
+                }
+            }
+        }
+    } else {
+        outputString('### .env.php file already exists, exiting...', Console::FG_RED);
+    }
+    outputString(PHP_EOL.'You will still need to set up your REMOTE_ settings in .env.sh', Console::FG_YELLOW);
+}
+
+/**
+ * Set up Craft-Scripts
+ */
+function setupCraftScripts()
 {
     // Set up Craft-Scripts if the file scripts/.env.sh doesn't exist already
     outputString(PHP_EOL.'Setting up Craft-Scripts', Console::FG_YELLOW);
@@ -235,23 +277,19 @@ function setupNysCraft()
         outputString('### scripts/.env.sh file already exists, exiting...', Console::FG_RED);
     }
 
-    // Set up Craft 3 Multi-Environment if the file .env.php doesn't exist already
-    outputString(PHP_EOL.'Setting up Craft 3 Multi-Environment', Console::FG_YELLOW);
-    if (!file_exists('.env.php')) {
-        // Create the default Craft Multi-Environment setup
-        foreach (CRAFT_MULTI_ENVIRONMENT_SETUP as $fileInfo) {
-            if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
-                $replacements = $fileInfo['replacements'];
-                if (!empty($replacements)) {
-                    replaceInFile($fileInfo['destpath'], $replacements);
-                }
-            }
-        }
-    } else {
-        outputString('### .env.php file already exists, exiting...', Console::FG_RED);
+}
+
+/**
+ * Install the default plugins
+ */
+function installPlugins()
+{
+    outputString(PHP_EOL.'Installing plugins', Console::FG_YELLOW);
+    $installPluginCmd = './craft install/plugin ';
+    foreach (INSTALL_PLUGINS as $pluginHandle) {
+        outputString('- installing plugin '.$pluginHandle);
+        executeShellCommand($installPluginCmd . $pluginHandle);
     }
-    outputString(PHP_EOL.'You will still need to set up your REMOTE_ settings in .env.sh', Console::FG_YELLOW);
-    outputString('Setup complete. Have a nice day!', Console::FG_YELLOW);
 }
 
 /**
@@ -349,7 +387,7 @@ function replaceInFile(string $filePath, array $replacements)
  *
  * @return string
  */
-protected function executeShellCommand(string $command): string
+function executeShellCommand(string $command): string
 {
     // Create the shell command
     $shellCommand = new ShellCommand();
