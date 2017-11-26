@@ -24,6 +24,10 @@ This project package works exactly the way Pixel & Tonic's [craftcms/craft](http
 
     composer create-project nystudio107/craft PATH -s RC
 
+Make sure that `PATH` is the path to your project, including the name you want for the project, e.g.:
+
+    composer create-project nystudio107/craft craft3 -s RC
+
 Then `cd` to your new project directory, and run Craft's `setup` console command to create your `.env` environments and optionally install:
 
     cd PATH
