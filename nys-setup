@@ -227,6 +227,8 @@ function setupNysCraft()
     setupCraftMultiEnvironment();
     // Install the default plugins
     installPlugins();
+    // Install the NodeJS packages
+    installNodePackages();
     // Say goodbye
     outputString(PHP_EOL.'Setup complete. Have a nice day!', Console::FG_YELLOW);
 }
@@ -294,6 +296,26 @@ function installPlugins()
     foreach (INSTALL_PLUGINS as $pluginHandle) {
         outputString('- installing plugin '.$pluginHandle);
         executeShellCommand($installPluginCmd . $pluginHandle);
+    }
+}
+
+function installNodePackages()
+{
+    $command = '';
+    if (shellCommandExists('npm')) {
+        $command = 'npm install';
+    }
+    if (shellCommandExists('yarn')) {
+        $command = 'yarn';
+    }
+
+    outputString(PHP_EOL.'Installing NodeJS packages via '.$command. ' (this may take a while)', Console::FG_YELLOW);
+
+    if (!empty($command)) {
+        $result = executeShellCommand($command);
+        outputString($result);
+    } else {
+        outputString('### unable to install NodeJS packages, yarn/npm not found', Console::FG_RED);
     }
 }
 
@@ -411,4 +433,18 @@ function executeShellCommand(string $command): string
     }
 
     return $result;
+}
+
+/**
+ * Return whether a shell command exists ir not
+ *
+ * @param string $command
+ *
+ * @return bool
+ */
+function shellCommandExists(string $command): bool
+{
+    $result = executeShellCommand('which '.$command);
+
+    return !empty($result);
 }

@@ -14,18 +14,32 @@ const onError = (err) => {
     console.log(err);
 };
 
-const banner = [
-    "/**",
-    " * @project        <%= pkg.name %>",
-    " * @author         <%= pkg.author %>",
-    " * @build          " + $.moment().format("llll") + " ET",
-    " * @release        " + $.gitRevSync.long() + " [" + $.gitRevSync.branch() + "]",
-    " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
-    " *",
-    " */",
-    ""
-].join("\n");
-
+try {
+    const banner = [
+        "/**",
+        " * @project        <%= pkg.name %>",
+        " * @author         <%= pkg.author %>",
+        " * @build          " + $.moment().format("llll") + " ET",
+        " * @release        " + $.gitRevSync.long() + " [" + $.gitRevSync.branch() + "]",
+        " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
+        " *",
+        " */",
+        ""
+    ].join("\n");
+}
+catch (err) {
+    const banner = [
+        "/**",
+        " * @project        <%= pkg.name %>",
+        " * @author         <%= pkg.author %>",
+        " * @build          " + $.moment().format("llll") + " ET",
+        " * @release        " + "n/a",
+        " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
+        " *",
+        " */",
+        ""
+    ].join("\n");
+}
 // scss - build the scss to the build folder, including the required paths, and writing out a sourcemap
 gulp.task("scss", () => {
     $.fancyLog("-> Compiling scss");
@@ -99,18 +113,6 @@ gulp.task("js-app", () => {
 
 });
 
-// Prism js task - combine the prismjs Javascript & config file into one bundle
-gulp.task("prism-js", () => {
-    $.fancyLog("-> Building prism.min.js...");
-    return gulp.src(pkg.globs.prismJs)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.newer({dest: pkg.paths.build.js + "prism.min.js"}))
-        .pipe($.concat("prism.min.js"))
-        .pipe($.uglify())
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.build.js));
-});
-
 // babel js task - transpile our Javascript into the build directory
 gulp.task("js-babel", () => {
     $.fancyLog("-> Transpiling Javascript via Babel...");
@@ -155,7 +157,7 @@ gulp.task("js-inline", () => {
 });
 
 // js task - minimize any distribution Javascript into the public js folder, and add our banner to it
-gulp.task("js", ["js-inline", "js-babel", "prism-js"], () => {
+gulp.task("js", ["js-inline", "js-babel", () => {
     $.fancyLog("-> Building js");
     return gulp.src(pkg.globs.distJs)
         .pipe($.plumber({errorHandler: onError}))
