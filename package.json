@@ -40,7 +40,7 @@
             "path": "/img/site/"
         },
         "scss": [],
-        "templates": "./craft/templates/"
+        "templates": "./templates/"
     },
     "urls": {
         "live": "https://nystudio107.com/",

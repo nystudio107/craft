@@ -15,7 +15,7 @@ const onError = (err) => {
 };
 
 try {
-    const banner = [
+    var banner = [
         "/**",
         " * @project        <%= pkg.name %>",
         " * @author         <%= pkg.author %>",
@@ -28,7 +28,7 @@ try {
     ].join("\n");
 }
 catch (err) {
-    const banner = [
+    var banner = [
         "/**",
         " * @project        <%= pkg.name %>",
         " * @author         <%= pkg.author %>",
@@ -157,7 +157,7 @@ gulp.task("js-inline", () => {
 });
 
 // js task - minimize any distribution Javascript into the public js folder, and add our banner to it
-gulp.task("js", ["js-inline", "js-babel", () => {
+gulp.task("js", ["js-inline", "js-babel"], () => {
     $.fancyLog("-> Building js");
     return gulp.src(pkg.globs.distJs)
         .pipe($.plumber({errorHandler: onError}))
