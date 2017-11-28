@@ -19,11 +19,11 @@
             "scss": "./src/scss/"
         },
         "dist": {
-            "base": "./public/",
-            "css": "./public/css/",
-            "js": "./public/js/",
-            "fonts": "./public/fonts/",
-            "img": "./public/img/"
+            "base": "./web/",
+            "css": "./web/css/",
+            "js": "./web/js/",
+            "fonts": "./web/fonts/",
+            "img": "./web/img/"
         },
         "build": {
             "base": "./build/",
@@ -36,7 +36,7 @@
         },
         "favicon": {
             "src": "./src/img/favicon_src.png",
-            "dest": "./public/img/site/",
+            "dest": "./web/img/site/",
             "path": "/img/site/"
         },
         "scss": [],
@@ -59,7 +59,7 @@
             "./src/css/*.css"
         ],
         "img": [
-            "./public/img/"
+            "./web/img/"
         ],
         "components": [
         ],
@@ -92,7 +92,7 @@
         "download": [
             {
                 "url": "https://www.google-analytics.com/analytics.js",
-                "dest": "./public/js/"
+                "dest": "./web/js/"
             }
         ],
         "distJs": [
@@ -114,7 +114,7 @@
             "./src/js/register-service-worker.js",
             "./src/js/asyncload-site-fonts.js"
         ],
-        "siteIcon": "./public/img/site/favicon.*"
+        "siteIcon": "./web/img/site/favicon.*"
     },
     "dependencies": {
         "fg-loadcss": "^1.2.0",
