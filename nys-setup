@@ -14,7 +14,6 @@ use yii\helpers\Console;
 use mikehaertl\shellcommand\Command as ShellCommand;
 
 const INSTALL_PLUGINS = [
-    'cookies',
     'eager-beaver',
     'image-optimize',
     'minify',

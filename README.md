@@ -18,6 +18,20 @@ In addition to setting up a new Craft 3 CMS project, this project sets up:
 
 It also installs a few base plugins that I use on every project. You can read more about it in the [Setting up a New Craft 3 CMS Project](https://nystudio107.com/blog/setting-up-a-craft-cms-3-project) article.
 
+## Assumptions Made
+
+Since this is boilerplate that nystudio107 uses for projects, it is by definition opinionated, and has a number of assumptions:
+
+* Gulp is used as a the frontend workflow automation tool
+* Nginx with `ssi on;` is used as the web server
+* [Tailwind CSS](https://tailwindcss.com/docs/what-is-tailwind) is used as the utility-first CSS framework
+* Critical CSS is used site-wide
+* FontFaceObserver is used for font loading
+* Craft-Scripts are used for db/asset synching
+* Craft 3 Multi-Environment is used for the Craft 3 multi-environment setup
+
+Obviously you're free to remove whatever components you don't need/want to use.
+
 ## Using nystudio107/craft
 
 This project package works exactly the way Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft) package works; you create a new project by first creating & installing the project:

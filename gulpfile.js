@@ -57,8 +57,18 @@ gulp.task("scss", () => {
         .pipe(gulp.dest(pkg.paths.build.css));
 });
 
+gulp.task("tailwind", () => {
+    $.fancyLog("-> Compiling tailwind css");
+    return gulp.src(pkg.paths.tailwindcss.src)
+        .pipe($.postcss([
+            $.tailwindcss(pkg.paths.tailwindcss.conf),
+            require('autoprefixer'),
+        ]))
+        .pipe(gulp.dest(pkg.paths.build.css));
+});
+
 // css task - combine & minimize any distribution CSS into the public css folder, and add our banner to it
-gulp.task("css", ["scss"], () => {
+gulp.task("css", ["tailwind", "scss"], () => {
     $.fancyLog("-> Building css");
     return gulp.src(pkg.globs.distCss)
         .pipe($.plumber({errorHandler: onError}))
