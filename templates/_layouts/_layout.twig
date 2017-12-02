@@ -11,7 +11,7 @@
 <!--# if expr="$HTTP_COOKIE=/fonts\-loaded\=1/" -->
 <html class="fonts-loaded" lang="{{ craft.app.language |slice(0,2) }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <!--# else -->
-<html lang="{{ craft.locale |slice(0,2) }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html lang="{{ craft.app.language |slice(0,2) }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <!--# endif -->
 {% minify %}
     <head>

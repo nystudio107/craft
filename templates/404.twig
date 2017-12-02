@@ -1,4 +1,4 @@
-{% set entry = craft.entries.section("notFound").limit(1).first() %}
+{% set entry = craft.entries.section("notFound").limit(1).one() %}
 
 {% extends "_layouts/_layout" %}
 
