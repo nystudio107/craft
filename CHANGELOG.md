@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 1.0.3 - 2017.12.05
+### Changed
+* Updated for Craft CMS 3 RC1 release
+
 ## 1.0.2 - 2017.12.04
 ### Changed
 * Fixed deprecation errors
