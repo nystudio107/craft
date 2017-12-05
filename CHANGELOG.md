@@ -1,5 +1,11 @@
 # nystudio107/craft Change Log
 
+## 1.0.2 - 2017.12.04
+### Changed
+* Fixed deprecation errors
+* Cleaned up the default ServiceWorker in `sw.js`
+* Added Fontello CSS to the `package.json`
+
 ## 1.0.1 - 2017.12.01
 ### Added
 * Added accessible tabhandler.js
