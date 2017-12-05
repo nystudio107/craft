@@ -5,6 +5,7 @@
 * Fixed deprecation errors
 * Cleaned up the default ServiceWorker in `sw.js`
 * Added Fontello CSS to the `package.json`
+* Added PhpStorm Craft app API type hinting
 
 ## 1.0.1 - 2017.12.01
 ### Added
