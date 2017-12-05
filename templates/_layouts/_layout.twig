@@ -33,7 +33,7 @@
 {% endminify %}
         {# -- CRITICAL CSS -- #}
 <!--# if expr="$HTTP_COOKIE=/critical\-css\={{ staticAssetsVersion }}/" -->
-        <link rel="stylesheet" href="{{ "#{baseUrl}css/site.combined.min.#{staticAssetsVersion}.css" }}">
+        <link rel="stylesheet" href="{{ baseUrl }}css/site.combined.min.{{staticAssetsVersion}}.css">
 <!--# else -->
         <script>
             Cookie.set("critical-css", {{ staticAssetsVersion }}, { expires: "7D", secure: true });
