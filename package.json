@@ -58,6 +58,7 @@
     },
     "globs": {
         "distCss": [
+            "./build/fonts/fontello/css/fontello-codes.css",
             "./build/css/*.css"
         ],
         "img": [
