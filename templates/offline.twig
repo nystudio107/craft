@@ -1,9 +1,9 @@
 {# @var craft \craft\web\twig\variables\CraftVariable #}
-{% extends "_layouts/_layout" %}
+{% extends "_layouts/_layout.twig" %}
 
 {% block _inline_css %}
     <style>
-        {{ source ('offline_critical.min.css', ignore_missing = true) }}
+        {{ source ("offline_critical.min.css", ignore_missing = true) }}
     </style>
 {% endblock %}
 

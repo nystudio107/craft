@@ -1,11 +1,11 @@
 {# @var craft \craft\web\twig\variables\CraftVariable #}
 {% set entry = craft.entries.section("notFound").limit(1).one() %}
 
-{% extends "_layouts/_layout" %}
+{% extends "_layouts/_layout.twig" %}
 
 {% block _inline_css %}
     <style>
-        {{ source ('404_critical.min.css', ignore_missing = true) }}
+        {{ source ("404_critical.min.css", ignore_missing = true) }}
     </style>
 {% endblock %}
 

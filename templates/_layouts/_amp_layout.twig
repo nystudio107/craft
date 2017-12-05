@@ -2,11 +2,7 @@
 {% minify %}
 {% set baseUrl = craft.app.config.general.custom.baseUrl %}
 {% set staticAssetsVersion = craft.app.config.general.custom.staticAssetsVersion %}
-{% header "Link: " ~
-"<" ~ baseUrl ~ ">; rel=dns-prefetch;" ~
-"," ~
-"<" ~ baseUrl ~ ">; rel=preconnect; crossorigin;"
-%}
+{% header "Link: <#{baseUrl}>; rel=dns-prefetch;,<#{baseUrl}>; rel=preconnect; crossorigin;" %}
 <!DOCTYPE html>
 <html ⚡ lang="{{ craft.app.language |slice(0,2) }}" class="fonts-loaded">
     <head>
@@ -15,8 +11,8 @@
         <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
         <script async src="https://cdn.ampproject.org/v0.js"></script>
     
-        {% import '_partials/_macros.html' as macro %}
-        {% include '_partials/_global_header' %}
+        {% import "_partials/_macros.twig" as macro %}
+        {% include "_partials/_global_header.twig" %}
     
         {% block _head_links %}
         {% endblock %}
@@ -28,15 +24,15 @@
         {% block _inline_css %}
         {% endblock %}
         
-    {# -- Site fonts -- #}
-        {% include '_inlinecss/_site_fonts.css' %}
+        {# -- Site fonts -- #}
+        {% include "_inlinecss/_site_fonts.css" %}
         </style>
         
     </head>
     
     <body>
         <div id="page-container">
-            {% include '_partials/_amp_navbar' %}
+            {% include "_partials/_amp_navbar.twig" %}
         
             <main>
             {% block content %}
@@ -46,9 +42,9 @@
             {% block subcontent %}
             {% endblock %}
         
-            {% include '_partials/_amp_info_footer' %}
+            {% include "_partials/_amp_info_footer.twig" %}
             
-            {% include '_partials/_global_footer' %}
+            {% include "_partials/_global_footer.twig" %}
             
         </div>
         

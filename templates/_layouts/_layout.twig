@@ -2,11 +2,7 @@
 {% minify %}
 {% set baseUrl = craft.app.config.general.custom.baseUrl %}
 {% set staticAssetsVersion = craft.app.config.general.custom.staticAssetsVersion %}
-{% header "Link: " ~
-    "<" ~ baseUrl ~ ">; rel=dns-prefetch;" ~
-    "," ~
-    "<" ~ baseUrl ~ ">; rel=preconnect; crossorigin;"
-%}
+{% header "Link: <#{baseUrl}>; rel=dns-prefetch;,<#{baseUrl}>; rel=preconnect; crossorigin;" %}
 <!DOCTYPE html>
 {% endminify %}
 <!--# if expr="$HTTP_COOKIE=/fonts\-loaded\=1/" -->
@@ -22,33 +18,33 @@
         {% block _head_links %}
         {% endblock %}
         
-        {% import '_partials/_macros.twig' as macro %}
-        {% include '_partials/_global_header' %}
+        {% import "_partials/_macros.twig" as macro %}
+        {% include "_partials/_global_header.twig" %}
     
         {# -- ServiceWorker, loadjs, and tiny-cookie -- #}
         <script>
             {% if craft.app.config.general.isSystemOn %}
-                {{ source('_inlinejs/register-service-worker.min.js') }}
+                {{ source("_inlinejs/register-service-worker.min.js") }}
             {% endif %}
-            {{ source('_inlinejs/loadjs.min.js') }}
-            {{ source('_inlinejs/tiny-cookie.min.js') }}
-            {{ source('_inlinejs/tab-handler.min.js') }}
+            {{ source("_inlinejs/loadjs.min.js") }}
+            {{ source("_inlinejs/tiny-cookie.min.js") }}
+            {{ source("_inlinejs/tab-handler.min.js") }}
         </script>
 {% endminify %}
         {# -- CRITICAL CSS -- #}
 <!--# if expr="$HTTP_COOKIE=/critical\-css\={{ staticAssetsVersion }}/" -->
-        <link rel="stylesheet" href="{{ (baseUrl ~ 'css/site.combined.min.' ~ staticAssetsVersion ~'.css') }}">
+        <link rel="stylesheet" href="{{ "#{baseUrl}css/site.combined.min.#{staticAssetsVersion}.css" }}">
 <!--# else -->
         <script>
-            Cookie.set('critical-css', {{ staticAssetsVersion }}, { expires: '7D', secure: true });
+            Cookie.set("critical-css", {{ staticAssetsVersion }}, { expires: "7D", secure: true });
         </script>
             {% block _inline_css %}
             {% endblock %}
         <link rel="preload" href="{{ baseUrl }}css/site.combined.min.{{staticAssetsVersion}}.css" as="style" onload="this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="{{ baseUrl }}css/site.combined.min.{{staticAssetsVersion}}.css"></noscript>
         <script>
-            {{ source('_inlinejs/loadCSS.min.js') }}
-            {{ source('_inlinejs/cssrelpreload.min.js') }}
+            {{ source("_inlinejs/loadCSS.min.js") }}
+            {{ source("_inlinejs/cssrelpreload.min.js") }}
         </script>
 <!--# endif -->
         {% minify %}
@@ -61,28 +57,28 @@
         
             {# -- PictureFill polyfill -- #}
             <script>
-                var testImg = document.createElement('img');
+                var testImg = document.createElement("img");
                 if (!("srcset" in testImg) || !("sizes" in testImg)) {
-                    document.createElement('picture');
-                    var s = document.createElement('script');
-                    s.setAttribute('src', '{{ baseUrl }}js/picturefill.min.{{staticAssetsVersion}}.js');
+                    document.createElement("picture");
+                    var s = document.createElement("script");
+                    s.setAttribute("src", "{{ baseUrl }}js/picturefill.min.{{staticAssetsVersion}}.js");
                     if ("async" in s)
-                        s.setAttribute('async', true);
+                        s.setAttribute("async", true);
                     document.head.appendChild(s);
                 }
             </script>
         
             {# -- Site fonts -- #}
             <style>
-                {% include '_inlinecss/_site_fonts.css' %}
+                {% include "_inlinecss/_site_fonts.css" %}
             </style>
         {% endminify %}
         {# -- FontFaceObserver -- #}
 <!--# if expr="$HTTP_COOKIE=/fonts\-loaded\=1/" -->
 <!--# else -->
         <script>
-            {{ source('_inlinejs/fontfaceobserver.min.js') }}
-            {{ source('_inlinejs/asyncload-site-fonts.min.js') }}
+            {{ source("_inlinejs/fontfaceobserver.min.js") }}
+            {{ source("_inlinejs/asyncload-site-fonts.min.js") }}
         </script>
 <!--# endif -->
         {% minify %}
@@ -104,7 +100,7 @@
     <body>
         <div id="page-container">
 
-            {% include '_partials/_info_header' %}
+            {% include "_partials/_info_header.twig" %}
         
             <main>
                 {% block content %}
@@ -115,10 +111,10 @@
             {% endblock %}
             
             {# -- Info footer -- #}
-            {% include '_partials/_info_footer' %}
+            {% include "_partials/_info_footer.twig" %}
             
             {# -- HTML Footer -- #}
-            {% include '_partials/_global_footer' %}
+            {% include "_partials/_global_footer.twig" %}
             
             {# -- Inline JS -- #}
             {% block _inline_js %}
