@@ -113,9 +113,9 @@
             "./node_modules/fontfaceobserver/fontfaceobserver.js",
             "./node_modules/loadjs/dist/loadjs.min.js",
             "./node_modules/tiny-cookie/tiny-cookie.min.js",
-            "./src/js/tab-handler.js",
-            "./src/js/register-service-worker.js",
-            "./src/js/asyncload-site-fonts.js"
+            "./build/js/tab-handler.js",
+            "./build/js/register-service-worker.js",
+            "./build/js/asyncload-site-fonts.js"
         ],
         "siteIcon": "./web/img/site/favicon.*"
     },
