@@ -29,9 +29,9 @@
     ];
 
     const staticAssets = [
-        '{{ baseUrl }}js/lazysizes.min{{staticAssetsVersion}}.js',
+        '{{ baseUrl }}js/lazysizes.min.{{staticAssetsVersion}}.js',
 
-        '{{ baseUrl }}css/site.combined.min{{staticAssetsVersion}}.css'
+        '{{ baseUrl }}css/site.combined.min.{{staticAssetsVersion}}.css'
 
     ];
 
