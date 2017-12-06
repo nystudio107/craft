@@ -1,5 +1,13 @@
 # nystudio107/craft Change Log
 
+## 1.0.4 - 2017.12.06
+### Changed
+* Fixed asset versioning in `sw.js`
+* Run all inline JavaScript through `js-babel` for ES6 goodness
+
+### Added
+* Added base VueJS and Axios support
+
 ## 1.0.3 - 2017.12.05
 ### Changed
 * Updated for Craft CMS 3 RC1 release

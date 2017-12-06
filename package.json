@@ -100,9 +100,11 @@
         ],
         "distJs": [
             "./build/js/*.js",
+            "./node_modules/axios/dist/axios.min.js",
             "./node_modules/lazysizes/lazysizes.min.js",
             "./node_modules/lazysizes/plugins/bgset/ls.bgset.min.js",
-            "./node_modules/picturefill/dist/picturefill.min.js"
+            "./node_modules/picturefill/dist/picturefill.min.js",
+            "./node_modules/vue/dist/vue.min.js"
         ],
         "babelJs": [
             "./src/js/*.js"
@@ -120,13 +122,15 @@
         "siteIcon": "./web/img/site/favicon.*"
     },
     "dependencies": {
+        "axios": "^0.17.1",
         "fg-loadcss": "^1.2.0",
         "fontfaceobserver": "^2.0.5",
         "lazysizes": "^2.0.6",
         "loadjs": "^3.3.1",
         "normalize.css": "^5.0.0",
         "picturefill": "^3.0.2",
-        "tiny-cookie": "^1.0.1"
+        "tiny-cookie": "^1.0.1",
+        "vue": "^2.5.9"
     },
     "devDependencies": {
         "babel-plugin-transform-runtime": "^6.15.0",

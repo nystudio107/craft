@@ -146,7 +146,7 @@ gulp.task("components", () => {
 });
 
 // inline js task - minimize the inline Javascript into _inlinejs in the templates path
-gulp.task("js-inline", () => {
+gulp.task("js-inline", ["js-babel"], () => {
     $.fancyLog("-> Copying inline js");
     return gulp.src(pkg.globs.inlineJs)
         .pipe($.plumber({errorHandler: onError}))
@@ -167,7 +167,7 @@ gulp.task("js-inline", () => {
 });
 
 // js task - minimize any distribution Javascript into the public js folder, and add our banner to it
-gulp.task("js", ["js-inline", "js-babel"], () => {
+gulp.task("js", ["js-inline"], () => {
     $.fancyLog("-> Building js");
     return gulp.src(pkg.globs.distJs)
         .pipe($.plumber({errorHandler: onError}))

@@ -15,6 +15,7 @@
         <link rel="dns-prefetch" href="{{ baseUrl }}">
         <link rel="preconnect" href="{{ baseUrl }}" crossorigin>
     
+        {# -- Any <link> tags that should be included in the header #}
         {% block _head_links %}
         {% endblock %}
         
@@ -38,6 +39,7 @@
         <script>
             Cookie.set("critical-css", {{ staticAssetsVersion }}, { expires: "7D", secure: true });
         </script>
+            {# -- Inline CSS block used by templates for Critical CSS #}
             {% block _inline_css %}
             {% endblock %}
         <link rel="preload" href="{{ baseUrl }}css/site.combined.min.{{staticAssetsVersion}}.css" as="style" onload="this.rel='stylesheet'">
@@ -100,13 +102,18 @@
     <body>
         <div id="page-container">
 
+            {# -- Info header, including _navbar.twig -- #}
             {% include "_partials/_info_header.twig" %}
-        
-            <main>
-                {% block content %}
-                {% endblock %}
-            </main>
-        
+    
+            <div id="content-container" class="container mx-auto">
+                <main>
+                    {# -- Primary content block -- #}
+                    {% block content %}
+                    {% endblock %}
+                </main>
+            </div>
+            
+            {# -- Content that appears below the primary content block -- #}
             {% block subcontent %}
             {% endblock %}
             
@@ -115,15 +122,67 @@
             
             {# -- HTML Footer -- #}
             {% include "_partials/_global_footer.twig" %}
-            
-            {# -- Inline JS -- #}
-            {% block _inline_js %}
-            {% endblock %}
-        
+
         </div>
         
-            {% block analytics %}
-            {% endblock %}
+        {# -- VueJS & Axios, along with our main app component instantiation -- #}
+        <script>
+            // define a dependency bundle
+            loadjs(
+                [
+                    '{{ baseUrl }}js/vue.min.{{staticAssetsVersion}}.js',
+                ],
+                'vue'
+            );
+            loadjs(
+                [
+                    '{{ baseUrl }}js/axios.min.{{staticAssetsVersion}}.js',
+                ],
+                'axios'
+            );
+            loadjs.ready(['vue', 'axios'], {
+                success: function() {
+                    // Use Axios as our http client
+                    Vue.prototype.$http = axios;
+                    // Create our Vue component
+                    var vm = new Vue({
+                        el: '#page-container',
+                        components: {
+                        },
+                        delimiters: ['${', '}'],
+                        data: {
+                        },
+                        methods: {
+                            // Pre-render pages when the user mouses over a link
+                            // Usage: <a href="" @mouseover="prerenderLink">
+                            prerenderLink: function(e) {
+                                var head = document.getElementsByTagName("head")[0];
+                                var refs = head.childNodes;
+                                ref = refs[ refs.length - 1];
+
+                                var elements = head.getElementsByTagName("link");
+                                Array.prototype.forEach.call(elements, function(el, i) {
+                                    if (("rel" in el) && (el.rel === "prerender"))
+                                        el.parentNode.removeChild(el);
+                                });
+
+                                var prerenderTag = document.createElement("link");
+                                prerenderTag.rel = "prerender";
+                                prerenderTag.href = e.currentTarget.href;
+                                ref.parentNode.insertBefore(prerenderTag,  ref);
+                            },
+                        },
+                        mounted: function() {
+                        }
+                    });
+                }
+            });
+        </script>
+
+        {# -- Inline JS -- #}
+        {% block _inline_js %}
+        {% endblock %}
+        
         {% endminify %}
-        </body>
+    </body>
 </html>
