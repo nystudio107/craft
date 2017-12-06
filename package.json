@@ -113,20 +113,22 @@
             "./node_modules/fontfaceobserver/fontfaceobserver.js",
             "./node_modules/loadjs/dist/loadjs.min.js",
             "./node_modules/tiny-cookie/tiny-cookie.min.js",
-            "./build/js/tab-handler.js",
-            "./build/js/register-service-worker.js",
-            "./build/js/asyncload-site-fonts.js"
+            "./src/js/tab-handler.js",
+            "./src/js/register-service-worker.js",
+            "./src/js/asyncload-site-fonts.js"
         ],
         "siteIcon": "./web/img/site/favicon.*"
     },
     "dependencies": {
+        "axios": "^0.17.1",
         "fg-loadcss": "^1.2.0",
         "fontfaceobserver": "^2.0.5",
         "lazysizes": "^2.0.6",
         "loadjs": "^3.3.1",
         "normalize.css": "^5.0.0",
         "picturefill": "^3.0.2",
-        "tiny-cookie": "^1.0.1"
+        "tiny-cookie": "^1.0.1",
+        "vue": "^2.5.9"
     },
     "devDependencies": {
         "babel-plugin-transform-runtime": "^6.15.0",
