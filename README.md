@@ -23,6 +23,7 @@ It also installs a few base plugins that I use on every project. You can read mo
 Since this is boilerplate that nystudio107 uses for projects, it is by definition opinionated, and has a number of assumptions:
 
 * Gulp is used as a the frontend workflow automation tool
+* [Vue](https://github.com/vuejs/vue) is used as the frontend JavaScript framework, with [Axois](https://github.com/axios/axios) providing the http client
 * [Tailwind CSS](https://tailwindcss.com/docs/what-is-tailwind) is used as the utility-first CSS framework
 * Nginx with `ssi on;` is used as the web server
 * Redis is used as the PHP Session and Craft data caching method
