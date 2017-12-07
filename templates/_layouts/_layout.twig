@@ -1,16 +1,16 @@
 {# @var craft \craft\web\twig\variables\CraftVariable #}
-{% minify %}
+{%- minify -%}
 {% set baseUrl = craft.app.config.general.custom.baseUrl %}
 {% set staticAssetsVersion = craft.app.config.general.custom.staticAssetsVersion %}
 {% header "Link: <#{baseUrl}>; rel=dns-prefetch;,<#{baseUrl}>; rel=preconnect; crossorigin;" %}
 <!DOCTYPE html>
-{% endminify %}
+{%- endminify -%}
 <!--# if expr="$HTTP_COOKIE=/fonts\-loaded\=1/" -->
 <html class="fonts-loaded" lang="{{ craft.app.language |slice(0,2) }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <!--# else -->
 <html lang="{{ craft.app.language |slice(0,2) }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <!--# endif -->
-{% minify %}
+{%- minify -%}
     <head>
         <link rel="dns-prefetch" href="{{ baseUrl }}">
         <link rel="preconnect" href="{{ baseUrl }}" crossorigin>
@@ -31,7 +31,7 @@
             {{ source("_inlinejs/tiny-cookie.min.js") }}
             {{ source("_inlinejs/tab-handler.min.js") }}
         </script>
-{% endminify %}
+{%- endminify -%}
         {# -- CRITICAL CSS -- #}
 <!--# if expr="$HTTP_COOKIE=/critical\-css\={{ staticAssetsVersion }}/" -->
         <link rel="stylesheet" href="{{ baseUrl }}css/site.combined.min.{{staticAssetsVersion}}.css">
@@ -49,7 +49,7 @@
             {{ source("_inlinejs/cssrelpreload.min.js") }}
         </script>
 <!--# endif -->
-        {% minify %}
+        {%- minify -%}
             {% if not craft.app.config.general.devMode %}
                 {# -- Google Analytics -- #}
                 <script>
@@ -74,7 +74,7 @@
             <style>
                 {% include "_inlinecss/_site_fonts.css" %}
             </style>
-        {% endminify %}
+        {%- endminify -%}
         {# -- FontFaceObserver -- #}
 <!--# if expr="$HTTP_COOKIE=/fonts\-loaded\=1/" -->
 <!--# else -->
@@ -83,7 +83,7 @@
             {{ source("_inlinejs/asyncload-site-fonts.min.js") }}
         </script>
 <!--# endif -->
-        {% minify %}
+        {%- minify -%}
         
         {# -- Inline JS -- #}
         <script type="text/javascript">
@@ -183,6 +183,6 @@
         {% block _inline_js %}
         {% endblock %}
         
-        {% endminify %}
+        {%- endminify -%}
     </body>
 </html>
