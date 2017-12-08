@@ -55,6 +55,12 @@ Finally, run the `nys-setup` command to configure Craft-Scripts & Craft 3 Multi-
 
 That's it, enjoy!
 
+If you ever delete the `vendor` folder or such, just re-run:
+
+    ./nys-setup
+
+...and it will re-create the symlink to your `.env.sh`; don't worry, it won't stomp on any changes you've made.
+
 Below is the entire intact, unmodified `README.md` from Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft):
 
 .....
