@@ -1,5 +1,11 @@
 # nystudio107/craft Change Log
 
+## 1.0.5 - 2017.12.13
+### Changed
+* Slurp whitespace with the minify tags
+* Fix favicon URLs/meta
+* Fix manifest
+
 ## 1.0.4 - 2017.12.06
 ### Changed
 * Fixed asset versioning in `sw.js`
