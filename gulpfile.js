@@ -223,7 +223,6 @@ function processCriticalCSS(element, i, callback) {
         dest: criticalDest,
         inline: false,
         ignore: [],
-        base: pkg.paths.dist.base,
         css: [
             pkg.paths.dist.css + pkg.vars.siteCssName,
         ],

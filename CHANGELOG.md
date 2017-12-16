@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 1.0.6 - 2017.12.16
+### Changed
+* Updated to use the latest `critical` package, adjusted `gulpfile.js` base path
+
 ## 1.0.5 - 2017.12.13
 ### Changed
 * Slurp whitespace with the minify tags
