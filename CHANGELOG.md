@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 1.0.7 - 2017.12.16
+### Added
+* Added `purgecss` to production builds
+* Added automatic incrementing of `staticAssetsVersion` for production builds
+
 ## 1.0.6 - 2017.12.16
 ### Changed
 * Updated to use the latest `critical` package, adjusted `gulpfile.js` base path
