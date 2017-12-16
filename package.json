@@ -13,9 +13,9 @@
             "css": "./src/css/",
             "fontello": "./src/fontello/",
             "fonts": "./src/fonts/",
+            "img": "./src/img/",
             "json": "./src/json/",
             "js": "./src/js/",
-            "img": "./src/img/",
             "scss": "./src/scss/"
         },
         "dist": {
@@ -44,6 +44,7 @@
             "conf": "./tailwind.js"
         },
         "scss": [],
+        "craftConfig": "./config/",
         "templates": "./templates/"
     },
     "urls": {
@@ -69,6 +70,9 @@
         "fonts": [
             "./build/fonts/fontello/font/*.{eot,ttf,woff,woff2}",
             "./src/fonts/*.{eot,ttf,woff,woff2}"
+        ],
+        "purgecss": [
+            "./templates/**/*.{html,twig}"
         ],
         "critical": [
             {
@@ -159,6 +163,7 @@
         "gulp-plumber": "^1.1.0",
         "gulp-postcss": "^7.0.0",
         "gulp-print": "^2.0.1",
+        "gulp-purgecss": "^0.15.0",
         "gulp-rename": "^1.2.2",
         "gulp-replace": "0.5.4",
         "gulp-rev": "^7.1.0",

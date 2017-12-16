@@ -1,3 +1,7 @@
+// jshint esversion: 6
+// jshint node: true
+"use strict";
+
 // package vars
 const pkg = require("./package.json");
 
@@ -10,36 +14,32 @@ const $ = require("gulp-load-plugins")({
     scope: ["devDependencies"]
 });
 
+// error logging
 const onError = (err) => {
     console.log(err);
 };
 
-try {
-    var banner = [
-        "/**",
-        " * @project        <%= pkg.name %>",
-        " * @author         <%= pkg.author %>",
-        " * @build          " + $.moment().format("llll") + " ET",
-        " * @release        " + $.gitRevSync.long() + " [" + $.gitRevSync.branch() + "]",
-        " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
-        " *",
-        " */",
-        ""
-    ].join("\n");
-}
-catch (err) {
-    var banner = [
-        "/**",
-        " * @project        <%= pkg.name %>",
-        " * @author         <%= pkg.author %>",
-        " * @build          " + $.moment().format("llll") + " ET",
-        " * @release        " + "n/a",
-        " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
-        " *",
-        " */",
-        ""
-    ].join("\n");
-}
+// Our banner
+const banner = (function() {
+    let result = "";
+    try {
+        result = [
+            "/**",
+            " * @project        <%= pkg.name %>",
+            " * @author         <%= pkg.author %>",
+            " * @build          " + $.moment().format("llll") + " ET",
+            " * @release        " + $.gitRevSync.long() + " [" + $.gitRevSync.branch() + "]",
+            " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
+            " *",
+            " */",
+            ""
+        ].join("\n");
+    }
+    catch (err) {
+    }
+    return result;
+})();
+
 // scss - build the scss to the build folder, including the required paths, and writing out a sourcemap
 gulp.task("scss", () => {
     $.fancyLog("-> Compiling scss");
@@ -57,6 +57,7 @@ gulp.task("scss", () => {
         .pipe(gulp.dest(pkg.paths.build.css));
 });
 
+// tailwind task - build the Tailwind CSS
 gulp.task("tailwind", () => {
     $.fancyLog("-> Compiling tailwind css");
     return gulp.src(pkg.paths.tailwindcss.src)
@@ -67,10 +68,43 @@ gulp.task("tailwind", () => {
         .pipe(gulp.dest(pkg.paths.build.css));
 });
 
+// Custom PurgeCSS extractor for Tailwind that allows special characters in
+// class names.
+//
+// https://github.com/FullHuman/purgecss#extractor
+class TailwindExtractor {
+    static extract(content) {
+        return content.match(/[A-z0-9-:\/]+/g);
+    }
+}
+
+// purgecss task
+gulp.task("purgecss", ["tailwind", "scss"], () => {
+    switch (process.env.NODE_ENV) {
+        case 'development':
+            return gulp.src(pkg.globs.distCss)
+                .pipe(gulp.dest(pkg.paths.build.css));
+            break;
+
+        case 'production':
+            $.fancyLog("-> Running purgecss");
+            return gulp.src(pkg.globs.distCss)
+                .pipe($.purgecss({
+                    extractors: [{
+                        extractor: TailwindExtractor,
+                        extensions: ["html", "twig", "css", "js"]
+                    }],
+                    content: pkg.globs.purgecss
+                }))
+                .pipe(gulp.dest(pkg.paths.build.css));
+            break;
+    }
+});
+
 // css task - combine & minimize any distribution CSS into the public css folder, and add our banner to it
-gulp.task("css", ["tailwind", "scss"], () => {
+gulp.task("css", ["purgecss"], () => {
     $.fancyLog("-> Building css");
-    return gulp.src(pkg.globs.distCss)
+    return gulp.src(pkg.paths.build.css + "**/*.{css,.min.css}")
         .pipe($.plumber({errorHandler: onError}))
         .pipe($.newer({dest: pkg.paths.dist.css + pkg.vars.siteCssName}))
         .pipe($.print())
@@ -237,7 +271,7 @@ function processCriticalCSS(element, i, callback) {
     });
 }
 
-//critical css task
+// critical css task
 gulp.task("criticalcss", ["css"], (callback) => {
     doSynchronousLoop(pkg.globs.critical, processCriticalCSS, () => {
         // all done
@@ -271,11 +305,11 @@ function processAccessibility(element, i, callback) {
     const options = {
         log: cliReporter,
         ignore:
-                [
-                    'notice',
-                    'warning'
-                ],
-        };
+            [
+                'notice',
+                'warning'
+            ],
+    };
     const test = $.pa11y(options);
 
     $.fancyLog("-> Checking Accessibility for URL: " + $.chalk.cyan(accessibilitySrc));
@@ -293,7 +327,7 @@ gulp.task("a11y", (callback) => {
     });
 });
 
-//favicons-generate task
+// favicons-generate task
 gulp.task("favicons-generate", () => {
     $.fancyLog("-> Generating favicons");
     return gulp.src(pkg.paths.favicon.src).pipe($.favicons({
@@ -326,7 +360,7 @@ gulp.task("favicons-generate", () => {
     })).pipe(gulp.dest(pkg.paths.favicon.dest));
 });
 
-//copy favicons task
+// copy favicons task
 gulp.task("favicons", ["favicons-generate"], () => {
     $.fancyLog("-> Copying favicon.ico");
     return gulp.src(pkg.globs.siteIcon)
@@ -336,6 +370,7 @@ gulp.task("favicons", ["favicons-generate"], () => {
 
 // imagemin task
 gulp.task("imagemin", () => {
+    $.fancyLog("-> Minimizing images in " + pkg.paths.src.img);
     return gulp.src(pkg.paths.src.img + "**/*.{png,jpg,jpeg,gif,svg}")
         .pipe($.imagemin({
             progressive: true,
@@ -348,22 +383,46 @@ gulp.task("imagemin", () => {
         .pipe(gulp.dest(pkg.paths.dist.img));
 });
 
-//generate-fontello task
+// generate-fontello task
 gulp.task("generate-fontello", () => {
     return gulp.src(pkg.paths.src.fontello + "config.json")
         .pipe($.fontello())
         .pipe($.print())
-        .pipe(gulp.dest(pkg.paths.build.fontello))
+        .pipe(gulp.dest(pkg.paths.build.fontello));
 });
 
-//copy fonts task
+// copy fonts task
 gulp.task("fonts", ["generate-fontello"], () => {
     return gulp.src(pkg.globs.fonts)
         .pipe(gulp.dest(pkg.paths.dist.fonts));
 });
 
+// static assets version task
+gulp.task('static-assets-version', () => {
+    gulp.src(pkg.paths.craftConfig + "general.php")
+        .pipe($.replace(/'staticAssetsVersion' => (\d+),/g, function(match, p1, offset, string) {
+            p1++;
+            $.fancyLog("-> Changed staticAssetsVersion to " + p1);
+            return "'staticAssetsVersion' => " + p1 + ",";
+        }))
+        .pipe(gulp.dest(pkg.paths.craftConfig));
+});
+
+// set the node environment to development
+gulp.task("set-dev-node-env", function() {
+    $.fancyLog("-> Setting NODE_ENV to development");
+    return process.env.NODE_ENV = "development";
+});
+
+// set the node environment to production
+gulp.task("set-prod-node-env", function() {
+    $.fancyLog("-> Setting NODE_ENV to production");
+    return process.env.NODE_ENV = "production";
+});
+
 // Default task
 gulp.task("default", ["css", "js"], () => {
+    $.fancyLog("-> Livereload listening for changes");
     $.livereload.listen();
     gulp.watch([pkg.paths.src.scss + "**/*.scss"], ["css"]);
     gulp.watch([pkg.paths.src.css + "**/*.css"], ["css"]);
@@ -376,4 +435,4 @@ gulp.task("default", ["css", "js"], () => {
 });
 
 // Production build
-gulp.task("build", ["download", "default", "favicons", "imagemin", "fonts", "criticalcss"]);
+gulp.task("build", ["set-prod-node-env", "static-assets-version", "download", "favicons", "imagemin", "fonts", "criticalcss"]);
