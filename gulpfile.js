@@ -421,7 +421,7 @@ gulp.task("set-prod-node-env", function() {
 });
 
 // Default task
-gulp.task("default", ["css", "js"], () => {
+gulp.task("default", ["set-dev-node-env", "css", "js"], () => {
     $.fancyLog("-> Livereload listening for changes");
     $.livereload.listen();
     gulp.watch([pkg.paths.src.scss + "**/*.scss"], ["css"]);
