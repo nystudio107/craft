@@ -63,7 +63,7 @@ gulp.task("tailwind", () => {
     return gulp.src(pkg.paths.tailwindcss.src)
         .pipe($.postcss([
             $.tailwindcss(pkg.paths.tailwindcss.conf),
-            require('autoprefixer'),
+            require("autoprefixer"),
         ]))
         .pipe(gulp.dest(pkg.paths.build.css));
 });
@@ -81,12 +81,13 @@ class TailwindExtractor {
 // purgecss task
 gulp.task("purgecss", ["tailwind", "scss"], () => {
     switch (process.env.NODE_ENV) {
-        case 'development':
+        case "development":
+            $.fancyLog("-> Copying CSS");
             return gulp.src(pkg.globs.distCss)
                 .pipe(gulp.dest(pkg.paths.build.css));
             break;
 
-        case 'production':
+        case "production":
             $.fancyLog("-> Running purgecss");
             return gulp.src(pkg.globs.distCss)
                 .pipe($.purgecss({
@@ -301,13 +302,13 @@ gulp.task("download", (callback) => {
 // Run pa11y accessibility tests on each template
 function processAccessibility(element, i, callback) {
     const accessibilitySrc = pkg.urls.critical + element.url;
-    const cliReporter = require('./node_modules/pa11y/reporter/cli.js');
+    const cliReporter = require("./node_modules/pa11y/reporter/cli.js");
     const options = {
         log: cliReporter,
         ignore:
             [
-                'notice',
-                'warning'
+                "notice",
+                "warning"
             ],
     };
     const test = $.pa11y(options);
@@ -398,7 +399,7 @@ gulp.task("fonts", ["generate-fontello"], () => {
 });
 
 // static assets version task
-gulp.task('static-assets-version', () => {
+gulp.task("static-assets-version", () => {
     gulp.src(pkg.paths.craftConfig + "general.php")
         .pipe($.replace(/'staticAssetsVersion' => (\d+),/g, function(match, p1, offset, string) {
             p1++;
@@ -421,7 +422,7 @@ gulp.task("set-prod-node-env", function() {
 });
 
 // Default task
-gulp.task("default", ["set-dev-node-env", "css", "js"], () => {
+gulp.task("default", ["set-dev-node-env","css", "js"], () => {
     $.fancyLog("-> Livereload listening for changes");
     $.livereload.listen();
     gulp.watch([pkg.paths.src.scss + "**/*.scss"], ["css"]);
