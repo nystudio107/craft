@@ -71,7 +71,7 @@ gulp.task("tailwind", () => {
                     extractor: TailwindExtractor,
                     extensions: ["html", "twig", "css", "js"]
                 }],
-                whitelist: ["menuOpen", "open", "main-logo-svg", "sub-logo-svg", "scaling-svg"],
+                whitelist: pkg.globs.purgecssWhitelist,
                 content: pkg.globs.purgecss
             })
         ))
