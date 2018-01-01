@@ -192,6 +192,11 @@ if (empty($argv[1])) {
             welcomeNysCraft();
             break;
 
+        case 'update':
+            // Display a welcome message
+            updateNysCraft();
+            break;
+
         default:
             // Set up all the things!
             setupNysCraft();
@@ -211,6 +216,19 @@ function welcomeNysCraft()
     $script = './nys-setup';
     outputString(PHP_EOL.'    '.$script, Console::FG_GREEN);
     outputString(PHP_EOL.'Your setup is not complete until you run these two commands.', Console::FG_YELLOW);
+}
+
+/**
+ * Update our Craft-Scripts symlinks as needed!
+ */
+function updateNysCraft()
+{
+    // Say hello
+    outputString(PHP_EOL.'Updating nys-setup', Console::FG_YELLOW);
+    // Set up Craft-Scripts
+    setupCraftScripts();
+    // Say goodbye
+    outputString(PHP_EOL.'Update complete. Have a nice day!', Console::FG_YELLOW);
 }
 
 /**
