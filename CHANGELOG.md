@@ -1,5 +1,14 @@
 # nystudio107/craft Change Log
 
+## 1.0.8 - 2018.01.01
+### Added
+* Added a better PurgeCSS pipeline
+* Added a `purgecssWhitelist` to `package.json`
+* Execute JavaScript when doing Critical CSS
+* Added a `criticalWhitelist` to `package.json`
+* Added SiteModule framework to nystudio107/craft
+* Added a `post-update-cmd` to `composer.json` to recreate any symlinks that may have been removed after a `composer update` or `composer install`
+
 ## 1.0.7 - 2017.12.16
 ### Added
 * Added `purgecss` to production builds
