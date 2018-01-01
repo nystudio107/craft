@@ -244,6 +244,10 @@ function processCriticalCSS(element, i, callback) {
     $.critical.generate({
         src: criticalSrc,
         dest: criticalDest,
+        penthouse: {
+            blockJSRequests: false,
+            forceInclude: pkg.globs.criticalWhitelist
+        },
         inline: false,
         ignore: [],
         css: [
