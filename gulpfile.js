@@ -65,6 +65,16 @@ gulp.task("tailwind", () => {
             $.tailwindcss(pkg.paths.tailwindcss.conf),
             require("autoprefixer"),
         ]))
+        .pipe($.if(process.env.NODE_ENV === "production",
+            $.purgecss({
+                extractors: [{
+                    extractor: TailwindExtractor,
+                    extensions: ["html", "twig", "css", "js"]
+                }],
+                whitelist: pkg.globs.purgecssWhitelist,
+                content: pkg.globs.purgecss
+            })
+        ))
         .pipe(gulp.dest(pkg.paths.build.css));
 });
 
@@ -78,48 +88,26 @@ class TailwindExtractor {
     }
 }
 
-// purgecss task
-gulp.task("purgecss", ["tailwind", "scss"], () => {
-    switch (process.env.NODE_ENV) {
-        case "development":
-            $.fancyLog("-> Copying CSS");
-            return gulp.src(pkg.globs.distCss)
-                .pipe(gulp.dest(pkg.paths.build.css));
-            break;
-
-        case "production":
-            $.fancyLog("-> Running purgecss");
-            return gulp.src(pkg.globs.distCss)
-                .pipe($.purgecss({
-                    extractors: [{
-                        extractor: TailwindExtractor,
-                        extensions: ["html", "twig", "css", "js"]
-                    }],
-                    content: pkg.globs.purgecss
-                }))
-                .pipe(gulp.dest(pkg.paths.build.css));
-            break;
-    }
-});
-
 // css task - combine & minimize any distribution CSS into the public css folder, and add our banner to it
-gulp.task("css", ["purgecss"], () => {
+gulp.task("css", ["tailwind", "scss"], () => {
     $.fancyLog("-> Building css");
-    return gulp.src(pkg.paths.build.css + "**/*.{css,.min.css}")
+    return gulp.src(pkg.globs.distCss)
         .pipe($.plumber({errorHandler: onError}))
         .pipe($.newer({dest: pkg.paths.dist.css + pkg.vars.siteCssName}))
         .pipe($.print())
         .pipe($.sourcemaps.init({loadMaps: true}))
         .pipe($.concat(pkg.vars.siteCssName))
-        .pipe($.cssnano({
-            discardComments: {
-                removeAll: true
-            },
-            discardDuplicates: true,
-            discardEmpty: true,
-            minifyFontValues: true,
-            minifySelectors: true
-        }))
+        .pipe($.if(process.env.NODE_ENV === "production",
+            $.cssnano({
+                discardComments: {
+                    removeAll: true
+                },
+                discardDuplicates: true,
+                discardEmpty: true,
+                minifyFontValues: true,
+                minifySelectors: true
+            })
+        ))
         .pipe($.header(banner, {pkg: pkg}))
         .pipe($.sourcemaps.write("./"))
         .pipe($.size({gzip: true, showFiles: true}))
@@ -256,6 +244,10 @@ function processCriticalCSS(element, i, callback) {
     $.critical.generate({
         src: criticalSrc,
         dest: criticalDest,
+        penthouse: {
+            blockJSRequests: false,
+            forceInclude: pkg.globs.criticalWhitelist
+        },
         inline: false,
         ignore: [],
         css: [

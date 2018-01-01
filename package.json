@@ -74,6 +74,8 @@
         "purgecss": [
             "./templates/**/*.{html,twig}"
         ],
+        "purgecssWhitelist": [
+        ],
         "critical": [
             {
                 "url": "",
@@ -95,6 +97,8 @@
                 "url": "404",
                 "template": "404"
             }
+        ],
+        "criticalWhitelist": [
         ],
         "download": [
             {
