@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 1.0.9 - 2018.01.06
+### Added
+* Added a static asset filename-based cache busting `LocalValetDriver.php` for Laravel Valet
+
 ## 1.0.8 - 2018.01.01
 ### Added
 * Added a better PurgeCSS pipeline
