@@ -49,6 +49,7 @@ class SiteModule extends Module
     public function __construct($id, $parent = null, array $config = [])
     {
         Craft::setAlias('@site', $this->getBasePath());
+        $this->controllerNamespace = 'site\controllers';
 
         // Translation category
         $i18n = Craft::$app->getI18n();
