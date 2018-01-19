@@ -10,7 +10,7 @@
 
 /**
  * @author    nystudio107
- * @package   Site
+ * @package   SiteModule
  * @since     1.0.0
  */
 return [

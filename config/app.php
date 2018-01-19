@@ -17,10 +17,12 @@ return [
 
     // All environments
     '*' => [
-        'modules' => [
-            'site' => \modules\site\SiteModule::class,
+        'modules'   => [
+            'site-module' => [
+                'class' => \modules\sitemodule\SiteModule::class,
+            ],
         ],
-        'bootstrap' => ['site'],
+        'bootstrap' => ['site-module'],
     ],
 
     // Live (production) environment

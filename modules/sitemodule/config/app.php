@@ -14,7 +14,9 @@
  */
 return [
     'modules' => [
-        'site' => \modules\site\SiteModule::class,
+        'site-module' => [
+            'class' => \modules\sitemodule\SiteModule::class,
+        ],
     ],
-    'bootstrap' => ['site'],
+    'bootstrap' => ['site-module'],
 ];
