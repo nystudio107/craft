@@ -1,7 +1,7 @@
 {
   "name": "nystudio107/craft",
   "description": "nystudio107 Craft 3 CMS scaffolding project",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "keywords": [
     "craft",
     "cms",
@@ -33,7 +33,7 @@
   },
   "autoload": {
     "psr-4": {
-      "modules\\": "modules/"
+      "modules\\site\\": "modules/site/src/"
     }
   },
   "config": {

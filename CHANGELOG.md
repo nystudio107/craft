@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 1.0.10 - 2018.01.18
+### Changed
+* Synced the `modules/site` with `site-module` and pluginfactory.io generated modules
+
 ## 1.0.9 - 2018.01.06
 ### Added
 * Added a static asset filename-based cache busting `LocalValetDriver.php` for Laravel Valet

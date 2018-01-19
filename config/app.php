@@ -18,9 +18,9 @@ return [
     // All environments
     '*' => [
         'modules' => [
-            'site-module' => \modules\nystudio107\sitemodule\SiteModule::class,
+            'site' => \modules\site\SiteModule::class,
         ],
-        'bootstrap' => ['site-module'],
+        'bootstrap' => ['site'],
     ],
 
     // Live (production) environment
