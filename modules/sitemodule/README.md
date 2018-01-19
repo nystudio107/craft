@@ -14,16 +14,18 @@ First, you'll need to add the contents of the `app.php` file to your `config/app
 ```
 return [
     'modules' => [
-        'site' => \modules\site\SiteModule::class,
+        'site-module' => [
+            'class' => \modules\sitemodule\SiteModule::class,
+        ],
     ],
-    'bootstrap' => ['site'],
+    'bootstrap' => ['site-module'],
 ];
 ```
 You'll also need to make sure that you add the following to your project's `composer.json` file so that Composer can find your module:
 
     "autoload": {
         "psr-4": {
-          "modules\\site\\": "modules/site/src/"
+          "modules\\sitemodule\\": "modules/sitemodule/src/"
         }
     },
 

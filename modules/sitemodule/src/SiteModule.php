@@ -8,9 +8,9 @@
  * @copyright Copyright (c) 2018 nystudio107
  */
 
-namespace modules\site;
+namespace modules\sitemodule;
 
-use modules\site\assetbundles\site\SiteAsset;
+use modules\sitemodule\assetbundles\sitemodule\SiteModuleAsset;
 
 use Craft;
 use craft\events\RegisterTemplateRootsEvent;
@@ -23,10 +23,10 @@ use yii\base\InvalidConfigException;
 use yii\base\Module;
 
 /**
- * Class Site
+ * Class SiteModule
  *
  * @author    nystudio107
- * @package   Site
+ * @package   SiteModule
  * @since     1.0.0
  *
  */
@@ -36,7 +36,7 @@ class SiteModule extends Module
     // =========================================================================
 
     /**
-     * @var Site
+     * @var SiteModule
      */
     public static $instance;
 
@@ -48,8 +48,8 @@ class SiteModule extends Module
      */
     public function __construct($id, $parent = null, array $config = [])
     {
-        Craft::setAlias('@site', $this->getBasePath());
-        $this->controllerNamespace = 'site\controllers';
+        Craft::setAlias('@sitemodule', $this->getBasePath());
+        $this->controllerNamespace = 'sitemodule\controllers';
 
         // Translation category
         $i18n = Craft::$app->getI18n();
@@ -58,7 +58,7 @@ class SiteModule extends Module
             $i18n->translations[$id] = [
                 'class' => PhpMessageSource::class,
                 'sourceLanguage' => 'en-US',
-                'basePath' => '@site/translations',
+                'basePath' => '@sitemodule/translations',
                 'forceTranslation' => true,
                 'allowOverrides' => true,
             ];
@@ -91,7 +91,7 @@ class SiteModule extends Module
                 View::EVENT_BEFORE_RENDER_TEMPLATE,
                 function (TemplateEvent $event) {
                     try {
-                        Craft::$app->getView()->registerAssetBundle(SiteAsset::class);
+                        Craft::$app->getView()->registerAssetBundle(SiteModuleAsset::class);
                     } catch (InvalidConfigException $e) {
                         Craft::error(
                             'Error registering AssetBundle - '.$e->getMessage(),
@@ -104,7 +104,7 @@ class SiteModule extends Module
 
         Craft::info(
             Craft::t(
-                'site',
+                'site-module',
                 '{name} module loaded',
                 ['name' => 'Site']
             ),

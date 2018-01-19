@@ -1,6 +1,6 @@
 <?php
 /**
- * Site plugin for Craft CMS 3.x
+ * Site module for Craft CMS 3.x
  *
  * An example module for Craft CMS 3 that lets you enhance your websites with a custom site module
  *
@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2018 nystudio107
  */
 
-namespace modules\site\assetbundles\Site;
+namespace modules\sitemodule\assetbundles\SiteModule;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -16,10 +16,10 @@ use craft\web\assets\cp\CpAsset;
 
 /**
  * @author    nystudio107
- * @package   Site
+ * @package   SiteModule
  * @since     1.0.0
  */
-class SiteAsset extends AssetBundle
+class SiteModuleAsset extends AssetBundle
 {
     // Public Methods
     // =========================================================================
@@ -29,18 +29,18 @@ class SiteAsset extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = "@site/assetbundles/site/dist";
+        $this->sourcePath = "@sitemodule/assetbundles/sitemodule/dist";
 
         $this->depends = [
             CpAsset::class,
         ];
 
         $this->js = [
-            'js/Site.js',
+            'js/SiteModule.js',
         ];
 
         $this->css = [
-            'css/Site.css',
+            'css/SiteModule.css',
         ];
 
         parent::init();
