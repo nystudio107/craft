@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 1.0.11 - 2018.01.23
+### Changed
+* Added `post-install-cmd` to `composer.json`
+
 ## 1.0.10 - 2018.01.18
 ### Changed
 * Synced the `modules/site` with `site-module` and pluginfactory.io generated modules
