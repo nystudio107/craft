@@ -1,7 +1,7 @@
 {
   "name": "nystudio107/craft",
   "description": "nystudio107 Craft 3 CMS scaffolding project",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "keywords": [
     "craft",
     "cms",
@@ -48,6 +48,9 @@
       "@php nys-setup welcome"
     ],
     "post-update-cmd": [
+      "@php nys-setup update"
+    ],
+    "post-install-cmd": [
       "@php nys-setup update"
     ]
   }
