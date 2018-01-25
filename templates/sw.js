@@ -1,4 +1,4 @@
-{% set baseUrl = craft.app.config.general.custom.baseUrl %}
+{% set baseUrl = alias('@baseUrl') ~ '/' %}
 {% set staticAssetsVersion = craft.app.config.general.custom.staticAssetsVersion %}
 {% minify js %}
 // borrowed mightily from Fillament Group - https://www.filamentgroup.com/lab/modernizing-delivery.html
