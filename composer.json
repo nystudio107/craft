@@ -1,7 +1,7 @@
 {
   "name": "nystudio107/craft",
   "description": "nystudio107 Craft 3 CMS scaffolding project",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "keywords": [
     "craft",
     "cms",
@@ -37,7 +37,10 @@
     }
   },
   "config": {
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "7.0"
+    }
   },
   "scripts": {
     "post-root-package-install": [
