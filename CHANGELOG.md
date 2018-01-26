@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 1.0.13 - 2018.01.26
+### Changed
+* Tell Composer to install PHP 7.0-compatible dependencies
+
 ## 1.0.12 - 2018.01.25
 ### Changed
 * Switched from `craft.app.config.general.custom.baseUrl` to `alias('@baseUrl')`
