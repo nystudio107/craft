@@ -3,6 +3,7 @@
 ## 1.0.13 - 2018.01.26
 ### Changed
 * Tell Composer to install PHP 7.0-compatible dependencies
+* Fixed `sitemodule` namespacing
 
 ## 1.0.12 - 2018.01.25
 ### Changed
