@@ -48,7 +48,7 @@ class SiteModule extends Module
      */
     public function __construct($id, $parent = null, array $config = [])
     {
-        Craft::setAlias('@sitemodule', $this->getBasePath());
+        Craft::setAlias('@modules/sitemodule', $this->getBasePath());
         $this->controllerNamespace = 'sitemodule\controllers';
 
         // Translation category
@@ -58,7 +58,7 @@ class SiteModule extends Module
             $i18n->translations[$id] = [
                 'class' => PhpMessageSource::class,
                 'sourceLanguage' => 'en-US',
-                'basePath' => '@sitemodule/translations',
+                'basePath' => '@modules/sitemodule/translations',
                 'forceTranslation' => true,
                 'allowOverrides' => true,
             ];
