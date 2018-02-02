@@ -26,11 +26,11 @@
     "yiisoft/yii2-redis": "^2.0.6",
     "nystudio107/craft3-multi-environment": "^1.0.5",
     "nystudio107/craft-scripts": "^1.2.4",
-    "nystudio107/craft3-eagerbeaver": "^1.0.0",
+    "nystudio107/craft-eagerbeaver": "^1.0.0",
     "nystudio107/craft-imageoptimize": "^1.3.2",
-    "nystudio107/craft3-minify": "^1.2.5",
-    "nystudio107/craft3-typogrify": "^1.1.1",
-    "nystudio107/craft3-routemap": "^1.0.0"
+    "nystudio107/craft-minify": "^1.2.5",
+    "nystudio107/craft-routemap": "^1.0.0",
+    "nystudio107/craft-typogrify": "^1.1.1"
   },
   "autoload": {
     "psr-4": {
