@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 1.0.14 - 2018.02.01
+### Changed
+* Fixed composer dependencies to reflect the `nystudio107/craft-` renaming
+
 ## 1.0.13 - 2018.01.26
 ### Changed
 * Tell Composer to install PHP 7.0-compatible dependencies
