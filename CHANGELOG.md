@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 1.0.15 - 2018.02.19
+### Changed
+* Updated `composer.json` to reflect the updated dependencies
+
 ## 1.0.14 - 2018.02.01
 ### Changed
 * Fixed composer dependencies to reflect the `nystudio107/craft-` renaming
