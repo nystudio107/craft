@@ -1,7 +1,7 @@
 {
   "name": "nystudio107/craft",
   "description": "nystudio107 Craft 3 CMS scaffolding project",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "keywords": [
     "craft",
     "cms",
@@ -19,10 +19,8 @@
   },
   "minimum-stability": "RC",
   "require": {
-    "php": ">=7.0.0",
     "craftcms/cms": "^3.0.0-RC7",
     "vlucas/phpdotenv": "^2.4.0",
-    "roave/security-advisories": "dev-master",
     "yiisoft/yii2-redis": "^2.0.6",
     "nystudio107/craft3-multi-environment": "^1.0.5",
     "nystudio107/craft-scripts": "^1.2.4",
