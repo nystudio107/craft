@@ -49,7 +49,7 @@ class SiteModule extends Module
     public function __construct($id, $parent = null, array $config = [])
     {
         Craft::setAlias('@modules/sitemodule', $this->getBasePath());
-        $this->controllerNamespace = 'sitemodule\controllers';
+        $this->controllerNamespace = 'modules\sitemodule\controllers';
 
         // Translation category
         $i18n = Craft::$app->getI18n();
