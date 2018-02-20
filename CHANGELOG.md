@@ -3,6 +3,7 @@
 ## 1.0.15 - 2018.02.19
 ### Changed
 * Updated `composer.json` to reflect the updated dependencies
+* Fixed the site module's controller namespacing
 
 ## 1.0.14 - 2018.02.01
 ### Changed
