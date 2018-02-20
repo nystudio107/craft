@@ -14,9 +14,11 @@ use yii\helpers\Console;
 use mikehaertl\shellcommand\Command as ShellCommand;
 
 const INSTALL_PLUGINS = [
+    'async-queue',
     'eager-beaver',
     'image-optimize',
     'minify',
+    'routemap',
     'typogrify',
 ];
 
