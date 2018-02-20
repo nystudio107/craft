@@ -4,6 +4,8 @@
 ### Changed
 * Updated `composer.json` to reflect the updated dependencies
 * Fixed the site module's controller namespacing
+* Added `sort-packages` to the `composer.json`
+* Added `async-queue` plugin
 
 ## 1.0.14 - 2018.02.01
 ### Changed
