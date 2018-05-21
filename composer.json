@@ -17,9 +17,8 @@
     "source": "https://github.com/nystudio107/craft",
     "docs": "https://github.com/nystudio107/craft"
   },
-  "minimum-stability": "RC",
   "require": {
-    "craftcms/cms": "^3.0.0-RC7",
+    "craftcms/cms": "^3.0.0",
     "vlucas/phpdotenv": "^2.4.0",
     "yiisoft/yii2-redis": "^2.0.6",
     "nystudio107/craft3-multi-environment": "^1.0.5",
