@@ -1,5 +1,11 @@
 # nystudio107/craft Change Log
 
+## 1.0.16 - 2018.05.24
+### Changed
+* Removed references to the Craft RC in the `composer.json`
+* Added SEOmatic to the list of base plugins
+* Change the Critical CSS loader to `onload="this.onload=null;this.rel='stylesheet'"` for IE 11 compatibility
+
 ## 1.0.15 - 2018.02.19
 ### Changed
 * Updated `composer.json` to reflect the updated dependencies

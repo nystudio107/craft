@@ -19,6 +19,7 @@ const INSTALL_PLUGINS = [
     'image-optimize',
     'minify',
     'routemap',
+    'seomatic',
     'typogrify',
 ];
 
