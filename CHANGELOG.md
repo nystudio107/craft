@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 1.0.16 - 2018.05.24
+### Changed
+* Removed references to the Craft RC in the `composer.json`
+* Added SEOmatic to the list of base plugins
+
 ## 1.0.15 - 2018.02.19
 ### Changed
 * Updated `composer.json` to reflect the updated dependencies
