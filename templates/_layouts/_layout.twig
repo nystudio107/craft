@@ -42,7 +42,7 @@
             {# -- Inline CSS block used by templates for Critical CSS #}
             {% block _inline_css %}
             {% endblock %}
-        <link rel="preload" href="{{ baseUrl }}css/site.combined.min.{{staticAssetsVersion}}.css" as="style" onload="this.rel='stylesheet'">
+        <link rel="preload" href="{{ baseUrl }}css/site.combined.min.{{staticAssetsVersion}}.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="{{ baseUrl }}css/site.combined.min.{{staticAssetsVersion}}.css"></noscript>
         <script>
             {{ source("_inlinejs/loadCSS.min.js") }}
