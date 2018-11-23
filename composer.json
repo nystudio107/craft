@@ -28,7 +28,7 @@
     "nystudio107/craft-imageoptimize": "^1.3.2",
     "nystudio107/craft-minify": "^1.2.5",
     "nystudio107/craft-routemap": "^1.0.0",
-    "nystudio107/craft-seomatic": "^1.0.0",
+    "nystudio107/craft-seomatic": "^3.0.0",
     "nystudio107/craft-typogrify": "^1.1.1",
     "ostark/craft-async-queue": "^1.3.0"
   },
