@@ -1,0 +1,70 @@
+{#
+ # Cookies
+ #
+ # Macros for getting and setting cookies natively with Craft CMS 3.1.17 or later
+ #
+ # Usage:
+ # {% import "_macros/cookies.twig" as cookies %}
+ # Get a cookie:
+ # {% set woof = cookies.get('woof') %}
+ # Set a cookie:
+ # {% do cookies.set('woof', 'bark', now | date_modify('+1 hour').timestamp) %}
+ #
+ # @package   nystudio107\craft
+ # @since     1.0.0
+ # @author    nystudio107
+ # @link      https://nystudio107.com
+ # @copyright Copyright (c) 2019 nystudio107
+ # @license   MIT
+ # @license   https://opensource.org/licenses/MIT MIT Licensed
+ #}
+
+{#
+ # Return the value the cookie specified in `name`. The return value will be an
+ # empty string if the cookie doesn't exist.
+ #
+ # @param string                    name
+ # @param yii\web\CookieCollection  cookieJar
+ #
+ # @return string className
+ #}
+{%- macro get(name, cookieJar = null) -%}
+    {% spaceless %}
+        {% set cookieJar = cookieJar ?? craft.app.request.cookies %}
+        {% set cookie = cookieJar.get(name) %}
+        {{ cookie.value ?? '' }}
+    {% endspaceless %}
+{%- endmacro -%}
+
+{#
+ # Set the cookie specified in `name` to the value specified in `value`, with an
+ # expiration set to the number of seconds in `expires`. You can use an
+ # expression like `now | date_modify("+1 hour").timestamp` to set `expires`.
+ # c.f.: https://www.php.net/manual/en/function.setcookie.php
+ #
+ # @param string                    name
+ # @param string                    value
+ # @param int                       expires
+ # @param string                    path
+ # @param string                    domain
+ # @param bool                      secure
+ # @param bool                      httpOnly
+ # @param yii\web\CookieCollection  cookieJar
+ #}
+{%- macro set(name, value = '', expires = 0, path = '/', domain = '', secure = false, httpOnly = false, cookieJar = null) -%}
+    {% spaceless %}
+        {% set cookieJar = cookieJar ?? craft.app.response.cookies %}
+        {% set domain = domain | length ?: craft.app.config.general.defaultCookieDomain %}
+        {% set cookie = create({
+            'class': 'yii\\web\\Cookie',
+            'name': name,
+            'value': value,
+            'path': path,
+            'domain': domain,
+            'secure': secure,
+            'httpOnly': httpOnly,
+            'expire': expires
+        }) %}
+        {% do cookieJar.add(cookie) %}
+    {% endspaceless %}
+{%- endmacro -%}
