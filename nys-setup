@@ -81,7 +81,7 @@ require_once CRAFT_VENDOR_PATH.'/autoload.php';
 
 // Load the .env file Craft created
 if (file_exists(CRAFT_BASE_PATH.'/.env')) {
-    $dotEnv = new Dotenv\Dotenv(CRAFT_BASE_PATH);
+    $dotEnv = Dotenv\Dotenv::create(CRAFT_BASE_PATH);
     $dotEnv->load();
 }
 
