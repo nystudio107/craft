@@ -13,16 +13,6 @@ use yii\helpers\Console;
 
 use mikehaertl\shellcommand\Command as ShellCommand;
 
-const INSTALL_PLUGINS = [
-    'async-queue',
-    'eager-beaver',
-    'image-optimize',
-    'minify',
-    'routemap',
-    'seomatic',
-    'typogrify',
-];
-
 const CRAFT_SCRIPTS_SETUP = [
     'srclink'      => 'vendor/nystudio107/craft-scripts/scripts',
     'destlink'     => 'scripts',
@@ -82,95 +72,6 @@ const CRAFT_SCRIPTS_SETUP = [
     ],
 ];
 
-const CRAFT_MULTI_ENVIRONMENT_SETUP = [
-    [
-        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/config/db.php',
-        'destpath'     => 'config/db.php',
-        'replacements' => [
-        ],
-    ],
-    [
-        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/config/general.php',
-        'destpath'     => 'config/general.php',
-        'replacements' => [
-        ],
-    ],
-    [
-        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/config/volumes.php',
-        'destpath'     => 'config/volumes.php',
-        'replacements' => [
-        ],
-    ],
-    [
-        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/web/index.php',
-        'destpath'     => 'web/index.php',
-        'replacements' => [
-        ],
-    ],
-    [
-        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/craft',
-        'destpath'     => 'craft',
-        'replacements' => [
-        ],
-    ],
-    [
-        'srcpath'      => 'vendor/nystudio107/craft3-multi-environment/example.env.php',
-        'destpath'     => '.env.php',
-        'replacements' => [
-            'REPLACE_ME_CRAFT_ENVIRONMENT' => [
-                'substr'  => '',
-                'env'     => '',
-                'default' => 'local',
-            ],
-            'REPLACE_ME_DB_DRIVER'         => [
-                'substr'  => '',
-                'env'     => 'DB_DRIVER',
-                'default' => 'mysql',
-            ],
-            'REPLACE_ME_DB_SERVER'         => [
-                'substr'  => '',
-                'env'     => 'DB_SERVER',
-                'default' => 'localhost',
-            ],
-            'REPLACE_ME_DB_USER'           => [
-                'substr'  => '',
-                'env'     => 'DB_USER',
-                'default' => 'REPLACE_ME',
-            ],
-            'REPLACE_ME_DB_PASSWORD'       => [
-                'substr'  => '',
-                'env'     => 'DB_PASSWORD',
-                'default' => 'REPLACE_ME',
-            ],
-            'REPLACE_ME_DB_DATABASE'       => [
-                'substr'  => '',
-                'env'     => 'DB_DATABASE',
-                'default' => 'REPLACE_ME',
-            ],
-            'REPLACE_ME_DB_SCHEMA'         => [
-                'substr'  => '',
-                'env'     => 'DB_SCHEMA',
-                'default' => 'public',
-            ],
-            'REPLACE_ME_DB_TABLE_PREFIX'   => [
-                'substr'  => '',
-                'env'     => 'DB_TABLE_PREFIX',
-                'default' => '',
-            ],
-            'REPLACE_ME_DB_PORT'           => [
-                'substr'  => '',
-                'env'     => 'DB_PORT',
-                'default' => '3306',
-            ],
-            'REPLACE_ME_SECURITY_KEY'      => [
-                'substr'  => '',
-                'env'     => 'SECURITY_KEY',
-                'default' => 'REPLACE_ME',
-            ],
-        ],
-    ],
-];
-
 // Set path constants
 define('CRAFT_BASE_PATH', __DIR__);
 define('CRAFT_VENDOR_PATH', CRAFT_BASE_PATH.'/vendor');
@@ -215,7 +116,7 @@ function welcomeNysCraft()
     outputString(PHP_EOL.'To set up your Craft install, from your project directory, run:', Console::FG_YELLOW);
     $script = './craft setup';
     outputString(PHP_EOL.'    '.$script, Console::FG_GREEN);
-    outputString(PHP_EOL.'Then to set up Craft 3 Multi-Environment & Craft-Scripts, run:', Console::FG_YELLOW);
+    outputString(PHP_EOL.'Craft-Scripts, run:', Console::FG_YELLOW);
     $script = './nys-setup';
     outputString(PHP_EOL.'    '.$script, Console::FG_GREEN);
     outputString(PHP_EOL.'Your setup is not complete until you run these two commands.', Console::FG_YELLOW);
@@ -243,37 +144,10 @@ function setupNysCraft()
     outputString(PHP_EOL.'Welcome to nys-setup', Console::FG_YELLOW);
     // Set up Craft-Scripts
     setupCraftScripts();
-    // Setup Craft 3 Multi-Environment
-    setupCraftMultiEnvironment();
-    // Install the default plugins
-    installPlugins();
     // Install the NodeJS packages
     installNodePackages();
     // Say goodbye
     outputString(PHP_EOL.'Setup complete. Have a nice day!', Console::FG_YELLOW);
-}
-
-/**
- * Setup Craft 3 Multi-Environment
- */
-function setupCraftMultiEnvironment()
-{
-    // Set up Craft 3 Multi-Environment if the file .env.php doesn't exist already
-    outputString(PHP_EOL.'Setting up Craft 3 Multi-Environment', Console::FG_YELLOW);
-    if (!file_exists('.env.php')) {
-        // Create the default Craft Multi-Environment setup
-        foreach (CRAFT_MULTI_ENVIRONMENT_SETUP as $fileInfo) {
-            if (copyFile($fileInfo['srcpath'], $fileInfo['destpath'])) {
-                $replacements = $fileInfo['replacements'];
-                if (!empty($replacements)) {
-                    replaceInFile($fileInfo['destpath'], $replacements);
-                }
-            }
-        }
-    } else {
-        outputString('### .env.php file already exists, exiting...', Console::FG_RED);
-    }
-    outputString(PHP_EOL.'You will still need to set up your REMOTE_ settings in .env.sh', Console::FG_GREEN);
 }
 
 /**
@@ -306,27 +180,14 @@ function setupCraftScripts()
 
 }
 
-/**
- * Install the default plugins
- */
-function installPlugins()
-{
-    outputString(PHP_EOL.'Installing plugins', Console::FG_YELLOW);
-    $installPluginCmd = './craft install/plugin ';
-    foreach (INSTALL_PLUGINS as $pluginHandle) {
-        outputString('- installing plugin '.$pluginHandle);
-        executeShellCommand($installPluginCmd . $pluginHandle);
-    }
-}
-
 function installNodePackages()
 {
     $command = '';
-    if (shellCommandExists('npm')) {
-        $command = 'npm install';
-    }
     if (shellCommandExists('yarn')) {
         $command = 'yarn';
+    }
+    if (shellCommandExists('npm')) {
+        $command = 'npm install';
     }
 
     outputString(PHP_EOL.'Installing NodeJS packages via '.$command. ' (this may take a while)', Console::FG_YELLOW);

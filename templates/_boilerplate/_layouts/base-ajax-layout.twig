@@ -1,0 +1,23 @@
+{# -- Base layout template that all AJAX requests inherit from -- #}
+{#
+ ┌─────────────────────────────────────────────────────────────────────────────┐
+ │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                                 content                                 │ │
+ │ └─────────────────────────────────────────────────────────────────────────┘ │
+ │                                                                             │
+ │                                  htmlPage                                   │
+ └─────────────────────────────────────────────────────────────────────────────┘
+#}
+{% extends "_layouts/global-variables.twig" %}
+
+{% block htmlPage %}
+    {% minify %}
+        {# -- Primary content block -- #}
+        {% block content %}
+            <code>No content block defined.</code>
+        {% endblock content %}
+    {% endminify %}
+{% endblock htmlPage %}

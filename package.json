@@ -1,191 +1,124 @@
 {
-    "name": "nystudio107",
-    "version": "1.0.0",
-    "description": "Website for nystudio107.com",
-    "main": "gulpfile.js",
-    "author": "Andrew Welch, nystudio107 <andrew@nystudio107.com>",
-    "copyright": "nystudio107",
-    "license": "UNLICENSED",
+    "name": "example-project",
+    "version": "1.1.3",
+    "description": "Example Project brand website",
+    "keywords": [
+        "Example",
+        "Keywords"
+    ],
+    "homepage": "https://github.com/example-developer/example-project",
+    "bugs": {
+        "email": "someone@example-developer.com",
+        "url": "https://github.com/example-developer/example-project/issues"
+    },
+    "license": "SEE LICENSE IN LICENSE.md",
+    "author": {
+        "name": "Example Developer",
+        "email": "someone@example-developer.com",
+        "url": "https://example-developer.com"
+    },
+    "browser": "/web/index.php",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/example-developer/example-project.git"
+    },
     "private": true,
-    "paths": {
-        "src": {
-            "base": "./src/",
-            "css": "./src/css/",
-            "fontello": "./src/fontello/",
-            "fonts": "./src/fonts/",
-            "img": "./src/img/",
-            "json": "./src/json/",
-            "js": "./src/js/",
-            "scss": "./src/scss/"
-        },
-        "dist": {
-            "base": "./web/",
-            "css": "./web/css/",
-            "js": "./web/js/",
-            "fonts": "./web/fonts/",
-            "img": "./web/img/"
-        },
-        "build": {
-            "base": "./build/",
-            "css": "./build/css/",
-            "fontello": "./build/fonts/fontello/",
-            "fonts": "./build/fonts/",
-            "js": "./build/js/",
-            "html": "./build/html/",
-            "img": "./build/img/"
-        },
-        "favicon": {
-            "src": "./src/img/favicon_src.png",
-            "dest": "./web/img/site/",
-            "path": "/img/site/"
-        },
-        "tailwindcss": {
-            "src": "./src/css/site.css",
-            "conf": "./tailwind.js"
-        },
-        "scss": [],
-        "craftConfig": "./config/",
-        "templates": "./templates/"
+    "scripts": {
+        "debug": "webpack-dev-server --config webpack.dev.js",
+        "dev": "webpack-dashboard -- webpack-dev-server --config webpack.dev.js",
+        "build": "webpack --config webpack.prod.js --progress --hide-modules"
     },
-    "urls": {
-        "live": "https://nystudio107.com/",
-        "local": "https://nystudio107.dev/",
-        "critical": "https://nystudio107.com/"
-    },
-    "vars": {
-        "siteCssName": "site.combined.min.css",
-        "scssName": "style.scss",
-        "cssName": "style.css"
-    },
-    "globs": {
-        "distCss": [
-            "./build/fonts/fontello/css/fontello-codes.css",
-            "./build/css/*.css"
+    "browserslist": {
+        "production": [
+            "> 1%",
+            "last 2 versions",
+            "Firefox ESR"
         ],
-        "img": [
-            "./web/img/"
+        "legacyBrowsers": [
+            "> 1%",
+            "last 2 versions",
+            "Firefox ESR"
         ],
-        "components": [
-        ],
-        "fonts": [
-            "./build/fonts/fontello/font/*.{eot,ttf,woff,woff2}",
-            "./src/fonts/*.{eot,ttf,woff,woff2}"
-        ],
-        "purgecss": [
-            "./templates/**/*.{html,twig}"
-        ],
-        "purgecssWhitelist": [
-        ],
-        "critical": [
-            {
-                "url": "",
-                "template": "index"
-            },
-            {
-                "url": "offline",
-                "template": "offline"
-            },
-            {
-                "url": "error",
-                "template": "error"
-            },
-            {
-                "url": "503",
-                "template": "503"
-            },
-            {
-                "url": "404",
-                "template": "404"
-            }
-        ],
-        "criticalWhitelist": [
-        ],
-        "download": [
-            {
-                "url": "https://www.google-analytics.com/analytics.js",
-                "dest": "./web/js/"
-            }
-        ],
-        "distJs": [
-            "./build/js/*.js",
-            "./node_modules/axios/dist/axios.min.js",
-            "./node_modules/lazysizes/lazysizes.min.js",
-            "./node_modules/lazysizes/plugins/bgset/ls.bgset.min.js",
-            "./node_modules/picturefill/dist/picturefill.min.js",
-            "./node_modules/vue/dist/vue.min.js"
-        ],
-        "babelJs": [
-            "./src/js/*.js"
-        ],
-        "inlineJs": [
-            "./node_modules/fg-loadcss/src/loadCSS.js",
-            "./node_modules/fg-loadcss/src/cssrelpreload.js",
-            "./node_modules/fontfaceobserver/fontfaceobserver.js",
-            "./node_modules/loadjs/dist/loadjs.min.js",
-            "./node_modules/tiny-cookie/tiny-cookie.min.js",
-            "./src/js/tab-handler.js",
-            "./src/js/register-service-worker.js",
-            "./src/js/asyncload-site-fonts.js"
-        ],
-        "siteIcon": "./web/img/site/favicon.*"
-    },
-    "dependencies": {
-        "axios": "^0.17.1",
-        "fg-loadcss": "^1.2.0",
-        "fontfaceobserver": "^2.0.5",
-        "lazysizes": "^2.0.6",
-        "loadjs": "^3.3.1",
-        "normalize.css": "^5.0.0",
-        "picturefill": "^3.0.2",
-        "tiny-cookie": "^1.0.1",
-        "vue": "^2.5.9"
+        "modernBrowsers": [
+            "last 2 Chrome versions",
+            "not Chrome < 60",
+            "last 2 Safari versions",
+            "not Safari < 10.1",
+            "last 2 iOS versions",
+            "not iOS < 10.3",
+            "last 2 Firefox versions",
+            "not Firefox < 54",
+            "last 2 Edge versions",
+            "not Edge < 15"
+        ]
     },
     "devDependencies": {
-        "babel-plugin-transform-runtime": "^6.15.0",
-        "babel-preset-es2015": "^6.16.0",
-        "chalk": "^1.1.3",
-        "critical": "^1.1.0",
-        "fancy-log": "^1.2.0",
-        "git-rev-sync": "^1.7.1",
-        "gulp": "^3.9.0",
-        "gulp-autoprefixer": "^3.1.0",
-        "gulp-babel": "^6.1.2",
-        "gulp-cached": "^1.1.1",
-        "gulp-concat": "^2.6.0",
-        "gulp-cssnano": "^2.1.2",
-        "gulp-debug": "^2.1.2",
-        "gulp-download": "^0.0.1",
-        "gulp-favicons": "^2.2.6",
-        "gulp-filter": "^5.0.1",
-        "gulp-fontello": "^0.4.6",
-        "gulp-header": "^1.8.7",
-        "gulp-if": "^2.0.1",
-        "gulp-imagemin": "^3.1.1",
-        "gulp-livereload": "^3.8.1",
-        "gulp-load-plugins": "^1.3.0",
-        "gulp-newer": "^1.2.0",
-        "gulp-plumber": "^1.1.0",
-        "gulp-postcss": "^7.0.0",
-        "gulp-print": "^2.0.1",
-        "gulp-purgecss": "^0.15.0",
-        "gulp-rename": "^1.2.2",
-        "gulp-replace": "0.5.4",
-        "gulp-rev": "^7.1.0",
-        "gulp-sass": "^3.1.0",
-        "gulp-size": "^2.1.0",
-        "gulp-sourcemaps": "^2.2.1",
-        "gulp-streamify": "1.0.2",
-        "gulp-uglify": "^1.5.4",
-        "moment": "^2.14.1",
-        "pa11y": "^4.11.0",
-        "tailwindcss": "^0.3.0",
-        "vinyl-source-stream": "^1.1.0"
+        "@babel/core": "^7.1.0",
+        "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+        "@babel/plugin-transform-runtime": "^7.1.0",
+        "@babel/preset-env": "^7.1.0",
+        "@babel/register": "^7.0.0",
+        "@babel/runtime": "^7.0.0",
+        "@gfx/zopfli": "^1.0.11",
+        "babel-loader": "^8.0.2",
+        "clean-webpack-plugin": "^3.0.0",
+        "compression-webpack-plugin": "^2.0.0",
+        "copy-webpack-plugin": "^4.5.2",
+        "create-symlink-webpack-plugin": "^1.0.0",
+        "critical": "^1.3.4",
+        "critical-css-webpack-plugin": "^0.2.0",
+        "css-loader": "^2.1.0",
+        "cssnano": "^4.1.0",
+        "dotenv": "^6.1.0",
+        "file-loader": "^2.0.0",
+        "git-rev-sync": "^1.12.0",
+        "glob-all": "^3.1.0",
+        "html-webpack-plugin": "^3.2.0",
+        "ignore-loader": "^0.1.2",
+        "imagemin": "^6.0.0",
+        "imagemin-gifsicle": "^6.0.0",
+        "imagemin-mozjpeg": "^8.0.0",
+        "imagemin-optipng": "^6.0.0",
+        "imagemin-svgo": "^7.0.0",
+        "imagemin-webp": "^5.0.0",
+        "imagemin-webp-webpack-plugin": "^3.1.0",
+        "img-loader": "^3.0.1",
+        "mini-css-extract-plugin": "^0.4.3",
+        "moment": "^2.22.2",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "postcss": "^7.0.2",
+        "postcss-import": "^12.0.0",
+        "postcss-loader": "^3.0.0",
+        "postcss-preset-env": "^6.4.0",
+        "purgecss-webpack-plugin": "^1.3.0",
+        "purgecss-whitelister": "^2.2.0",
+        "resolve-url-loader": "^3.0.0",
+        "save-remote-file-webpack-plugin": "^1.0.0",
+        "stylelint": "^9.9.0",
+        "stylelint-config-recommended": "^2.1.0",
+        "style-loader": "^0.23.0",
+        "symlink-webpack-plugin": "^0.0.4",
+        "terser-webpack-plugin": "^1.1.0",
+        "vue-loader": "^15.4.2",
+        "vue-style-loader": "^4.1.2",
+        "vue-template-compiler": "^2.5.17",
+        "webapp-webpack-plugin": "https://github.com/brunocodutra/webapp-webpack-plugin.git",
+        "webpack": "^4.19.1",
+        "webpack-bundle-analyzer": "^3.0.2",
+        "webpack-cli": "^3.1.1",
+        "webpack-dashboard": "^3.0.0",
+        "webpack-dev-server": "^3.3.0",
+        "webpack-manifest-plugin": "^2.0.4",
+        "webpack-merge": "^4.1.4",
+        "webpack-notifier": "^1.6.0",
+        "workbox-webpack-plugin": "^3.6.2"
     },
-    "scripts": {
-        "start": "gulp",
-        "build": "gulp build"
-    },
-    "bugs": {
-        "email": "info@nystudio107.com"
+    "dependencies": {
+        "axios": "^0.18.0",
+        "core-js": "^3.0.0",
+        "regenerator-runtime": "^0.13.2",
+        "tailwindcss": "^1.0.0",
+        "vue": "^2.5.17",
+        "vue-confetti": "^0.4.2"
     }
 }

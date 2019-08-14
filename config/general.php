@@ -4,45 +4,40 @@
  *
  * All of your system's general configuration settings go in here. You can see a
  * list of the available settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
+ *
+ * @see \craft\config\GeneralConfig
  */
 
 return [
-    // Global settings
-    '*' => [
-        // Default Week Start Day (0 = Sunday, 1 = Monday...)
-        'defaultWeekStartDay' => 0,
-
-        // Enable CSRF Protection (recommended, will be enabled by default in Craft 3)
-        'enableCsrfProtection' => true,
-
-        // Whether "index.php" should be visible in URLs
-        'omitScriptNameInUrls' => true,
-
-        // Control Panel trigger word
-        'cpTrigger' => 'admin',
-
-        // The secure key Craft will use for hashing and encrypting data
-        'securityKey' => getenv('SECURITY_KEY'),
+    // Craft config settings from .env variables
+    'aliases' => [
+        '@assetsUrl' => getenv('ASSETS_URL'),
+        '@cloudfrontUrl' => getenv('CLOUDFRONT_URL'),
+        '@web' => getenv('SITE_URL'),
+        '@webroot' => getenv('WEB_ROOT_PATH'),
     ],
-
-    // Dev environment settings
-    'dev' => [
-        // Base site URL
-        'siteUrl' => null,
-
-        // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => true,
+    'allowUpdates' => (bool)getenv('ALLOW_UPDATES'),
+    'allowAdminChanges' => (bool)getenv('ALLOW_ADMIN_CHANGES'),
+    'backupOnUpdate' => (bool)getenv('BACKUP_ON_UPDATE'),
+    'devMode' => (bool)getenv('DEV_MODE'),
+    'enableTemplateCaching' => (bool)getenv('ENABLE_TEMPLATE_CACHING'),
+    'isSystemLive' => (bool)getenv('IS_SYSTEM_LIVE'),
+    'resourceBasePath' => getenv('WEB_ROOT_PATH').'/cpresources',
+    'runQueueAutomatically' => (bool)getenv('RUN_QUEUE_AUTOMATICALLY'),
+    'securityKey' => getenv('SECURITY_KEY'),
+    'siteUrl' => getenv('SITE_URL'),
+    // Craft config settings from constants
+    'cacheDuration' => false,
+    'defaultSearchTermOptions' => [
+        'subLeft' => true,
+        'subRight' => true,
     ],
-
-    // Staging environment settings
-    'staging' => [
-        // Base site URL
-        'siteUrl' => null,
-    ],
-
-    // Production environment settings
-    'production' => [
-        // Base site URL
-        'siteUrl' => null,
-    ],
+    'enableCsrfProtection' => true,
+    'errorTemplatePrefix' => 'errors/',
+    'generateTransformsBeforePageLoad' => true,
+    'maxCachedCloudImageSize' => 3000,
+    'omitScriptNameInUrls' => true,
+    'useEmailAsUsername' => true,
+    'usePathInfo' => true,
+    'useProjectConfigFile' => true,
 ];

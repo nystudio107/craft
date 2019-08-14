@@ -2,20 +2,23 @@
 /**
  * Site module for Craft CMS 3.x
  *
- * An example module for Craft CMS 3 that lets you enhance your websites with a custom site module
+ * Custom site module
  *
- * @link      https://nystudio107.com/
- * @copyright Copyright (c) 2018 nystudio107
+ * @link      https://nystudio107.com
+ * @copyright Copyright (c) 2019 nystudio107
  */
 
 namespace modules\sitemodule;
 
 use modules\sitemodule\assetbundles\sitemodule\SiteModuleAsset;
+use modules\sitemodule\services\Helper;
+use modules\sitemodule\variables\SiteVariable;
 
 use Craft;
 use craft\events\RegisterTemplateRootsEvent;
 use craft\events\TemplateEvent;
 use craft\i18n\PhpMessageSource;
+use craft\web\twig\variables\CraftVariable;
 use craft\web\View;
 
 use yii\base\Event;
@@ -29,6 +32,7 @@ use yii\base\Module;
  * @package   SiteModule
  * @since     1.0.0
  *
+ * @property Helper helper
  */
 class SiteModule extends Module
 {
@@ -85,6 +89,25 @@ class SiteModule extends Module
         parent::init();
         self::$instance = $this;
 
+        // Register our components
+        $this->setComponents([
+            'helper' => [
+                'class' => Helper::class,
+            ]
+        ]);
+
+        // Register our variables
+        Event::on(
+            CraftVariable::class,
+            CraftVariable::EVENT_INIT,
+            function (Event $event) {
+                /** @var CraftVariable $variable */
+                $variable = $event->sender;
+                $variable->set('site', SiteVariable::class);
+            }
+        );
+
+        // Register our Asset bundle for CP requests
         if (Craft::$app->getRequest()->getIsCpRequest()) {
             Event::on(
                 View::class,

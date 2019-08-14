@@ -9,3 +9,13 @@
  * @package   SiteModule
  * @since     1.0.0
  */
+
+body.login {
+    background-size: 600px;
+    background-repeat: repeat;
+    background-image: url('/img/site/login-background-image.svg');
+}
+
+body.login label, body.login #forgot-password {
+    background-color: #FFF;
+}

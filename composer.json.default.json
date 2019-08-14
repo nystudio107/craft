@@ -1,0 +1,42 @@
+{
+  "require": {
+    "craftcms/cms": "^3.2.0",
+    "vlucas/phpdotenv": "^3.4.0",
+    "yiisoft/yii2-redis": "^2.0.6",
+    "nystudio107/craft-imageoptimize": "^1.0.0",
+    "nystudio107/craft-fastcgicachebust": "^1.0.0",
+    "nystudio107/craft-minify": "^1.2.5",
+    "nystudio107/craft-typogrify": "^1.1.4",
+    "nystudio107/craft-retour": "^3.0.0",
+    "nystudio107/craft-seomatic": "^3.2.0",
+    "nystudio107/craft-scripts": "^1.2.4",
+    "nystudio107/craft-webperf": "^1.0.0",
+    "nystudio107/craft-twigpack": "^1.1.0",
+    "nystudio107/dotenvy": "^1.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "modules\\sitemodule\\": "modules/sitemodule/src/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "7.0"
+    }
+  },
+  "scripts": {
+    "craft-update": [
+      "@php nys-setup update",
+      "@php craft migrate/all",
+      "@php craft project-config/sync",
+      "@php craft clear-caches/all"
+    ],
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "post-update-cmd": "@craft-update",
+    "post-install-cmd": "@craft-update"
+  }
+}

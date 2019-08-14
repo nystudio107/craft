@@ -1,0 +1,67 @@
+{# -- Layout template for HTML pages -- #}
+{#
+ ┌─────────────────────────────────────────────────────────────────────────────┐
+ │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                                 content                                 │ │
+ │ └─────────────────────────────────────────────────────────────────────────┘ │
+ │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                               subContent                                │ │
+ │ └─────────────────────────────────────────────────────────────────────────┘ │
+ │                                                                             │
+ │                                  bodyHtml                                   │
+ └─────────────────────────────────────────────────────────────────────────────┘
+#}
+{% extends "_boilerplate/_layouts/amp-base-html-layout.twig" %}
+
+{# -- Any <meta> tags that should be included in the <head> #}
+{% block headMeta %}
+{% endblock headMeta %}
+
+{# -- Any <link> tags that should be included in the <head> #}
+{% block headLinks %}
+{% endblock headLinks %}
+
+{# -- Any JavaScript that should be included before </head> -- #}
+{% block headJs %}
+{% endblock headJs %}
+
+{# -- Any CSS that should be included before </head> -- #}
+{% block headCss %}
+    {% include "_partials/amp-inline-css.css" %}
+    {% include "_inline-css/site-fonts.css" %}
+{% endblock %}
+
+{# -- Page body -- #}
+{% block bodyHtml %}
+    {% include "_partials/amp-navbar.twig" %}
+    <div id="page-container" class="overflow-hidden leading-tight">
+        <div id="content-container" class="bg-repeat header-background">
+            {# -- Info header, including _navbar.twig -- #}
+            {% include "_partials/amp-info-header.twig" %}
+
+            <main>
+                <div class="container mx-auto pb-8">
+                    {# -- Primary content block -- #}
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </main>
+        </div>
+
+        {# -- Content that appears below the primary content block -- #}
+        {% block subcontent %}
+        {% endblock %}
+
+        {# -- Info footer -- #}
+        {% include "_partials/amp-info-footer.twig" %}
+
+        {# -- HTML Footer -- #}
+        {% include "_partials/global-footer.twig" %}
+    </div>
+{% endblock bodyHtml %}

@@ -1,0 +1,15 @@
+{# -- Polyfills detected by User-Agent as per: https://polyfill.io/v2/docs/examples#feature-detection -- #}
+<script src="https://cdn.polyfill.io/v3/polyfill.min.js?callback=polyfillsAreLoaded&flags=gated" defer async></script>
+
+{# -- Register our Service Worker -- #}
+{% if not craft.app.config.general.devMode %}
+    {% include "_boilerplate/_partials/register-service-worker.twig" %}
+{% endif %}
+
+{# -- Handle tabs gracefully as per https://hackernoon.com/removing-that-ugly-focus-ring-and-keeping-it-too-6c8727fefcd2 -- #}
+{% include "_boilerplate/_partials/tab-handler.twig" %}
+
+{# -- Tiny Cookie JavaScript -- #}
+<script>
+    {{ source("_inline-js/tiny-cookie.min.js") }}
+</script>

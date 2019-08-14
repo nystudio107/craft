@@ -1,0 +1,15 @@
+/* -- Site fonts */
+
+/* -- Operator Mono normal */
+
+@font-face {
+    font-family: 'Operator Mono';
+    font-display: swap;
+    src: url('{{ baseUrl }}dist/fonts/OperatorMonoSSm-Book.eot');
+    src: url('{{ baseUrl }}dist/fonts/OperatorMonoSSm-Book.eot?#iefix') format('embedded-opentype'),
+    url('{{ baseUrl }}dist/fonts/OperatorMonoSSm-Book.woff2') format('woff2'),
+    url('{{ baseUrl }}dist/fonts/OperatorMonoSSm-Book.woff') format('woff'),
+    url('{{ baseUrl }}dist/fonts/OperatorMonoSSm-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,13 @@
+{# -- Critical CSS -- #}
+<!--# if expr="$HTTP_COOKIE=/critical\-css\=1/" -->
+{{ craft.twigpack.includeCssModule("styles.css", false) }}
+<!--# else -->
+<script>
+     Cookie.set("critical-css", '1', { expires: "7D", secure: true });
+</script>
+
+{{ craft.twigpack.includeCriticalCssTags() }}
+
+{{ craft.twigpack.includeCssModule("styles.css", true) }}
+{{ craft.twigpack.includeCssRelPreloadPolyfill() }}
+<!--# endif -->

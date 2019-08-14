@@ -1,0 +1,43 @@
+{# -- Layout template for error pages -- #}
+{#
+ ┌─────────────────────────────────────────────────────────────────────────────┐
+ │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                                 content                                 │ │
+ │ └─────────────────────────────────────────────────────────────────────────┘ │
+ │ ┌─────────────────────────────────────────────────────────────────────────┐ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                                                                         │ │
+ │ │                               subContent                                │ │
+ │ └─────────────────────────────────────────────────────────────────────────┘ │
+ │                                                                             │
+ │                                  bodyHtml                                   │
+ └─────────────────────────────────────────────────────────────────────────────┘
+#}
+{% extends "_layouts/generic-page-layout.twig" %}
+
+{% block content %}
+{% endblock %}
+
+{% block subcontent %}
+    <section>
+        <div class="container mx-auto py-8">
+            <div class="text-center p-8 mb-8">
+                <h1 class="font-mono italic font-bold text-5xl pt-4">
+                    {{ entry.errorHeadline }}
+                </h1>
+                <p class="font-sans text-xl pt-4">
+                    {{ entry.errorText |nl2br }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{# -- Any JavaScript that should be included before </body> -- #}
+{% block bodyJs %}
+{% endblock bodyJs %}
