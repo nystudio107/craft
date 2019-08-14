@@ -1,40 +1,23 @@
 {% extends "_layouts/generic-page-layout.twig" %}
 
-{% set includeAudioMeta = false %}
-
 {% block headLinks %}
     {{ parent() }}
     <link rel="amphtml" href="{{ siteUrl('/amp') }}">
 {% endblock headLinks %}
 
 {% block content %}
-    {% include "_partials/_meta-schema-radio-series.twig" with {
-        "showInfo": showInfo,
-    } only %}
     <section>
-        <div>
-            {% for episode in craft.entries.section("episodes").limit(1).all() %}
-                <div class="flex flex-wrap">
-                    {% include "episodes/_partials/_display_episode.twig" with {
-                        "episode": episode,
-                        "showInfo": showInfo,
-                        "includeAudioMeta": includeAudioMeta,
-                        "autoPlay": false,
-                    } only %}
-                </div>
-            {% endfor %}
-        </div>
+        <h1>content</h1>
     </section>
 {% endblock %}
 
 {% block subcontent %}
-    {% include "episodes/_partials/_display_recent_episodes.twig" with {
-        "showInfo": showInfo,
-    } only %}
+    <section>
+        <h2>content</h2>
+    </section>
 {% endblock %}
 
 {# -- Any JavaScript that should be included before </body> -- #}
 {% block bodyJs %}
-    {{ craft.twigpack.includeJsModule("player.js", true) }}
-    {{ craft.twigpack.includeJsModule("episodes.js", true) }}
+    {{ parent() }}
 {% endblock bodyJs %}

@@ -1,0 +1,31 @@
+{% extends "_layouts/amp-generic-page-layout.twig" %}
+
+{% if entry is not defined %}
+    {% set entry = craft.entries({
+        "uri": "__home__",
+    }).one() %}
+{% endif %}
+
+{% do seomatic.helper.loadMetadataForUri(entry.uri) %}
+{% do seomatic.script.container().include(false) %}
+
+{% block headCss %}
+    {{ parent() }}
+    {{ craft.twigpack.includeFile("@webroot/dist/criticalcss/amp_index_critical.min.css") }}
+{% endblock headCss %}
+
+{% block content %}
+    <section>
+        <h1>content</h1>
+    </section>
+{% endblock %}
+
+{% block subcontent %}
+    <section>
+        <h2>subcontent</h2>
+    </section>
+{% endblock %}
+
+{# -- Any JavaScript that should be included before </body> -- #}
+{% block bodyJs %}
+{% endblock bodyJs %}
