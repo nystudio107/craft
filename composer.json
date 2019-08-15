@@ -1,6 +1,7 @@
 {
   "name": "craftcms/craft",
-  "description": "Craft CMS",
+  "description": "nystudio107 Craft 3.2 CMS scaffolding project",
+  "version": "2.0.1",
   "keywords": [
     "craft",
     "cms",
@@ -19,7 +20,7 @@
     "rss": "https://craftcms.com/changelog.rss"
   },
   "require": {
-    "craftcms/cms": "^3.0.0",
+    "craftcms/cms": "^3.2.0",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "autoload": {
