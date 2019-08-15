@@ -57,7 +57,11 @@ module.exports = {
             {
                 url: "",
                 template: "index"
-            }
+            },
+            {
+                url: "",
+                template: "amp_index"
+            },
         ]
     },
     devServerConfig: {
@@ -76,7 +80,7 @@ module.exports = {
             "./src/vue/**/*.{vue,html}"
         ],
         whitelist: [
-            "./src/css/components/**/*.{css}"
+            "./src/css/components/*.css"
         ],
         whitelistPatterns: [],
         extensions: [
