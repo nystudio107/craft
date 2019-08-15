@@ -183,11 +183,10 @@ function setupCraftScripts()
 function installNodePackages()
 {
     $command = '';
-    if (shellCommandExists('yarn')) {
-        $command = 'yarn';
-    }
     if (shellCommandExists('npm')) {
         $command = 'npm install';
+    } elseif (shellCommandExists('yarn')) {
+        $command = 'yarn';
     }
 
     outputString(PHP_EOL.'Installing NodeJS packages via '.$command. ' (this may take a while)', Console::FG_YELLOW);
@@ -317,7 +316,7 @@ function executeShellCommand(string $command): string
 }
 
 /**
- * Return whether a shell command exists ir not
+ * Return whether a shell command exists or not
  *
  * @param string $command
  *

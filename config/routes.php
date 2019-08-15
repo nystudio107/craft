@@ -19,5 +19,5 @@
  */
 
 return [
-
+    'amp' => ['template' => 'amp-index'],
 ];
