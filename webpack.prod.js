@@ -45,6 +45,14 @@ class TailwindExtractor {
 
 // Configure file banner
 const configureBanner = () => {
+    let commitHash = 'n/a';
+    let branch = 'n/a';
+    try {
+        let commitHash = git.long();
+        let branch = git.branch();
+    } catch(error) {
+        console.log('No git repository is associated with this project');
+    }
     return {
         banner: [
             '/*!',
@@ -52,7 +60,7 @@ const configureBanner = () => {
             ' * @name           ' + '[filebase]',
             ' * @author         ' + pkg.author.name,
             ' * @build          ' + moment().format('llll') + ' ET',
-            ' * @release        ' + git.long() + ' [' + git.branch() + ']',
+            ' * @release        ' + commitHash + ' [' + branch + ']',
             ' * @copyright      Copyright (c) ' + moment().format('YYYY') + ' ' + settings.copyright,
             ' *',
             ' */',
