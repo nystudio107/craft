@@ -11,8 +11,8 @@
  */
 
 body.login {
-    background-size: 600px;
-    background-repeat: repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-image: url('/img/site/login-background-image.svg');
 }
 
