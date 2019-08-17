@@ -1,8 +1,11 @@
 # nystudio107/craft Change Log
 
-## 2.0.2 - 2018.08.20
-###
+## 2.0.2 - 2018.08.17
+### Changed
 * Added `maxUploadFileSize` to `general.php`
+* Added `/web/dist/*` to `.gitignore`
+* Refactored the error pages out to a single channel
+* Added generic login image background
 
 ## 2.0.1 - 2018.08.15
 ### Changed
