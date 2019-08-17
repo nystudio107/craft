@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.0.2 - 2018.08.20
+###
+* Added `maxUploadFileSize` to `general.php`
+
 ## 2.0.1 - 2018.08.15
 ### Changed
 * Numerous template changes to get the base build working
