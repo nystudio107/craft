@@ -6,6 +6,7 @@
 
 ### Changed
 * Updated `.gitignore` and `.env.example`
+* Ignore CP and `.php` for Service Worker runtime caching
 
 ## 2.0.2 - 2018.08.17
 ### Changed
