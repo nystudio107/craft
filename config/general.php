@@ -25,7 +25,6 @@ return [
     'resourceBasePath' => getenv('WEB_ROOT_PATH').'/cpresources',
     'runQueueAutomatically' => (bool)getenv('RUN_QUEUE_AUTOMATICALLY'),
     'securityKey' => getenv('SECURITY_KEY'),
-    'siteUrl' => getenv('SITE_URL'),
     // Craft config settings from constants
     'cacheDuration' => false,
     'defaultSearchTermOptions' => [
