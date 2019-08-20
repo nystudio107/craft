@@ -7,6 +7,7 @@
 ### Changed
 * Updated `.gitignore` and `.env.example`
 * Ignore CP and `.php` for Service Worker runtime caching
+* Remove `siteUrl`, since it is now set via Project Config
 
 ## 2.0.2 - 2018.08.17
 ### Changed
