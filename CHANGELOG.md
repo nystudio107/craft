@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.0.3 - 2018.08.17
+## 2.0.3 - 2018.08.29
 ### Added
 * Added a default `config/project.yaml` for base setup
 
