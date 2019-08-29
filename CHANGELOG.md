@@ -1,5 +1,14 @@
 # nystudio107/craft Change Log
 
+## 2.0.3 - 2018.08.29
+### Added
+* Added a default `config/project.yaml` for base setup
+
+### Changed
+* Updated `.gitignore` and `.env.example`
+* Ignore CP and `.php` for Service Worker runtime caching
+* Remove `siteUrl`, since it is now set via Project Config
+
 ## 2.0.2 - 2018.08.17
 ### Changed
 * Added `maxUploadFileSize` to `general.php`

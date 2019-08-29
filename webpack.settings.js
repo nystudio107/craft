@@ -113,7 +113,6 @@ module.exports = {
             "/dist/workbox-catch-handler.js"
         ],
         exclude: [
-            /\/admin.*$/,
             /\.(png|jpe?g|gif|svg|webp)$/i,
             /\.map$/,
             /^manifest.*\\.js(?:on)?$/,
@@ -125,6 +124,14 @@ module.exports = {
         ],
         offlineGoogleAnalytics: true,
         runtimeCaching: [
+            {
+                urlPattern: /\/admin.*$/,
+                handler: "networkOnly"
+            },
+            {
+                urlPattern: /\.php$/,
+                handler: "networkOnly"
+            },
             {
                 urlPattern: /\.(?:png|jpg|jpeg|svg|webp)$/,
                 handler: "cacheFirst",
