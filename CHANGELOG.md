@@ -1,6 +1,16 @@
 # nystudio107/craft Change Log
 
-## 2.0.3 - 2018.08.29
+## 2.0.4 - 2020.02.05
+### Added
+* Added `settings.babelLoaderConfig.include`
+
+### Changed
+* Removed entirely the concept of a "modern" and "legacy" build from the `webpack.dev.js`; we don't need legacy builds with `webpack-dev-server`
+
+### Fixed
+* Changed deprecated use of `cacheFirst` to `CacheFirst` in the Workbox config
+
+## 2.0.3 - 2019.08.29
 ### Added
 * Added a default `config/project.yaml` for base setup
 
@@ -9,18 +19,18 @@
 * Ignore CP and `.php` for Service Worker runtime caching
 * Remove `siteUrl`, since it is now set via Project Config
 
-## 2.0.2 - 2018.08.17
+## 2.0.2 - 2019.08.17
 ### Changed
 * Added `maxUploadFileSize` to `general.php`
 * Added `/web/dist/*` to `.gitignore`
 * Refactored the error pages out to a single channel
 * Added generic login image background
 
-## 2.0.1 - 2018.08.15
+## 2.0.1 - 2019.08.15
 ### Changed
 * Numerous template changes to get the base build working
 
-## 2.0.0 - 2018.08.14
+## 2.0.0 - 2019.08.14
 ### Changed
 * Updated to use modern webpack config
 * Updated to use Craft 3.2 as the baseline
