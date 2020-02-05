@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.0.4 - 2019.08.29
+## 2.0.4 - 2020.02.05
 ### Added
 * Added `settings.babelLoaderConfig.include`
 
