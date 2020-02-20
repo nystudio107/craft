@@ -1,9 +1,9 @@
 {# -- Handle tabs gracefully as per https://hackernoon.com/removing-that-ugly-focus-ring-and-keeping-it-too-6c8727fefcd2 -- #}
 <style>
-    body:not(.user-is-tabbing) button:focus,
-    body:not(.user-is-tabbing) input:focus,
-    body:not(.user-is-tabbing) select:focus,
-    body:not(.user-is-tabbing) textarea:focus {
+    html:not(.user-is-tabbing) button:focus,
+    html:not(.user-is-tabbing) input:focus,
+    html:not(.user-is-tabbing) select:focus,
+    html:not(.user-is-tabbing) textarea:focus {
         outline: none;
     }
 </style>
