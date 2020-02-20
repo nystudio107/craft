@@ -38,6 +38,8 @@ module.exports = {
         exclude: [
             /(node_modules|bower_components)/
         ],
+        include: [
+        ],
     },
     copyWebpackConfig: [
         {
@@ -110,7 +112,7 @@ module.exports = {
         swDest: "../sw.js",
         precacheManifestFilename: "js/precache-manifest.[manifestHash].js",
         importScripts: [
-            "/dist/workbox-catch-handler.js"
+            "/dist/js/workbox-catch-handler.js"
         ],
         exclude: [
             /\.(png|jpe?g|gif|svg|webp)$/i,
@@ -134,7 +136,7 @@ module.exports = {
             },
             {
                 urlPattern: /\.(?:png|jpg|jpeg|svg|webp)$/,
-                handler: "cacheFirst",
+                handler: "CacheFirst",
                 options: {
                     cacheName: "images",
                     expiration: {
