@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.1.0 - 2020.02.24
+### Changed
+* Set `'defaultTokenDuration' => 'P2W'` in `config/general.php` for longer preview tokens
+
 ## 2.0.4 - 2020.02.05
 ### Added
 * Added `settings.babelLoaderConfig.include`
