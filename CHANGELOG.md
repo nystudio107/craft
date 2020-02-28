@@ -1,5 +1,12 @@
 # nystudio107/craft Change Log
 
+## 2.1.1 - 2020.02.28
+### Changed
+* Remove `craft.twigpack.includeCssRelPreloadPolyfill()`
+* Use a regular function for our ServiceWorker registration JS, because IE11
+* Remove the `include` setting from `configureBabelLoader()`
+* Add `sourceType: 'unambiguous'` to better handle different types of modules
+
 ## 2.1.0 - 2020.02.24
 ### Changed
 * Set `'defaultTokenDuration' => 'P2W'` in `config/general.php` for longer preview tokens
