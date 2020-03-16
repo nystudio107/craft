@@ -44,22 +44,29 @@ Make sure that `PATH` is the path to your project, including the name you want f
 
     composer create-project nystudio107/craft craft3
 
-Then `cd` to your new project directory, and run Craft's `setup` console command to create your `.env` environments and optionally install:
+## Setting Local Dev
 
-    cd PATH
-    ./craft setup
+You'll need Docker desktop for your platform installed to run devMode in local development
 
-Finally, run the `nys-setup` command to configure Craft-Scripts based on your newly created `.env` settings:
+* Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
+* Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
+* Start up the site with `docker-composer up` (the first build will be somewhat lengthy)
+* Import the remote db the first time from the `scripts/` dir with `./docker_pull_db.sh`
+* Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 
-    ./nys-setup
+**N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes, and for devMode.fm hosts
 
-That's it, enjoy!
+To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers), do:
+```
+rm cms/composer.lock
+docker-compose up
+```
 
-If you ever delete the `vendor` folder or such, just re-run:
-
-    ./nys-setup
-
-...and it will re-create the symlink to your `.env.sh`; don't worry, it won't stomp on any changes you've made.
+To update to the latest npm packages (as constrained by the `docker-config/webpack-dev-devmode/package.json` semvers), do:
+```
+rm docker-config/webpack-dev-devmode/package-lock.json
+docker-compose up
+```
 
 Below is the entire intact, unmodified `README.md` from Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft):
 
