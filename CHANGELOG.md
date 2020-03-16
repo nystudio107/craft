@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.2.0 - 2020.03.16
+### Changed
+* Switch to Docker for local dev
+
 ## 2.1.1 - 2020.02.28
 ### Changed
 * Remove `craft.twigpack.includeCssRelPreloadPolyfill()`
