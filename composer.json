@@ -40,7 +40,7 @@
       "@php -r \"copy('./scripts/example.env.sh', './scripts/.env.sh');\"",
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"unlink('LICENSE.md');\"",
-      "@php -r \"unlink('README.md');\"",
+      "@php -r \"unlink('README.md');\""
     ]
   }
 }
