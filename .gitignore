@@ -12,31 +12,31 @@
 # This file should be renamed to '.gitignore' and placed in your
 # Craft 3 CMS project root directory
 
+
+# This file should be renamed to '.gitignore' and placed in your
+# Craft 3 CMS project root directory
+
 # CRAFT ENVIRONMENT
 .env*
-!.env.example
 
 # COMPOSER
-/vendor
+*/vendor/*
 
 # CRAFT STORAGE
-/storage/*
-!/storage/.gitkeep
+*/storage/*
+!*/storage/.gitkeep
 
 # ASSETS
-/web/assets/*
-/web/cpresources/*
-/web/dist/*
+/cms/web/assets/*
+/cms/web/cpresources/*
 
 # BUILD FILES
-/bower_components/*
-/node_modules/*
-/build/*
-/yarn-error.log
-/npm-debug.log
+node_modules
+yarn-error.log
+npm-debug.log
 
 # TRANSCODER
-/web/transcoder/*
+/cms/web/transcoder/*
 
 # MISC FILES
 .cache

@@ -10,17 +10,17 @@ module.exports = {
     copyright: "Example Company, Inc.",
     paths: {
         src: {
-            base: "./src/",
-            css: "./src/css/",
-            js: "./src/js/"
+            base: "../../src/",
+            css: "../../src/css/",
+            js: "../../src/js/"
         },
         dist: {
-            base: "./web/dist/",
+            base: "../../cms/web/dist/",
             clean: [
                 '**/*',
             ]
         },
-        templates: "./templates/"
+        templates: "../../cms/templates/"
     },
     urls: {
         live: "https://example.com/",
@@ -32,21 +32,25 @@ module.exports = {
         cssName: "styles"
     },
     entries: {
-        "app": "app.js"
+        "app": "app.js",
     },
     babelLoaderConfig: {
         exclude: [
             /(node_modules|bower_components)/
         ],
+<<<<<<< HEAD:webpack.settings.js
     },
+=======
+     },
+>>>>>>> feature/docker:docker-config/webpack-dev-craft/webpack.settings.js
     copyWebpackConfig: [
         {
-            from: "./src/js/workbox-catch-handler.js",
+            from: "../../src/js/workbox-catch-handler.js",
             to: "js/[name].[ext]"
         }
     ],
     criticalCssConfig: {
-        base: "./web/dist/criticalcss/",
+        base: "../../cms/web/dist/criticalcss/",
         suffix: "_critical.min.css",
         criticalHeight: 1200,
         criticalWidth: 1200,
@@ -54,15 +58,31 @@ module.exports = {
         ampCriticalHeight: 19200,
         ampCriticalWidth: 600,
         pages: [
-            {
-                url: "",
-                template: "index"
-            },
-            {
-                url: "",
-                template: "amp_index"
-            },
-        ]
+                {
+                    url: "",
+                    template: "index"
+                },
+                {
+                    url: "",
+                    template: "amp_index"
+                },
+                {
+                    url: "errors/offline",
+                    template: "errors/offline"
+                },
+                {
+                    url: "errors/error",
+                    template: "errors/error"
+                },
+                {
+                    url: "errors/503",
+                    template: "errors/503"
+                },
+                {
+                    url: "errors/404",
+                    template: "errors/404"
+                }
+            ]
     },
     devServerConfig: {
         public: () => process.env.DEVSERVER_PUBLIC || "http://localhost:8080",
@@ -76,11 +96,12 @@ module.exports = {
     },
     purgeCssConfig: {
         paths: [
-            "./templates/**/*.{twig,html}",
-            "./src/vue/**/*.{vue,html}"
+            "../../cms/templates/**/*.{twig,html}",
+            "../../src/vue/**/*.{vue,html}",
+            "./node_modules/vuetable-2/src/components/**/*.{vue,html}",
         ],
         whitelist: [
-            "./src/css/components/*.css"
+            "../../src/css/components/**/*.{css}"
         ],
         whitelistPatterns: [],
         extensions: [
@@ -103,21 +124,21 @@ module.exports = {
         }
     ],
     webappConfig: {
-        logo: "./src/img/favicon-src.png",
+        logo: "../../src/img/favicon-src.png",
         prefix: "img/favicons/"
     },
     workboxConfig: {
         swDest: "../sw.js",
         precacheManifestFilename: "js/precache-manifest.[manifestHash].js",
         importScripts: [
-            "/dist/js/workbox-catch-handler.js"
         ],
         exclude: [
             /\.(png|jpe?g|gif|svg|webp)$/i,
+            /\.mp3.*$/i,
             /\.map$/,
             /^manifest.*\\.js(?:on)?$/,
         ],
-        globDirectory: "./web/",
+        globDirectory: "../../web/",
         globPatterns: [
             "offline.html",
             "offline.svg"
@@ -125,16 +146,17 @@ module.exports = {
         offlineGoogleAnalytics: true,
         runtimeCaching: [
             {
-                urlPattern: /\/admin.*$/,
+                urlPattern: /\/admin.*$/i,
                 handler: "networkOnly"
             },
+            // See "Serve cached audio and video" https://developers.google.com/web/tools/workbox/guides/advanced-recipes
             {
-                urlPattern: /\.php$/,
+                urlPattern: /\.mp3.*$/i,
                 handler: "networkOnly"
             },
             {
                 urlPattern: /\.(?:png|jpg|jpeg|svg|webp)$/,
-                handler: "CacheFirst",
+                handler: "cacheFirst",
                 options: {
                     cacheName: "images",
                     expiration: {

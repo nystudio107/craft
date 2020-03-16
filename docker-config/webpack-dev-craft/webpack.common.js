@@ -17,7 +17,7 @@ const pkg = require('./package.json');
 const settings = require('./webpack.settings.js');
 
 // Configure Babel loader
-const configureBabelLoader = (browserList) => {
+const configureBabelLoader = (browserList, legacy) => {
     return {
         test: /\.js$/,
         exclude: settings.babelLoaderConfig.exclude,
@@ -29,11 +29,12 @@ const configureBabelLoader = (browserList) => {
                 presets: [
                     [
                         '@babel/preset-env', {
-                            modules: false,
+                            modules: legacy ? "auto" : false,
                             corejs:  {
                                 version: 3,
                                 proposals: true
                             },
+                            debug: false,
                             useBuiltIns: 'usage',
                             targets: {
                                 browsers: browserList,
@@ -106,7 +107,10 @@ const baseConfig = {
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
-        }
+        },
+        modules: [
+            path.resolve(__dirname, 'node_modules'),
+        ],
     },
     module: {
         rules: [
@@ -124,7 +128,7 @@ const baseConfig = {
 const legacyConfig = {
     module: {
         rules: [
-            configureBabelLoader(Object.values(pkg.browserslist.legacyBrowsers)),
+            configureBabelLoader(Object.values(pkg.browserslist.legacyBrowsers, true)),
         ],
     },
     plugins: [
@@ -141,7 +145,7 @@ const legacyConfig = {
 const modernConfig = {
     module: {
         rules: [
-            configureBabelLoader(Object.values(pkg.browserslist.modernBrowsers)),
+            configureBabelLoader(Object.values(pkg.browserslist.modernBrowsers, false)),
         ],
     },
     plugins: [
