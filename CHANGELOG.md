@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.2.1 - 2020.03.17
+### Changed
+* Switch base config setup to MariaDB instead of Postgres
+
 ## 2.2.0 - 2020.03.16
 ### Changed
 * Switch to Docker for local dev
