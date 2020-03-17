@@ -38,11 +38,7 @@ module.exports = {
         exclude: [
             /(node_modules|bower_components)/
         ],
-<<<<<<< HEAD:webpack.settings.js
     },
-=======
-     },
->>>>>>> feature/docker:docker-config/webpack-dev-craft/webpack.settings.js
     copyWebpackConfig: [
         {
             from: "../../src/js/workbox-catch-handler.js",
