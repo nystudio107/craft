@@ -13,21 +13,21 @@
 # -- GLOBAL settings --
 
 # The database driver for this Craft install ('mysql' or 'pgsql')
-GLOBAL_DB_DRIVER="pgsql"
+GLOBAL_DB_DRIVER="mysql"
 
 # -- REMOTE settings --
 
 # Remote ssh credentials, user@domain.com and Remote SSH Port
-REMOTE_SSH_LOGIN="forge@devmode.fm"
+REMOTE_SSH_LOGIN="REPLACE_ME"
 REMOTE_SSH_PORT="22"
 
 # Should we connect to the remote database server via ssh?
 REMOTE_DB_USING_SSH="yes"
 
 # Remote database constants; default port for mysql is 3306, default port for postgres is 5432
-REMOTE_DB_NAME="devmode"
+REMOTE_DB_NAME="REPLACE_ME"
 REMOTE_DB_PASSWORD="REPLACE_ME"
-REMOTE_DB_USER="devmode"
+REMOTE_DB_USER="REPLACE_ME"
 REMOTE_DB_HOST="localhost"
 REMOTE_DB_PORT="5432"
 REMOTE_DB_SCHEMA="public"

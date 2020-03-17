@@ -21,14 +21,14 @@ services:
       context: .
       dockerfile: ./docker-config/php-dev-craft/Dockerfile
     depends_on:
-      - "postgres"
+      - "mariadb"
       - "redis"
     env_file:
       *env
     expose:
       - "9000"
     links:
-      - postgres
+      - mariadb
       - redis
     volumes:
       - cpresources:/var/www/project/cms/web/cpresources
