@@ -36,21 +36,22 @@ services:
       - ./cms:/var/www/project/cms:cached
       - ./cms/vendor:/var/www/project/cms/vendor:delegated
       - ./cms/storage/logs:/var/www/project/cms/storage/logs:delegated
-  # postgres - database
-  postgres:
+  # mariadb - database
+  mariadb:
     build:
       context: .
-      dockerfile: ./docker-config/postgres/Dockerfile
+      dockerfile: ./docker-config/mariadb/Dockerfile
     env_file:
       *env
     environment:
-      POSTGRES_DB: project
-      POSTGRES_USER: project
-      POSTGRES_PASSWORD: project
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: project
+      MYSQL_USER: project
+      MYSQL_PASSWORD: project
     ports:
-      - "5432:5432"
+      - "3306:3306"
     volumes:
-      - db-data:/usr/local/pgsql/data
+      - db-data:/var/lib/mysql
   # redis - key/value database for caching & php sessions
   redis:
     build:
