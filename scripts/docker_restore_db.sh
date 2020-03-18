@@ -60,12 +60,12 @@ esac
 # Functions
 function restore_local_from_dump_mysql() {
     # Restore the local db from the passed in db dump
-    $CAT_CMD "${SRC_DB_PATH}" | docker exec -i devmode_postgres_1 ${LOCAL_MYSQL_CMD} ${LOCAL_DB_CREDS}
+    $CAT_CMD "${SRC_DB_PATH}" | docker exec -i ${LOCAL_DB_CONTAINER} ${LOCAL_MYSQL_CMD} ${LOCAL_DB_CREDS}
     echo "*** Restored docker MySQL database from ${SRC_DB_PATH}"
 }
 function restore_local_from_dump_pgsql() {
     # Restore the local db from the passed in db dump
-    $CAT_CMD "${SRC_DB_PATH}" | docker exec -i devmode_postgres_1 ${LOCAL_PSQL_CMD} --output /dev/null --quiet ${LOCAL_DB_CREDS}
+    $CAT_CMD "${SRC_DB_PATH}" | docker exec -i ${LOCAL_DB_CONTAINER} ${LOCAL_PSQL_CMD} --output /dev/null --quiet ${LOCAL_DB_CREDS}
     echo "*** Restored docker Postgres database from ${SRC_DB_PATH}"
 }
 
