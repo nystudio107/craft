@@ -64,11 +64,11 @@ function pull_pgsql_ssh() {
     copy_db_dump_locally
 }
 function restore_local_from_remote_mysql() {
-    ${DB_ZCAT_CMD} "${TMP_DB_PATH}.gz" | docker exec -i devmode_postgres_1 ${LOCAL_MYSQL_CMD} ${LOCAL_DB_CREDS}
+    ${DB_ZCAT_CMD} "${TMP_DB_PATH}.gz" | docker exec -i ${LOCAL_DB_CONTAINER} ${LOCAL_MYSQL_CMD} ${LOCAL_DB_CREDS}
     echo "*** Restored docker MySQL database from ${TMP_DB_PATH}.gz"
 }
 function restore_local_from_remote_pgsql() {
-    ${DB_ZCAT_CMD} "${TMP_DB_PATH}.gz" | docker exec -i devmode_postgres_1 ${LOCAL_PSQL_CMD} --output /dev/null --quiet ${LOCAL_DB_CREDS}
+    ${DB_ZCAT_CMD} "${TMP_DB_PATH}.gz" | docker exec -i ${LOCAL_DB_CONTAINER} ${LOCAL_PSQL_CMD} --output /dev/null --quiet ${LOCAL_DB_CREDS}
     echo "*** Restored docker Postgres database from ${TMP_DB_PATH}.gz"
 }
 
