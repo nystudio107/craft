@@ -1,5 +1,12 @@
 # nystudio107/craft Change Log
 
+## 2.2.2 - 2020.03.18
+### Added
+* Added `seed_db.sql` to seed the initial database
+
+### Changed
+* Numerous setup changes/tweaks
+
 ## 2.2.1 - 2020.03.17
 ### Changed
 * Switch base config setup to MariaDB instead of Postgres
