@@ -6,12 +6,14 @@ This is an alternate scaffolding package for Craft 3 CMS projects to Pixel & Ton
  
 The project is based on [Craft CMS](https://CraftCMS.com) using a unique `templates/_boilerplate` system for web/AJAX/AMP pages, and implements a number of technologies/techniques:
  
+* [Docker](https://www.docker.com/) Docker is used for local development; see **Setting Up Local Dev** below for details
 * A base Twig templating setup as described in [An Effective Twig Base Templating Setup](https://nystudio107.com/blog/an-effective-twig-base-templating-setup)
 * [webpack](https://webpack.js.org/) is used for the build system as per [An Annotated webpack 4 Config for Frontend Web Development](https://nystudio107.com/blog/an-annotated-webpack-4-config-for-frontend-web-development)
 * [VueJS](https://vuejs.org/) is used for some of the interactive bits on the website as per 
 * [Tailwind CSS](https://tailwindcss.com/) for the site-wide CSS
 * JSON-LD structured data as per [Annotated JSON-LD Structured Data Examples](https://nystudio107.com/blog/annotated-json-ld-structured-data-examples)
 * [Google AMP](https://developers.google.com/amp/) versions of the podcast episode and other pages
+* Static assets are stored in AWS S3 buckets with CloudFront as the CDN, as per the [Setting Up AWS S3 Buckets + CloudFront CDN for your Assets](https://nystudio107.com/blog/using-aws-s3-buckets-cloudfront-distribution-with-craft-cms) article
 * Implements a Service Worker via Google's [Workbox](https://developers.google.com/web/tools/workbox/) as per [Service Workers and Offline Browsing](https://nystudio107.com/blog/service-workers-and-offline-browsing)
 * Critical CSS as per [Implementing Critical CSS on your website](https://nystudio107.com/blog/implementing-critical-css)
 * Frontend error handling as per [Handling Errors Gracefully in Craft CMS](https://nystudio107.com/blog/handling-errors-gracefully-in-craft-cms)
@@ -46,7 +48,7 @@ Make sure that `PATH` is the path to your project, including the name you want f
 
 ## Setting Local Dev
 
-You'll need Docker desktop for your platform installed to run devMode in local development
+You'll need Docker desktop for your platform installed to run the project in local development
 
 * Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
 * Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
@@ -54,7 +56,7 @@ You'll need Docker desktop for your platform installed to run devMode in local d
 * Import the remote db the first time from the `scripts/` dir with `./docker_pull_db.sh`
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 
-**N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes, and for devMode.fm hosts
+**N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes
 
 To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers), do:
 ```
@@ -62,9 +64,9 @@ rm cms/composer.lock
 docker-compose up
 ```
 
-To update to the latest npm packages (as constrained by the `docker-config/webpack-dev-devmode/package.json` semvers), do:
+To update to the latest npm packages (as constrained by the `docker-config/webpack-dev-craft/package.json` semvers), do:
 ```
-rm docker-config/webpack-dev-devmode/package-lock.json
+rm docker-config/webpack-dev-craft/package-lock.json
 docker-compose up
 ```
 
