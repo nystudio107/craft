@@ -52,6 +52,7 @@ namespace nystudio107\craft;
  * @property \putyourlightson\blitz\variables\BlitzVariable $blitz
  * @property \nystudio107\twigpack\variables\ManifestVariable $twigpack
  * @property \modules\sitemodule\SiteModule $site
+ * @mixin \craft\commerce\web\twig\CraftVariableBehavior
  *
  * @author    nystudio107
  * @package   nystudio107\craft

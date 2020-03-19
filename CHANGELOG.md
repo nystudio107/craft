@@ -1,5 +1,31 @@
 # nystudio107/craft Change Log
 
+## 2.2.2 - 2020.03.18
+### Added
+* Added `seed_db.sql` to seed the initial database
+
+### Changed
+* Numerous setup changes/tweaks
+
+## 2.2.1 - 2020.03.17
+### Changed
+* Switch base config setup to MariaDB instead of Postgres
+
+## 2.2.0 - 2020.03.16
+### Changed
+* Switch to Docker for local dev
+
+## 2.1.1 - 2020.02.28
+### Changed
+* Remove `craft.twigpack.includeCssRelPreloadPolyfill()`
+* Use a regular function for our ServiceWorker registration JS, because IE11
+* Remove the `include` setting from `configureBabelLoader()`
+* Add `sourceType: 'unambiguous'` to better handle different types of modules
+
+## 2.1.0 - 2020.02.24
+### Changed
+* Set `'defaultTokenDuration' => 'P2W'` in `config/general.php` for longer preview tokens
+
 ## 2.0.4 - 2020.02.05
 ### Added
 * Added `settings.babelLoaderConfig.include`

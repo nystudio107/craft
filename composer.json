@@ -1,7 +1,7 @@
 {
   "name": "craftcms/craft",
-  "description": "nystudio107 Craft 3.2 CMS scaffolding project",
-  "version": "2.0.4",
+  "description": "nystudio107 Craft 3.4 CMS scaffolding project",
+  "version": "2.2.1",
   "keywords": [
     "craft",
     "cms",
@@ -20,7 +20,7 @@
     "rss": "https://craftcms.com/changelog.rss"
   },
   "require": {
-    "craftcms/cms": "^3.2.0",
+    "craftcms/cms": "^3.4.0",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "autoload": {
@@ -36,15 +36,11 @@
   },
   "scripts": {
     "post-create-project-cmd": [
-      "@php -r \"copy('.env.example', '.env');\"",
+      "@php -r \"copy('./cms/example.env', './cms/.env');\"",
+      "@php -r \"copy('./scripts/example.env.sh', './scripts/.env.sh');\"",
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"unlink('LICENSE.md');\"",
-      "@php -r \"unlink('README.md');\"",
-      "@php -r \"rename('composer.json.default', 'composer.json');\"",
-      "@composer update --no-scripts",
-      "@composer dump-autoload -o",
-      "@php craft setup/welcome",
-      "@php nys-setup welcome"
+      "@php -r \"unlink('README.md');\""
     ]
   }
 }

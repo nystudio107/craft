@@ -45,43 +45,36 @@ class TailwindExtractor {
 
 // Configure file banner
 const configureBanner = () => {
-    let commitHash = 'n/a';
-    let branch = 'n/a';
     try {
-        let commitHash = git.long();
-        let branch = git.branch();
-    } catch(error) {
-        console.log('No git repository is associated with this project');
-    }
-    return {
-        banner: [
-            '/*!',
-            ' * @project        ' + settings.name,
-            ' * @name           ' + '[filebase]',
-            ' * @author         ' + pkg.author.name,
-            ' * @build          ' + moment().format('llll') + ' ET',
-            ' * @release        ' + commitHash + ' [' + branch + ']',
-            ' * @copyright      Copyright (c) ' + moment().format('YYYY') + ' ' + settings.copyright,
-            ' *',
-            ' */',
-            ''
-        ].join('\n'),
-        raw: true
-    };
-};
-
-// Configure Bundle Analyzer
-const configureBundleAnalyzer = (buildType) => {
-    if (buildType === LEGACY_CONFIG) {
         return {
-            analyzerMode: 'static',
-            reportFilename: 'report-legacy.html',
+            banner: [
+                '/*!',
+                ' * @project        ' + settings.name,
+                ' * @name           ' + '[filebase]',
+                ' * @author         ' + pkg.author.name,
+                ' * @build          ' + moment().format('llll') + ' ET',
+                ' * @release        ' + git.long() + ' [' + git.branch() + ']',
+                ' * @copyright      Copyright (c) ' + moment().format('YYYY') + ' ' + settings.copyright,
+                ' *',
+                ' */',
+                ''
+            ].join('\n'),
+            raw: true
         };
-    }
-    if (buildType === MODERN_CONFIG) {
+    } catch {
         return {
-            analyzerMode: 'static',
-            reportFilename: 'report-modern.html',
+            banner: [
+                '/*!',
+                ' * @project        ' + settings.name,
+                ' * @name           ' + '[filebase]',
+                ' * @author         ' + pkg.author.name,
+                ' * @build          ' + moment().format('llll') + ' ET',
+                ' * @copyright      Copyright (c) ' + moment().format('YYYY') + ' ' + settings.copyright,
+                ' *',
+                ' */',
+                ''
+            ].join('\n'),
+            raw: true
         };
     }
 };
@@ -102,6 +95,22 @@ const configureCompression = () => {
             return zopfli.gzip(input, compressionOptions, callback);
         }
     };
+};
+
+// Configure Bundle Analyzer
+const configureBundleAnalyzer = (buildType) => {
+    if (buildType === LEGACY_CONFIG) {
+        return {
+            analyzerMode: 'static',
+            reportFilename: 'report-legacy.html',
+        };
+    }
+    if (buildType === MODERN_CONFIG) {
+        return {
+            analyzerMode: 'static',
+            reportFilename: 'report-modern.html',
+        };
+    }
 };
 
 // Configure Critical CSS
@@ -265,6 +274,9 @@ const configurePostcssLoader = (buildType) => {
                 {
                     loader: 'postcss-loader',
                     options: {
+                        config: {
+                            path: path.resolve(__dirname),
+                        },
                         sourceMap: true
                     }
                 }
@@ -368,15 +380,15 @@ module.exports = [
                 new WebappWebpackPlugin(
                     configureWebapp()
                 ),
+                new CompressionPlugin(
+                    configureCompression()
+                ),
                 new CreateSymlinkPlugin(
                     settings.createSymlinkConfig,
                     true
                 ),
                 new SaveRemoteFilePlugin(
                     settings.saveRemoteFileConfig
-                ),
-                new CompressionPlugin(
-                    configureCompression()
                 ),
                 new BundleAnalyzerPlugin(
                     configureBundleAnalyzer(LEGACY_CONFIG),

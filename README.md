@@ -6,12 +6,14 @@ This is an alternate scaffolding package for Craft 3 CMS projects to Pixel & Ton
  
 The project is based on [Craft CMS](https://CraftCMS.com) using a unique `templates/_boilerplate` system for web/AJAX/AMP pages, and implements a number of technologies/techniques:
  
+* [Docker](https://www.docker.com/) Docker is used for local development; see **Setting Up Local Dev** below for details
 * A base Twig templating setup as described in [An Effective Twig Base Templating Setup](https://nystudio107.com/blog/an-effective-twig-base-templating-setup)
 * [webpack](https://webpack.js.org/) is used for the build system as per [An Annotated webpack 4 Config for Frontend Web Development](https://nystudio107.com/blog/an-annotated-webpack-4-config-for-frontend-web-development)
 * [VueJS](https://vuejs.org/) is used for some of the interactive bits on the website as per 
 * [Tailwind CSS](https://tailwindcss.com/) for the site-wide CSS
 * JSON-LD structured data as per [Annotated JSON-LD Structured Data Examples](https://nystudio107.com/blog/annotated-json-ld-structured-data-examples)
 * [Google AMP](https://developers.google.com/amp/) versions of the podcast episode and other pages
+* Static assets are stored in AWS S3 buckets with CloudFront as the CDN, as per the [Setting Up AWS S3 Buckets + CloudFront CDN for your Assets](https://nystudio107.com/blog/using-aws-s3-buckets-cloudfront-distribution-with-craft-cms) article
 * Implements a Service Worker via Google's [Workbox](https://developers.google.com/web/tools/workbox/) as per [Service Workers and Offline Browsing](https://nystudio107.com/blog/service-workers-and-offline-browsing)
 * Critical CSS as per [Implementing Critical CSS on your website](https://nystudio107.com/blog/implementing-critical-css)
 * Frontend error handling as per [Handling Errors Gracefully in Craft CMS](https://nystudio107.com/blog/handling-errors-gracefully-in-craft-cms)
@@ -44,22 +46,38 @@ Make sure that `PATH` is the path to your project, including the name you want f
 
     composer create-project nystudio107/craft craft3
 
-Then `cd` to your new project directory, and run Craft's `setup` console command to create your `.env` environments and optionally install:
+## Setting Local Dev
 
-    cd PATH
-    ./craft setup
+You'll need Docker desktop for your platform installed to run the project in local development
 
-Finally, run the `nys-setup` command to configure Craft-Scripts based on your newly created `.env` settings:
+* Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
+* Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
+* Start up the site with `docker-composer up` (the first build will be somewhat lengthy)
+* On the first time setting it up, the `craft_php_1` container will fail; this is normal
+* Import the `seed_db.sql` database dump the first time from the `scripts/` dir with `./docker_restore)db.sh seed_db.sql`
+* Then hit ^C (Control-C) to stop the Docker containers, and restart them with `docker-compose up` and `craft_php_1` should then work properly, since the db has been seeded
+* Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 
-    ./nys-setup
+The CP login credentials are initially set as follows:
 
-That's it, enjoy!
+Login: `andrew@nystudio107.com`
+Password: `letmein`
 
-If you ever delete the `vendor` folder or such, just re-run:
+Obviously change these to whatever you like as needed
 
-    ./nys-setup
+**N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes
 
-...and it will re-create the symlink to your `.env.sh`; don't worry, it won't stomp on any changes you've made.
+To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers), do:
+```
+rm cms/composer.lock
+docker-compose up
+```
+
+To update to the latest npm packages (as constrained by the `docker-config/webpack-dev-craft/package.json` semvers), do:
+```
+rm docker-config/webpack-dev-craft/package-lock.json
+docker-compose up
+```
 
 Below is the entire intact, unmodified `README.md` from Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft):
 

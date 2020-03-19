@@ -1,0 +1,81 @@
+version: '3.7'
+
+services:
+  # nginx - web server
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker-config/nginx/Dockerfile
+    env_file: &env
+      - ./cms/.env
+    links:
+      - php
+    ports:
+      - "8000:80"
+    volumes:
+      - cpresources:/var/www/project/cms/web/cpresources
+      - ./cms/web:/var/www/project/cms/web:cached
+  # php - personal home page
+  php:
+    build:
+      context: .
+      dockerfile: ./docker-config/php-dev-craft/Dockerfile
+    depends_on:
+      - "mariadb"
+      - "redis"
+    env_file:
+      *env
+    expose:
+      - "9000"
+    links:
+      - mariadb
+      - redis
+    volumes:
+      - cpresources:/var/www/project/cms/web/cpresources
+      - storage:/var/www/project/cms/storage
+      - ./cms:/var/www/project/cms:cached
+      - ./cms/vendor:/var/www/project/cms/vendor:delegated
+      - ./cms/storage/logs:/var/www/project/cms/storage/logs:delegated
+  # mariadb - database
+  mariadb:
+    build:
+      context: .
+      dockerfile: ./docker-config/mariadb/Dockerfile
+    env_file:
+      *env
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: project
+      MYSQL_USER: project
+      MYSQL_PASSWORD: project
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+  # redis - key/value database for caching & php sessions
+  redis:
+    build:
+      context: .
+      dockerfile: ./docker-config/redis/Dockerfile
+    expose:
+      - "6379"
+  # webpack - frontend build system
+  webpack:
+    build:
+      context: .
+      dockerfile: ./docker-config/webpack-dev-craft/Dockerfile
+    env_file:
+      *env
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./docker-config/webpack-dev-craft:/var/www/project/docker-config/webpack-dev-craft:cached
+      - ./docker-config/webpack-dev-craft/node_modules:/var/www/project/docker-config/webpack-dev-craft/node_modules:delegated
+      - ./cms/web/dist:/var/www/project/cms/web/dist:delegated
+      - ./src:/var/www/project/src:cached
+      - ./cms/templates:/var/www/project/cms/templates:cached
+
+volumes:
+  db-data:
+  cpresources:
+  storage:
