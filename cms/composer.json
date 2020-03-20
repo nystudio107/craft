@@ -1,6 +1,6 @@
 {
   "require": {
-    "craftcms/cms": "^3.4.0",
+    "craftcms/cms": "^3.5.0",
     "vlucas/phpdotenv": "^3.4.0",
     "yiisoft/yii2-redis": "^2.0.6",
     "nystudio107/craft-imageoptimize": "^1.0.0",
@@ -27,9 +27,9 @@
   },
   "scripts": {
     "craft-update": [
-      "@php craft setup/is-installed && @php craft migrate/all || return 0",
-      "@php craft setup/is-installed && @php craft project-config/sync || return 0",
-      "@php craft setup/is-installed && @php craft clear-caches/all || return 0"
+      "@php craft install/check && @php craft migrate/all || return 0",
+      "@php craft install/check && @php craft project-config/sync || return 0",
+      "@php craft install/check && @php craft clear-caches/all || return 0"
     ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('example.env', '.env');\""
