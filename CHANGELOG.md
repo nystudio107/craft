@@ -1,5 +1,11 @@
 # nystudio107/craft Change Log
 
+## 2.2.3 - 2020.03.21
+### Changed
+* Added `SERVERLESS_SHARP_CLOUDFRONT_URL` to the `example.env`
+* Added plugin licenses environment variables to `project.yaml`
+* Added `SERVERLESS_SHARP_CLOUDFRONT_URL` to the ImageOptimized default settings in `project.yaml`
+
 ## 2.2.2 - 2020.03.18
 ### Added
 * Added `seed_db.sql` to seed the initial database
