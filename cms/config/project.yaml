@@ -83,14 +83,60 @@ plugins:
   image-optimize:
     edition: standard
     enabled: true
+    licenseKey: $PLUGIN_IMAGEOPTIMIZE_LICENSE
     schemaVersion: 1.0.0
+    settings:
+      allowUpScaledImageVariants: false
+      assetVolumeSubFolders: true
+      autoSharpenScaledImages: true
+      createColorPalette: true
+      createPlaceholderSilhouettes: false
+      imageTransformTypeSettings:
+        __assoc__:
+          -
+            - nystudio107\imageoptimizeimgix\imagetransforms\ImgixImageTransform
+            -
+              __assoc__:
+                -
+                  - domain
+                  - ''
+                -
+                  - apiKey
+                  - ''
+                -
+                  - securityToken
+                  - ''
+          -
+            - nystudio107\imageoptimizesharp\imagetransforms\SharpImageTransform
+            -
+              __assoc__:
+                -
+                  - baseUrl
+                  - $SERVERLESS_SHARP_CLOUDFRONT_URL
+          -
+            - nystudio107\imageoptimizethumbor\imagetransforms\ThumborImageTransform
+            -
+              __assoc__:
+                -
+                  - baseUrl
+                  - ''
+                -
+                  - securityKey
+                  - ''
+                -
+                  - includeBucketPrefix
+                  - ''
+      lowerQualityRetinaImageVariants: false
+      transformClass: nystudio107\imageoptimizesharp\imagetransforms\SharpImageTransform
   retour:
     edition: standard
     enabled: true
+    licenseKey: $PLUGIN_RETOUR_LICENSE
     schemaVersion: 3.0.7
   seomatic:
     edition: standard
     enabled: true
+    licenseKey: $PLUGIN_SEOMATIC_LICENSE
     schemaVersion: 3.0.8
   twigpack:
     edition: standard
@@ -103,6 +149,7 @@ plugins:
   webperf:
     edition: standard
     enabled: true
+    licenseKey: $PLUGIN_WEBPERF_LICENSE
     schemaVersion: 1.0.1
 sections:
   54e60257-f31a-44aa-960e-bbd364197e28:
