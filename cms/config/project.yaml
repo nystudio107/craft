@@ -1,7 +1,7 @@
 dateModified: 1566064218
 email:
   fromEmail: andrew@nystudio107.com
-  fromName: $SITE_NAME
+  fromName: admin
   transportType: craft\mail\transportadapters\Sendmail
 fieldGroups:
   d08a0d16-0e00-49e6-9cd4-465fa2d65d7d:
@@ -194,10 +194,10 @@ sections:
         sortOrder: 1
 siteGroups:
   f89601e9-4ba9-4a48-9e99-350aa9914912:
-    name: $SITE_NAME
+    name: Default
 sites:
   5da841b1-ca0d-46ff-8bb1-04d6c889ac54:
-    name: $SITE_NAME
+    name: Default
     handle: default
     language: en-US
     hasUrls: true
@@ -206,8 +206,8 @@ sites:
     primary: true
     siteGroup: f89601e9-4ba9-4a48-9e99-350aa9914912
 system:
-  edition: solo
-  name: $SITE_NAME
+  edition: pro
+  name: Craft
   live: true
   schemaVersion: 3.4.10
   timeZone: America/New_York
