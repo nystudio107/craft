@@ -53,9 +53,9 @@ You'll need Docker desktop for your platform installed to run the project in loc
 
 * Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
 * Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
-* Start up the site with `docker-composer up` (the first build will be somewhat lengthy)
+* Start up the site with `docker-compose up` (the first build will be somewhat lengthy)
 * On the first time setting it up, the `craft_php_1` container will fail; this is normal
-* Import the `seed_db.sql` database dump the first time from the `scripts/` dir with `./docker_restore)db.sh seed_db.sql`
+* Import the `seed_db.sql` database dump the first time from the `scripts/` dir with `./docker_restore_db.sh seed_db.sql`
 * Then hit ^C (Control-C) to stop the Docker containers, and restart them with `docker-compose up` and `craft_php_1` should then work properly, since the db has been seeded
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 

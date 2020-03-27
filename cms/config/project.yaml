@@ -6,7 +6,7 @@ email:
 fieldGroups:
   d08a0d16-0e00-49e6-9cd4-465fa2d65d7d:
     name: Errors
-  efc44cb8-5a29-4f4b-8977-cf6ee112e601:
+  94b4d5ac-d7ea-4241-a6cb-92b39f482f99:
     name: Common
 fields:
   a5cb77be-c4d9-4d3e-88fb-d5384ca13941:
@@ -132,7 +132,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: $PLUGIN_RETOUR_LICENSE
-    schemaVersion: 3.0.7
+    schemaVersion: 3.0.9
   seomatic:
     edition: standard
     enabled: true
@@ -159,7 +159,7 @@ sections:
     enableVersioning: false
     propagationMethod: all
     siteSettings:
-      66514b58-f1c7-480d-b3d5-aca0b7d78f45:
+      5da841b1-ca0d-46ff-8bb1-04d6c889ac54:
         enabledByDefault: true
         hasUrls: true
         uriFormat: __home__
@@ -179,7 +179,7 @@ sections:
     enableVersioning: false
     propagationMethod: all
     siteSettings:
-      66514b58-f1c7-480d-b3d5-aca0b7d78f45:
+      5da841b1-ca0d-46ff-8bb1-04d6c889ac54:
         enabledByDefault: true
         hasUrls: false
         uriFormat: null
@@ -193,10 +193,10 @@ sections:
         titleFormat: null
         sortOrder: 1
 siteGroups:
-  29a5becc-aa82-4ea8-a790-5056591e422d:
+  f89601e9-4ba9-4a48-9e99-350aa9914912:
     name: $SITE_NAME
 sites:
-  66514b58-f1c7-480d-b3d5-aca0b7d78f45:
+  5da841b1-ca0d-46ff-8bb1-04d6c889ac54:
     name: $SITE_NAME
     handle: default
     language: en-US
@@ -204,12 +204,12 @@ sites:
     baseUrl: $SITE_URL
     sortOrder: 1
     primary: true
-    siteGroup: 29a5becc-aa82-4ea8-a790-5056591e422d
+    siteGroup: f89601e9-4ba9-4a48-9e99-350aa9914912
 system:
   edition: solo
   name: $SITE_NAME
   live: true
-  schemaVersion: 3.2.16
+  schemaVersion: 3.4.10
   timeZone: America/New_York
 users:
   requireEmailVerification: true

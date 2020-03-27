@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.2.5 - 2020.03.27
+### Changed
+* Synced up the `project.yaml` with the `seed_db.sql` so it can properly propagate
+* Added a default `SECURITY_KEY` in `example.env`
+
 ## 2.2.4 - 2020.03.27
 ### Changed
 * Skip a superfluous copy operation in the Nginx container
