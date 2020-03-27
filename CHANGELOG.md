@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.2.7 - 2020.03.27
+### Changed
+* Removed `SITE_NAME` from the `.env` vars; it's not a secret, and it doesn't change per environment
+
 ## 2.2.6 - 2020.03.27
 ### Changed
 * Remove Craft & Plugin Licenses from .env — not necessary except for public repos
