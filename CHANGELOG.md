@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.2.4 - 2020.03.27
+### Changed
+* Skip a superfluous copy operation in the Nginx container
+
 ## 2.2.3 - 2020.03.21
 ### Changed
 * Added `SERVERLESS_SHARP_CLOUDFRONT_URL` to the `example.env`
