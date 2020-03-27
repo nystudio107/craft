@@ -83,7 +83,7 @@ plugins:
   image-optimize:
     edition: standard
     enabled: true
-    licenseKey: $PLUGIN_IMAGEOPTIMIZE_LICENSE
+    licenseKey: null
     schemaVersion: 1.0.0
     settings:
       allowUpScaledImageVariants: false
@@ -131,12 +131,12 @@ plugins:
   retour:
     edition: standard
     enabled: true
-    licenseKey: $PLUGIN_RETOUR_LICENSE
+    licenseKey: null
     schemaVersion: 3.0.9
   seomatic:
     edition: standard
     enabled: true
-    licenseKey: $PLUGIN_SEOMATIC_LICENSE
+    licenseKey: null
     schemaVersion: 3.0.8
   twigpack:
     edition: standard
@@ -149,7 +149,7 @@ plugins:
   webperf:
     edition: standard
     enabled: true
-    licenseKey: $PLUGIN_WEBPERF_LICENSE
+    licenseKey: null
     schemaVersion: 1.0.1
 sections:
   54e60257-f31a-44aa-960e-bbd364197e28:

@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.2.6 - 2020.03.27
+### Changed
+* Remove Craft & Plugin Licenses from .env — not necessary except for public repos
+
 ## 2.2.5 - 2020.03.27
 ### Changed
 * Synced up the `project.yaml` with the `seed_db.sql` so it can properly propagate
