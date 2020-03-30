@@ -3,6 +3,7 @@
 ## 2.2.8 - 2020.03.30
 ### Changed
 * Remove project `composer.lock` file
+* Use separate app config files for web/console requests
 
 ## 2.2.7 - 2020.03.27
 ### Changed
