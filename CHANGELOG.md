@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.2.8 - 2020.03.30
+### Changed
+* Remove project `composer.lock` file
+* Use separate app config files for web/console requests
+
 ## 2.2.7 - 2020.03.27
 ### Changed
 * Removed `SITE_NAME` from the `.env` vars; it's not a secret, and it doesn't change per environment
