@@ -1,5 +1,15 @@
 # nystudio107/craft Change Log
 
+## 2.2.9 - 2020.04.14
+### Added
+* Added support for repo.repman.io Packagist proxy global CDN 
+
+### Changed
+* Use the CSS hash for Critical CSS cookie value
+
+### Fixed
+* Fixed Asset Bundle namespace casing
+
 ## 2.2.8 - 2020.03.30
 ### Changed
 * Remove project `composer.lock` file
