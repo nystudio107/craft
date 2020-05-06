@@ -25,6 +25,15 @@
       "php": "7.0"
     }
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.repman.io"
+    },
+    {
+      "packagist": false
+    }
+  ],
   "scripts": {
     "craft-update": [
       "@php craft setup/is-installed && @php craft migrate/all || return 0",

@@ -13,6 +13,7 @@ The project is based on [Craft CMS](https://CraftCMS.com) using a unique `templa
 * [Tailwind CSS](https://tailwindcss.com/) for the site-wide CSS
 * JSON-LD structured data as per [Annotated JSON-LD Structured Data Examples](https://nystudio107.com/blog/annotated-json-ld-structured-data-examples)
 * [Google AMP](https://developers.google.com/amp/) versions of the podcast episode and other pages
+* Image transforms are done via a [Serverless Image Handler](https://aws.amazon.com/solutions/serverless-image-handler/) lambda function, as described in the [Setting Up Your Own Image Transform Service](https://nystudio107.com/blog/setting-up-your-own-image-transform-service) article
 * Static assets are stored in AWS S3 buckets with CloudFront as the CDN, as per the [Setting Up AWS S3 Buckets + CloudFront CDN for your Assets](https://nystudio107.com/blog/using-aws-s3-buckets-cloudfront-distribution-with-craft-cms) article
 * Implements a Service Worker via Google's [Workbox](https://developers.google.com/web/tools/workbox/) as per [Service Workers and Offline Browsing](https://nystudio107.com/blog/service-workers-and-offline-browsing)
 * Critical CSS as per [Implementing Critical CSS on your website](https://nystudio107.com/blog/implementing-critical-css)
@@ -46,21 +47,21 @@ Make sure that `PATH` is the path to your project, including the name you want f
 
     composer create-project nystudio107/craft craft3
 
-## Setting Local Dev
+## Setting Up Local Dev
 
 You'll need Docker desktop for your platform installed to run the project in local development
 
 * Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
 * Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
-* Start up the site with `docker-composer up` (the first build will be somewhat lengthy)
+* Start up the site with `docker-compose up` (the first build will be somewhat lengthy)
 * On the first time setting it up, the `craft_php_1` container will fail; this is normal
-* Import the `seed_db.sql` database dump the first time from the `scripts/` dir with `./docker_restore)db.sh seed_db.sql`
-* Then hit ^C (Control-C) to stop the Docker containers, and restart them with `docker-compose up` and `craft_php_1` should then work properly, since the db has been seeded
+* Import the `seed_db.sql` database dump the first time from the `scripts/` dir with `./docker_restore_db.sh seed_db.sql`
+* Then hit `^C` (Control-C) to stop the Docker containers, and restart them with `docker-compose up` and `craft_php_1` should then work properly, since the db has been seeded
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 
 The CP login credentials are initially set as follows:
 
-Login: `andrew@nystudio107.com`
+Login: `andrew@nystudio107.com` \
 Password: `letmein`
 
 Obviously change these to whatever you like as needed

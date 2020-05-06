@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2018 nystudio107
  */
 
-namespace modules\sitemodule\assetbundles\SiteModule;
+namespace modules\sitemodule\assetbundles\sitemodule;
 
 use Craft;
 use craft\web\AssetBundle;

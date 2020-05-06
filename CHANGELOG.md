@@ -1,5 +1,43 @@
 # nystudio107/craft Change Log
 
+## 2.2.9 - 2020.04.14
+### Added
+* Added support for repo.repman.io Packagist proxy global CDN 
+
+### Changed
+* Use the CSS hash for Critical CSS cookie value
+
+### Fixed
+* Fixed Asset Bundle namespace casing
+
+## 2.2.8 - 2020.03.30
+### Changed
+* Remove project `composer.lock` file
+* Use separate app config files for web/console requests
+
+## 2.2.7 - 2020.03.27
+### Changed
+* Removed `SITE_NAME` from the `.env` vars; it's not a secret, and it doesn't change per environment
+
+## 2.2.6 - 2020.03.27
+### Changed
+* Remove Craft & Plugin Licenses from .env — not necessary except for public repos
+
+## 2.2.5 - 2020.03.27
+### Changed
+* Synced up the `project.yaml` with the `seed_db.sql` so it can properly propagate
+* Added a default `SECURITY_KEY` in `example.env`
+
+## 2.2.4 - 2020.03.27
+### Changed
+* Skip a superfluous copy operation in the Nginx container
+
+## 2.2.3 - 2020.03.21
+### Changed
+* Added `SERVERLESS_SHARP_CLOUDFRONT_URL` to the `example.env`
+* Added plugin licenses environment variables to `project.yaml`
+* Added `SERVERLESS_SHARP_CLOUDFRONT_URL` to the ImageOptimized default settings in `project.yaml`
+
 ## 2.2.2 - 2020.03.18
 ### Added
 * Added `seed_db.sql` to seed the initial database
