@@ -80,6 +80,28 @@ rm docker-config/webpack-dev-craft/package-lock.json
 docker-compose up
 ```
 
+To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug ) and use the following configuration:
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+        "name": "Listen for Xdebug",
+        "type": "php",
+        "request": "launch",
+        "port": 9001,
+        "log": true,
+        "externalConsole": false,
+        "pathMappings": {
+            "/var/www/project/cms": "${workspaceRoot}/cms"
+        },
+        "ignore": ["**/vendor/**/*.php"]
+        }
+    ]
+}
+```
+
+
 Below is the entire intact, unmodified `README.md` from Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft):
 
 .....
