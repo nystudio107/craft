@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
-## 2.2.10 - 2020.05.19
+## 2.2.10 - 2020.05.20
+### Added
+* Added baked-in support for xdebug
+
 ### Changed
 * Always do a `composer install` & `npm install` when starting up via `docker-compose up`
 
