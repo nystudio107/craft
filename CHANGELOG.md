@@ -1,5 +1,15 @@
 # nystudio107/craft Change Log
 
+## 2.2.10 - 2020.05.20
+### Added
+* Added baked-in support for xdebug
+
+### Changed
+* Always do a `composer install` & `npm install` when starting up via `docker-compose up`
+
+### Fixed
+* Fixed tab handler not adding the class to the `<body>`
+
 ## 2.2.9 - 2020.04.14
 ### Added
 * Added support for repo.repman.io Packagist proxy global CDN 
