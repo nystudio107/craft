@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
 ## 2.2.10 - 2020.05.19
+### Changed
+* Always do a `composer install` & `npm install` when starting up via `docker-compose up`
+
 ### Fixed
 * Fixed tab handler not adding the class to the `<body>`
 
