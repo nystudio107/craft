@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.2.11 - 2020.05.26
+### Changed
+* Use DSN for database connections
+
 ## 2.2.10 - 2020.05.20
 ### Added
 * Added baked-in support for xdebug
