@@ -43,7 +43,7 @@ class Config
         $currentEnv = Craft::$app->getConfig()->env;
 
         // Try craft/config first
-        $path = Craft::getAlias('@craft/config/'.$fileName, false);
+        $path = Craft::getAlias('@config/'.$fileName, false);
         if ($path === false || !file_exists($path)) {
             // Now try our own internal config
             $path = Craft::getAlias('@modules/sitemodule/'.$fileName, false);
