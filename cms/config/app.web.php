@@ -20,9 +20,9 @@ return [
         'session' => [
             'class' => \yii\redis\Session::class,
             'redis' => [
-                'hostname' => getenv('REDIS_HOSTNAME'),
-                'port' => getenv('REDIS_PORT'),
-                'database' => getenv('REDIS_CRAFT_DB'),
+                'hostname' => App::env('REDIS_HOSTNAME'),
+                'port' => App::env('REDIS_PORT'),
+                'database' => App::env('REDIS_CRAFT_DB'),
             ],
             'as session' => [
                 'class' => \craft\behaviors\SessionBehavior::class,
