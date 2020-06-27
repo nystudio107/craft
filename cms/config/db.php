@@ -8,6 +8,8 @@
  * @see craft\config\DbConfig
  */
 
+use craft\helpers\App;
+
 return [
     'dsn' => App::env('DB_DSN'),
     'user' => App::env('DB_USER'),
