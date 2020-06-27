@@ -15,6 +15,8 @@
  * This application config is applied only for *only* web requests
  */
 
+use craft\helpers\App;
+
 return [
     'components' => [
         'session' => [

@@ -17,6 +17,8 @@
  * your config/ folder, alongside this one.
  */
 
+use craft\helpers\App;
+
 return [
     'modules' => [
         'site-module' => [

@@ -32,7 +32,7 @@ module.exports = {
         cssName: "styles"
     },
     entries: {
-        "app": "app.js",
+        "app": "app.ts",
     },
     babelLoaderConfig: {
         exclude: [
@@ -119,6 +119,11 @@ module.exports = {
             symlink: "../favicon.ico"
         }
     ],
+    typescriptLoaderConfig: {
+        exclude: [
+            /(node_modules)/
+        ],
+    },
     webappConfig: {
         logo: "../../src/img/favicon-src.png",
         prefix: "img/favicons/"

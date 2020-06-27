@@ -8,6 +8,8 @@
  * @copyright Copyright (c) 2017 nystudio107
  */
 
+use craft\helpers\App;
+
 /**
  * FastCGI Cache Bust config.php
  *

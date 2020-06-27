@@ -8,6 +8,8 @@ const merge = require('webpack-merge');
 
 // webpack plugins
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
@@ -29,23 +31,49 @@ const configureBabelLoader = (browserList, legacy) => {
                 presets: [
                     [
                         '@babel/preset-env', {
-                            modules: legacy ? "auto" : false,
-                            corejs:  {
-                                version: 3,
-                                proposals: true
-                            },
-                            debug: false,
-                            useBuiltIns: 'usage',
-                            targets: {
-                                browsers: browserList,
-                            },
-                        }
+                        modules: legacy ? "auto" : false,
+                        corejs: {
+                            version: 3,
+                            proposals: true
+                        },
+                        debug: false,
+                        useBuiltIns: 'usage',
+                        targets: {
+                            browsers: browserList,
+                        },
+                    }
+                    ],
+                    [
+                        '@babel/preset-typescript', {
+                        'allExtensions': true,
+                        'isTSX': false,
+                    }
                     ],
                 ],
                 plugins: [
                     '@babel/plugin-syntax-dynamic-import',
                     '@babel/plugin-transform-runtime',
+                    '@babel/plugin-proposal-class-properties',
+                    '@babel/plugin-proposal-object-rest-spread',
+                    '@babel/plugin-proposal-nullish-coalescing-operator',
+                    '@babel/plugin-proposal-optional-chaining',
                 ],
+            },
+        },
+    };
+};
+
+// Configure TypeScript loader
+const configureTypeScriptLoader = () => {
+    return {
+        test: /\.ts$/,
+        exclude: settings.typescriptLoaderConfig.exclude,
+        use: {
+            loader: 'ts-loader',
+            options: {
+                transpileOnly: true,
+                appendTsSuffixTo: [/\.vue$/],
+                happyPackMode: false,
             },
         },
     };
@@ -105,6 +133,7 @@ const baseConfig = {
         publicPath: settings.urls.publicPath()
     },
     resolve: {
+        extensions: ['.ts', '.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
         },
@@ -121,6 +150,19 @@ const baseConfig = {
     plugins: [
         new WebpackNotifierPlugin({title: 'Webpack', excludeWarnings: true, alwaysNotify: true}),
         new VueLoaderPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                configFile: '../../tsconfig.json',
+                extensions: {
+                    vue: true
+                }
+            }
+        }),
+        new ForkTsCheckerNotifierWebpackPlugin({
+            title: 'Webpack',
+            excludeWarnings: true,
+            alwaysNotify: false,
+        }),
     ]
 };
 
@@ -129,6 +171,7 @@ const legacyConfig = {
     module: {
         rules: [
             configureBabelLoader(Object.values(pkg.browserslist.legacyBrowsers, true)),
+            configureTypeScriptLoader(),
         ],
     },
     plugins: [
@@ -146,6 +189,7 @@ const modernConfig = {
     module: {
         rules: [
             configureBabelLoader(Object.values(pkg.browserslist.modernBrowsers, false)),
+            configureTypeScriptLoader(),
         ],
     },
     plugins: [

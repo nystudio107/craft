@@ -1,5 +1,5 @@
 // Import our CSS
-import styles from '../css/app.pcss';
+import '../css/app.pcss';
 
 // App main
 const main = async () => {
