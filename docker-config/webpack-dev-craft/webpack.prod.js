@@ -6,7 +6,6 @@ const MODERN_CONFIG = 'modern';
 const git = require('git-rev-sync');
 const glob = require('glob-all');
 const merge = require('webpack-merge');
-const moment = require('moment');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -45,6 +44,7 @@ class TailwindExtractor {
 
 // Configure file banner
 const configureBanner = () => {
+    const timestamp = new Date();
     try {
         return {
             banner: [
@@ -52,9 +52,9 @@ const configureBanner = () => {
                 ' * @project        ' + settings.name,
                 ' * @name           ' + '[filebase]',
                 ' * @author         ' + pkg.author.name,
-                ' * @build          ' + moment().format('llll') + ' ET',
+                ' * @build          ' + timestamp.toString(),
                 ' * @release        ' + git.long() + ' [' + git.branch() + ']',
-                ' * @copyright      Copyright (c) ' + moment().format('YYYY') + ' ' + settings.copyright,
+                ' * @copyright      Copyright (c) ' + timestamp.getFullYear() + ' ' + settings.copyright,
                 ' *',
                 ' */',
                 ''
@@ -68,8 +68,8 @@ const configureBanner = () => {
                 ' * @project        ' + settings.name,
                 ' * @name           ' + '[filebase]',
                 ' * @author         ' + pkg.author.name,
-                ' * @build          ' + moment().format('llll') + ' ET',
-                ' * @copyright      Copyright (c) ' + moment().format('YYYY') + ' ' + settings.copyright,
+                ' * @build          ' + timestamp.toString(),
+                ' * @copyright      Copyright (c) ' + timestamp.getFullYear() + ' ' + settings.copyright,
                 ' *',
                 ' */',
                 ''
