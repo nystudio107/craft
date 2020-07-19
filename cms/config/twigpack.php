@@ -9,6 +9,8 @@
  * @copyright Copyright (c) 2018 nystudio107
  */
 
+use craft\helpers\App;
+
 /**
  * Twigpack config.php
  *

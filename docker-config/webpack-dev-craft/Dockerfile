@@ -2,6 +2,8 @@ FROM nystudio107/webpack-dev-base
 
 WORKDIR /var/www/project/docker-config/webpack-dev-craft/
 
+COPY ./docker-config/webpack-dev-craft/tsconfig.json /var/www/project/tsconfig.json
+
 # Run our webpack build in debug mode
 
 # We'd normally use `npm ci` here, but by using `install`:

@@ -8,6 +8,8 @@
  * @see \craft\config\GeneralConfig
  */
 
+use craft\helpers\App;
+
 return [
     // Craft config settings from .env variables
     'aliases' => [

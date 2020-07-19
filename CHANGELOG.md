@@ -1,5 +1,20 @@
 # nystudio107/craft Change Log
 
+## 2.2.12 - 2020.07.18
+### Added
+* Added TypeScript support
+* Use Vue.js 3.0
+* Added `buddy.yml` for atomic deployments
+
+### Changed
+* Replaced moment with vanilla JavaScript
+* Replaced `getenv()` with `App::env()`
+* No longer use DSN for db connections
+* Switch from TSLint to ESLint
+
+### Fixed
+* Fixed config path in the module `helpers/Config.php`
+
 ## 2.2.11 - 2020.05.26
 ### Changed
 * Use DSN for database connections
