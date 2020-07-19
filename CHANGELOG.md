@@ -4,6 +4,7 @@
 ### Added
 * Added TypeScript support
 * Use Vue.js 3.0
+* Added `buddy.yml` for atomic deployments
 
 ### Changed
 * Replaced moment with vanilla JavaScript
