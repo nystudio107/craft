@@ -8,8 +8,10 @@ const merge = require('webpack-merge');
 
 // webpack plugins
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+/* -- Does not yet work with Vue 3
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
+*/
 const ManifestPlugin = require('webpack-manifest-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const WebpackNotifierPlugin = require('webpack-notifier');
@@ -150,6 +152,7 @@ const baseConfig = {
     plugins: [
         new WebpackNotifierPlugin({title: 'Webpack', excludeWarnings: true, alwaysNotify: true}),
         new VueLoaderPlugin(),
+/* -- Does not yet work with Vue 3
         new ForkTsCheckerWebpackPlugin({
             typescript: {
                 configFile: '../../tsconfig.json',
@@ -163,6 +166,7 @@ const baseConfig = {
             excludeWarnings: true,
             alwaysNotify: false,
         }),
+ */
     ]
 };
 

@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.2.13 - 2020.07.18
+### Changed
+* Disable the ForkTS plugins for now
+
 ## 2.2.12 - 2020.07.18
 ### Added
 * Added TypeScript support
