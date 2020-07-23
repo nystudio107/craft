@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.2.14 - 2020.07.23
+### Fixed
+* Change `throwExceptions` deprecator config to use `App::env('DEV_MODE')`
+
 ## 2.2.13 - 2020.07.18
 ### Changed
 * Disable the ForkTS plugins for now
