@@ -14,6 +14,6 @@ if ('loading' in HTMLImageElement.prototype) {
    // Dynamically import the LazySizes library
     const script = document.createElement('script');
     script.src =
-        '{{ craft.twigpack.getModuleUri("lazysizes-wrapper.js") }}';
+        '{{ craft.twigpack.getModuleUri("lazysizes-wrapper.js", "legacy") }}';
     document.body.appendChild(script);
 }
