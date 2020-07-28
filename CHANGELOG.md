@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
-## 2.2.14 - 2020.07.23
+## 2.2.14 - 2020.07.27
+### Added
+* Add native image lazy loading
+
 ### Fixed
 * Change `throwExceptions` deprecator config to use `App::env('DEV_MODE')`
 
