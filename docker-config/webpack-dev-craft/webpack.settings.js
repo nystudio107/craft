@@ -33,7 +33,8 @@ module.exports = {
     },
     entries: {
         "app": "app.ts",
-    },
+        "lazysizes-wrapper": "utils/lazysizes-wrapper.ts",
+   },
     babelLoaderConfig: {
         exclude: [
             /(node_modules|bower_components)/
