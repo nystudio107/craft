@@ -1,10 +1,12 @@
 # nystudio107/craft Change Log
 
-## 2.2.14 - 2020.07.27
+## 2.3.0 - 2020.08.02
 ### Added
 * Add native image lazy loading
+* Slim Docker containers after build
 
 ### Fixed
+* Refactored Docker config to use more sane contexts during builds
 * Change `throwExceptions` deprecator config to use `App::env('DEV_MODE')`
 
 ## 2.2.13 - 2020.07.18
