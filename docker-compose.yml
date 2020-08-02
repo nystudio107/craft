@@ -4,8 +4,8 @@ services:
   # nginx - web server
   nginx:
     build:
-      context: .
-      dockerfile: ./docker-config/nginx/Dockerfile
+      context: ./docker-config/nginx
+      dockerfile: ./Dockerfile
     env_file: &env
       - ./cms/.env
     links:
@@ -18,8 +18,8 @@ services:
   # php - personal home page
   php:
     build:
-      context: .
-      dockerfile: ./docker-config/php-dev-craft/Dockerfile
+      context: ./docker-config/php-dev-craft
+      dockerfile: ./Dockerfile
     depends_on:
       - "mariadb"
       - "redis"
@@ -39,8 +39,8 @@ services:
   # mariadb - database
   mariadb:
     build:
-      context: .
-      dockerfile: ./docker-config/mariadb/Dockerfile
+      context: ./docker-config/mariadb
+      dockerfile: ./Dockerfile
     env_file:
       *env
     environment:
@@ -55,22 +55,23 @@ services:
   # redis - key/value database for caching & php sessions
   redis:
     build:
-      context: .
-      dockerfile: ./docker-config/redis/Dockerfile
+      context: ./docker-config/redis
+      dockerfile: ./Dockerfile
     expose:
       - "6379"
   # webpack - frontend build system
   webpack:
     build:
-      context: .
-      dockerfile: ./docker-config/webpack-dev-craft/Dockerfile
+      context: ./docker-config/node-dev-webpack
+      dockerfile: ./Dockerfile
     env_file:
       *env
     ports:
       - "8080:8080"
     volumes:
-      - ./docker-config/webpack-dev-craft:/var/www/project/docker-config/webpack-dev-craft:cached
-      - ./docker-config/webpack-dev-craft/node_modules:/var/www/project/docker-config/webpack-dev-craft/node_modules:delegated
+      - ./tsconfig.json:/var/www/project/tsconfig.json:cached
+      - ./buildchain:/var/www/project/buildchain:cached
+      - ./buildchain/node_modules:/var/www/project/buildchain/node_modules:delegated
       - ./cms/web/dist:/var/www/project/cms/web/dist:delegated
       - ./src:/var/www/project/src:cached
       - ./cms/templates:/var/www/project/cms/templates:cached

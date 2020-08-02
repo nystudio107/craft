@@ -10,17 +10,17 @@ module.exports = {
     copyright: "Example Company, Inc.",
     paths: {
         src: {
-            base: "../../src/",
-            css: "../../src/css/",
-            js: "../../src/js/"
+            base: "../src/",
+            css: "../src/css/",
+            js: "../src/js/"
         },
         dist: {
-            base: "../../cms/web/dist/",
+            base: "../cms/web/dist/",
             clean: [
                 '**/*',
             ]
         },
-        templates: "../../cms/templates/"
+        templates: "../cms/templates/"
     },
     urls: {
         live: "https://example.com/",
@@ -42,12 +42,12 @@ module.exports = {
     },
     copyWebpackConfig: [
         {
-            from: "../../src/js/workbox-catch-handler.js",
+            from: "../src/js/workbox-catch-handler.js",
             to: "js/[name].[ext]"
         }
     ],
     criticalCssConfig: {
-        base: "../../cms/web/dist/criticalcss/",
+        base: "../cms/web/dist/criticalcss/",
         suffix: "_critical.min.css",
         criticalHeight: 1200,
         criticalWidth: 1200,
@@ -93,12 +93,12 @@ module.exports = {
     },
     purgeCssConfig: {
         paths: [
-            "../../cms/templates/**/*.{twig,html}",
-            "../../src/vue/**/*.{vue,html}",
+            "../cms/templates/**/*.{twig,html}",
+            "../src/vue/**/*.{vue,html}",
             "./node_modules/vuetable-2/src/components/**/*.{vue,html}",
         ],
         whitelist: [
-            "../../src/css/components/**/*.{css}"
+            "../src/css/components/**/*.{css}"
         ],
         whitelistPatterns: [],
         extensions: [
@@ -126,7 +126,7 @@ module.exports = {
         ],
     },
     webappConfig: {
-        logo: "../../src/img/favicon-src.png",
+        logo: "../src/img/favicon-src.png",
         prefix: "img/favicons/"
     },
     workboxConfig: {
@@ -140,7 +140,7 @@ module.exports = {
             /\.map$/,
             /^manifest.*\\.js(?:on)?$/,
         ],
-        globDirectory: "../../web/",
+        globDirectory: "../web/",
         globPatterns: [
             "offline.html",
             "offline.svg"

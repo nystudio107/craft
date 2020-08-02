@@ -44,4 +44,10 @@ RUN apt-get update \
         libnss3 \
         lsb-release \
         wget \
-        xdg-utils
+        xdg-utils \
+    # Clean apt repo caches that don't need to be part of the image
+    && \
+    apt-get clean \
+    && \
+    # Clean out directories that don't need to be part of the image
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

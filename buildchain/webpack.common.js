@@ -6,6 +6,9 @@ const MODERN_CONFIG = 'modern';
 const path = require('path');
 const merge = require('webpack-merge');
 
+// webpack
+const webpack = require('webpack');
+
 // webpack plugins
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 /* -- Does not yet work with Vue 3
@@ -152,21 +155,26 @@ const baseConfig = {
     plugins: [
         new WebpackNotifierPlugin({title: 'Webpack', excludeWarnings: true, alwaysNotify: true}),
         new VueLoaderPlugin(),
-/* -- Does not yet work with Vue 3
-        new ForkTsCheckerWebpackPlugin({
-            typescript: {
-                configFile: '../../tsconfig.json',
-                extensions: {
-                    vue: true
-                }
-            }
+        /* -- https://github.com/vuejs/vue-next/tree/master/packages/vue#bundler-build-feature-flags */
+        new webpack.DefinePlugin({
+            __VUE_OPTIONS_API__: true,
+            __VUE_PROD_DEVTOOLS__: false
         }),
-        new ForkTsCheckerNotifierWebpackPlugin({
-            title: 'Webpack',
-            excludeWarnings: true,
-            alwaysNotify: false,
-        }),
- */
+        /* -- Does not yet work with Vue 3
+                new ForkTsCheckerWebpackPlugin({
+                    typescript: {
+                        configFile: '../../tsconfig.json',
+                        extensions: {
+                            vue: true
+                        }
+                    }
+                }),
+                new ForkTsCheckerNotifierWebpackPlugin({
+                    title: 'Webpack',
+                    excludeWarnings: true,
+                    alwaysNotify: false,
+                }),
+         */
     ]
 };
 

@@ -12,12 +12,15 @@ RUN apt-get update \
         pdo_mysql \
     && \
     # Install Composer
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer \
+    # Clean apt repo caches that don't need to be part of the image
+    && \
+    apt-get clean \
+    && \
+    # Clean out directories that don't need to be part of the image
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /var/www/project
-
-# Copy over the directories/files php needs access to
-COPY --chown=www-data:www-data ./cms/composer.* /var/www/project/cms/
 
 # Create the storage directory and make it writeable by PHP
 RUN mkdir -p /var/www/project/cms/storage && \

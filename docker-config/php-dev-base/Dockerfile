@@ -56,7 +56,13 @@ RUN apt-get update \
     docker-php-ext-enable \
         imagick \
         redis \
-        xdebug
+        xdebug \
+    # Clean apt repo caches that don't need to be part of the image
+    && \
+    apt-get clean \
+    && \
+    # Clean out directories that don't need to be part of the image
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Append our php.ini overrides to the end of the file
 RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
