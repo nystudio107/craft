@@ -6,7 +6,7 @@
 * Slim Docker containers after build
 
 ### Fixed
-* Refactored Docker config to use more sane contexts during builds
+* Refactored Docker config to use more sane contexts during builds, speeding up build time immensely 🎩 Patrick
 * Change `throwExceptions` deprecator config to use `App::env('DEV_MODE')`
 
 ## 2.2.13 - 2020.07.18
