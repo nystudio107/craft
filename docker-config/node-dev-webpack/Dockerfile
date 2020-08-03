@@ -1,8 +1,6 @@
-FROM nystudio107/webpack-dev-base
+FROM nystudio107/node-dev-base
 
-WORKDIR /var/www/project/docker-config/webpack-dev-craft/
-
-COPY ./docker-config/webpack-dev-craft/tsconfig.json /var/www/project/tsconfig.json
+WORKDIR /var/www/project/buildchain/
 
 # Run our webpack build in debug mode
 

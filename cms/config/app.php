@@ -28,7 +28,7 @@ return [
     'bootstrap' => ['site-module'],
     'components' => [
         'deprecator' => [
-            'throwExceptions' => YII_DEBUG,
+            'throwExceptions' => App::env('DEV_MODE'),
         ],
         'redis' => [
             'class' => yii\redis\Connection::class,

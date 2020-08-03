@@ -75,6 +75,9 @@
     {{ craft.twigpack.includeJsModule("app.js", true) }}
     {{ craft.twigpack.includeJsModule("styles.js", true) }}
 
+    {# -- Inline JS #}
+    {% include "_boilerplate/_partials/body-js.twig" %}
+
     {# -- Any JavaScript that should be included before </body> -- #}
     {% block bodyJs %}
     {% endblock bodyJs %}
