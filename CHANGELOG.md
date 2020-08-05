@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.3.1 - 2020.08.10
+### Fixed
+* Fix redis session config to use `App::sessionConfig()`
+
 ## 2.3.0 - 2020.08.02
 ### Added
 * Add native image lazy loading
