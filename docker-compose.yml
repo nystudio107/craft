@@ -6,6 +6,7 @@ services:
     build:
       context: ./docker-config/nginx
       dockerfile: ./Dockerfile
+    init: true
     env_file: &env
       - ./cms/.env
     links:
@@ -20,6 +21,7 @@ services:
     build:
       context: ./docker-config/php-dev-craft
       dockerfile: ./Dockerfile
+    init: true
     depends_on:
       - "mariadb"
       - "redis"
@@ -41,6 +43,7 @@ services:
     build:
       context: ./docker-config/mariadb
       dockerfile: ./Dockerfile
+    init: true
     env_file:
       *env
     environment:
@@ -57,6 +60,7 @@ services:
     build:
       context: ./docker-config/redis
       dockerfile: ./Dockerfile
+    init: true
     expose:
       - "6379"
   # webpack - frontend build system
@@ -64,6 +68,7 @@ services:
     build:
       context: ./docker-config/node-dev-webpack
       dockerfile: ./Dockerfile
+    init: true
     env_file:
       *env
     ports:
