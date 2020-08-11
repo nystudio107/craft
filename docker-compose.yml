@@ -8,6 +8,7 @@ services:
       dockerfile: ./Dockerfile
     env_file: &env
       - ./cms/.env
+    init: true
     links:
       - php
     ports:
@@ -27,6 +28,7 @@ services:
       *env
     expose:
       - "9000"
+    init: true
     links:
       - mariadb
       - redis
@@ -48,6 +50,7 @@ services:
       MYSQL_DATABASE: project
       MYSQL_USER: project
       MYSQL_PASSWORD: project
+    init: true
     ports:
       - "3306:3306"
     volumes:
@@ -59,6 +62,7 @@ services:
       dockerfile: ./Dockerfile
     expose:
       - "6379"
+    init: true
   # webpack - frontend build system
   webpack:
     build:
@@ -66,6 +70,7 @@ services:
       dockerfile: ./Dockerfile
     env_file:
       *env
+    init: true
     ports:
       - "8080:8080"
     volumes:

@@ -19,7 +19,7 @@ use craft\helpers\App;
 
 return [
     'components' => [
-        'session' => function() {
+        'session' => static function() {
             // Get the default component config
             $config = craft\helpers\App::sessionConfig();
             // Override the class to use Redis' session class and our config settings

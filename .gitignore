@@ -9,12 +9,7 @@
 # @since     1.0.0
 # @license   MIT
 
-# This file should be renamed to '.gitignore' and placed in your
-# Craft 3 CMS project root directory
-
-
-# This file should be renamed to '.gitignore' and placed in your
-# Craft 3 CMS project root directory
+# This file should be placed in your Craft 3 CMS project root directory
 
 # CRAFT ENVIRONMENT
 .env*

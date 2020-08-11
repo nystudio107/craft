@@ -1,6 +1,10 @@
 # nystudio107/craft Change Log
 
 ## 2.3.1 - 2020.08.10
+### Added
+* Added `init` to the `docker-compose.yml` to processes are sent signals
+* Added `--no-tablespaces` to the mysqldump command options to work around changes in MySQL
+
 ### Fixed
 * Fix redis session config to use `App::sessionConfig()`
 
