@@ -6,9 +6,9 @@ services:
     build:
       context: ./docker-config/nginx
       dockerfile: ./Dockerfile
-    init: true
     env_file: &env
       - ./cms/.env
+    init: true
     links:
       - php
     ports:
@@ -21,7 +21,6 @@ services:
     build:
       context: ./docker-config/php-dev-craft
       dockerfile: ./Dockerfile
-    init: true
     depends_on:
       - "mariadb"
       - "redis"
@@ -29,6 +28,7 @@ services:
       *env
     expose:
       - "9000"
+    init: true
     links:
       - mariadb
       - redis
@@ -43,7 +43,6 @@ services:
     build:
       context: ./docker-config/mariadb
       dockerfile: ./Dockerfile
-    init: true
     env_file:
       *env
     environment:
@@ -51,6 +50,7 @@ services:
       MYSQL_DATABASE: project
       MYSQL_USER: project
       MYSQL_PASSWORD: project
+    init: true
     ports:
       - "3306:3306"
     volumes:
@@ -60,17 +60,17 @@ services:
     build:
       context: ./docker-config/redis
       dockerfile: ./Dockerfile
-    init: true
     expose:
       - "6379"
+    init: true
   # webpack - frontend build system
   webpack:
     build:
       context: ./docker-config/node-dev-webpack
       dockerfile: ./Dockerfile
-    init: true
     env_file:
       *env
+    init: true
     ports:
       - "8080:8080"
     volumes:
