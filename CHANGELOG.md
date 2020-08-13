@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.3.2 - 2020.08.12
+### Changed
+* Remove `[hash]` from dev config to eliminate potential [memory errors](https://github.com/webpack/webpack-dev-server/issues/438)
+* Use `[contenthash]` in production instead of [hash or chunkhash](https://github.com/webpack/webpack.js.org/issues/2096)
+
 ## 2.3.1 - 2020.08.10
 ### Added
 * Added `init` to the `docker-compose.yml` to processes are sent signals

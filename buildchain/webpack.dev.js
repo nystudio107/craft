@@ -46,7 +46,7 @@ const configureImageLoader = (buildType) => {
                 {
                     loader: 'file-loader',
                     options: {
-                        name: 'img/[name].[hash].[ext]'
+                        name: 'img/[name].[ext]'
                     }
                 }
             ]
@@ -59,7 +59,7 @@ const configureImageLoader = (buildType) => {
                 {
                     loader: 'file-loader',
                     options: {
-                        name: 'img/[name].[hash].[ext]'
+                        name: 'img/[name].[ext]'
                     }
                 }
             ]
@@ -116,7 +116,7 @@ module.exports = [
         common.legacyConfig,
         {
             output: {
-                filename: path.join('./js', '[name]-legacy.[hash].js'),
+                filename: path.join('./js', '[name]-legacy.js'),
                 publicPath: settings.devServerConfig.public() + '/',
             },
             mode: 'development',
@@ -137,7 +137,7 @@ module.exports = [
         common.modernConfig,
         {
             output: {
-                filename: path.join('./js', '[name].[hash].js'),
+                filename: path.join('./js', '[name].js'),
                 publicPath: settings.devServerConfig.public() + '/',
             },
             mode: 'development',
