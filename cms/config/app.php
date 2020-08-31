@@ -27,15 +27,6 @@ return [
     ],
     'bootstrap' => ['site-module'],
     'components' => [
-        'deprecator' => [
-            'throwExceptions' => App::env('DEV_MODE'),
-        ],
-        'redis' => [
-            'class' => yii\redis\Connection::class,
-            'hostname' => App::env('REDIS_HOSTNAME'),
-            'port' => App::env('REDIS_PORT'),
-            'database' => App::env('REDIS_DEFAULT_DB'),
-        ],
         'cache' => [
             'class' => yii\redis\Cache::class,
             'redis' => [
@@ -43,6 +34,19 @@ return [
                 'port' => App::env('REDIS_PORT'),
                 'database' => App::env('REDIS_CRAFT_DB'),
             ],
+        ],
+        'deprecator' => [
+            'throwExceptions' => App::env('DEV_MODE'),
+        ],
+        'queue' => [
+            'class' => craft\queue\Queue::class,
+            'ttr' => 10 * 60,
+        ],
+        'redis' => [
+            'class' => yii\redis\Connection::class,
+            'hostname' => App::env('REDIS_HOSTNAME'),
+            'port' => App::env('REDIS_PORT'),
+            'database' => App::env('REDIS_DEFAULT_DB'),
         ],
     ],
 ];
