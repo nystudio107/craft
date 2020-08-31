@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.3.4 - 2020.08.31
+### Added
+* Added a `queue` component with a longer `ttr`
+
 ## 2.3.3 - 2020.08.13
 ### Fixed
 * Modern config only for local dev, [fixing multi-compiler issues](https://github.com/webpack/webpack-dev-server/issues/2355) with HRM
