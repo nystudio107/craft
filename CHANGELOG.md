@@ -1,8 +1,12 @@
 # nystudio107/craft Change Log
 
-## 2.3.4 - 2020.08.31
+## 2.3.4 - 2020.09.02
 ### Added
 * Added a `queue` component with a longer `ttr`
+
+### Changed
+* Refactor composer scripts to handle Craft not being installed, leveraging craft `install/check`
+* Boilerplate now requires `craftcms/cms` `^3.5.8`
 
 ## 2.3.3 - 2020.08.13
 ### Fixed
