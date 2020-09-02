@@ -1,6 +1,6 @@
 {
   "require": {
-    "craftcms/cms": "^3.4.23",
+    "craftcms/cms": "^3.5.8",
     "vlucas/phpdotenv": "^3.4.0",
     "yiisoft/yii2-redis": "^2.0.6",
     "nystudio107/craft-imageoptimize": "^1.0.0",
@@ -36,14 +36,27 @@
   ],
   "scripts": {
     "craft-update": [
-      "@php craft migrate/all",
-      "@php craft project-config/sync",
-      "@php craft clear-caches/all"
+      "@pre-craft-update",
+      "@post-craft-update"
+    ],
+    "pre-craft-update": [
+      "@php craft install/check && php craft off --retry=60 || return 0"
+    ],
+    "post-craft-update": [
+      "@php craft install/check && php craft clear-caches/all || return 0",
+      "@php craft install/check && php craft migrate/all || return 0",
+      "@php craft install/check && php craft project-config/sync || return 0",
+      "@php craft install/check && php craft on || return 0"
     ],
     "post-root-package-install": [
-      "@php -r \"file_exists('.env') || copy('example.env', '.env');\""
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ],
-    "post-update-cmd": "@craft-update",
-    "post-install-cmd": "@craft-update"
+    "post-create-project-cmd": [
+      "@php craft setup/welcome"
+    ],
+    "pre-update-cmd": "@pre-craft-update",
+    "pre-install-cmd": "@pre-craft-update",
+    "post-update-cmd": "@post-craft-update",
+    "post-install-cmd": "@post-craft-update"
   }
 }

@@ -23,7 +23,6 @@ return [
     'backupOnUpdate' => (bool)App::env('BACKUP_ON_UPDATE'),
     'devMode' => (bool)App::env('DEV_MODE'),
     'enableTemplateCaching' => (bool)App::env('ENABLE_TEMPLATE_CACHING'),
-    'isSystemLive' => (bool)App::env('IS_SYSTEM_LIVE'),
     'resourceBasePath' => App::env('WEB_ROOT_PATH').'/cpresources',
     'runQueueAutomatically' => (bool)App::env('RUN_QUEUE_AUTOMATICALLY'),
     'securityKey' => App::env('SECURITY_KEY'),
