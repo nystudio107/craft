@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.3.5 - 2020.09.02
+### Changed
+* Changed `project-config/sync` -> `project-config/apply`
+* Updated the `buddy.yaml` with the latest Prep Craft script
+
 ## 2.3.4 - 2020.09.02
 ### Added
 * Added a `queue` component with a longer `ttr`
