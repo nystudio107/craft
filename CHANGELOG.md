@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.3.6 - 2020.09.10
+### Changed
+* Updated the `css-loader` config to ignore embedded URLs
+
 ## 2.3.5 - 2020.09.02
 ### Changed
 * Changed `project-config/sync` -> `project-config/apply`
