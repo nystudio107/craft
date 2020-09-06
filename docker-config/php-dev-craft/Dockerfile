@@ -6,6 +6,10 @@ RUN apt-get update \
     # apt Debian packages
     apt-get install -y \
         nano \
+        jpegoptim \
+        optipng \
+        gifsicle \
+        webp \
     && \
     # Install PHP extensions
     docker-php-ext-install \

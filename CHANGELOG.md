@@ -1,5 +1,13 @@
 # nystudio107/craft Change Log
 
+## 2.3.6 - 2020.09.05
+### Added
+* Added image optimizers to the `php-dev-craft` Docker image
+* Added the default `DB_PORT` of `3306` to `example.env` and `example.env.sh`
+
+### Changed
+* Updated the `css-loader` config to ignore embedded URLs
+
 ## 2.3.5 - 2020.09.02
 ### Changed
 * Changed `project-config/sync` -> `project-config/apply`
