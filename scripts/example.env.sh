@@ -33,7 +33,7 @@ REMOTE_DB_NAME="REPLACE_ME"
 REMOTE_DB_PASSWORD="REPLACE_ME"
 REMOTE_DB_USER="REPLACE_ME"
 REMOTE_DB_HOST="localhost"
-REMOTE_DB_PORT="5432"
+REMOTE_DB_PORT="3306"
 REMOTE_DB_SCHEMA="public"
 
 # If you are using mysql 5.6.10 or later and you have `login-path` setup as per:
