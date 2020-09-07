@@ -40,13 +40,11 @@
       "@post-craft-update"
     ],
     "pre-craft-update": [
-      "@php craft install/check && php craft off --retry=60 || return 0"
     ],
     "post-craft-update": [
       "@php craft install/check && php craft clear-caches/all || return 0",
       "@php craft install/check && php craft migrate/all || return 0",
-      "@php craft install/check && php craft project-config/apply || return 0",
-      "@php craft install/check && php craft on || return 0"
+      "@php craft install/check && php craft project-config/apply || return 0"
     ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
