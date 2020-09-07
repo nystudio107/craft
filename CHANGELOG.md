@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.3.7 - 2020.09.07
+### Changed
+* Remove the use of `craft on` and `craft off` because they create pointless `dateUpdated` changes to `project.yaml`
+
 ## 2.3.6 - 2020.09.05
 ### Added
 * Added image optimizers to the `php-dev-craft` Docker image
