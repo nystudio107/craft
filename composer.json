@@ -23,11 +23,6 @@
     "craftcms/cms": "^3.4.0",
     "vlucas/phpdotenv": "^3.4.0"
   },
-  "autoload": {
-    "psr-4": {
-      "modules\\": "modules/"
-    }
-  },
   "config": {
     "optimize-autoloader": true,
     "platform": {
@@ -41,7 +36,8 @@
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"unlink('composer.lock');\"",
       "@php -r \"unlink('LICENSE.md');\"",
-      "@php -r \"unlink('README.md');\""
+      "@php -r \"unlink('README.md');\"",
+      "@composer dump-autoload -o"
     ]
   }
 }
