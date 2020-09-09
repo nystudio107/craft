@@ -10,8 +10,7 @@
     "nystudio107/craft-retour": "^3.0.0",
     "nystudio107/craft-seomatic": "^3.2.0",
     "nystudio107/craft-webperf": "^1.0.0",
-    "nystudio107/craft-twigpack": "^1.1.0",
-    "nystudio107/dotenvy": "^1.1.0"
+    "nystudio107/craft-twigpack": "^1.1.0"
   },
   "autoload": {
     "psr-4": {
@@ -25,15 +24,6 @@
       "php": "7.0"
     }
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://repo.repman.io"
-    },
-    {
-      "packagist": false
-    }
-  ],
   "scripts": {
     "craft-update": [
       "@pre-craft-update",
