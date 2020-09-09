@@ -1,5 +1,13 @@
 # nystudio107/craft Change Log
 
+## 2.3.8 - 2020.09.09
+### Added
+* Added a `queue` docker container to run queue jobs via `./craft queue/listen`
+
+### Changed
+* Removed `dotenvy`
+* Removed https://repo.repman.io from `repositories`
+
 ## 2.3.7 - 2020.09.07
 ### Changed
 * Remove the use of `craft on` and `craft off` because they create pointless `dateUpdated` changes to `project.yaml`
