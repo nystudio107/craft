@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.3.9 - 2020.09.09
+### Changed
+* Better nginx config for local dev, based on `nystudio107/nginx`
+
 ## 2.3.8 - 2020.09.09
 ### Added
 * Added a `queue` docker container to run queue jobs via `./craft queue/listen`
