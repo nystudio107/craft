@@ -27,7 +27,7 @@ return [
             $config['redis'] = [
                 'hostname' => App::env('REDIS_HOSTNAME'),
                 'port' => App::env('REDIS_PORT'),
-                'database' => App::env('REDIS_CRAFT_DB'),
+                'database' => App::env('REDIS_DEFAULT_DB'),
             ];
             // Instantiate and return it
             return Craft::createObject($config);
