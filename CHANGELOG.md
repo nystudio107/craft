@@ -3,7 +3,7 @@
 ## 2.3.11 - 2020.09.15
 ### Changed
 * Explicitly set `id` from APP_ID and use `keyPrefix` for cache component
-* 
+* Add docker_prod_build script
 
 ## 2.3.10 - 2020.09.10
 ### Changed
