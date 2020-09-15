@@ -20,6 +20,7 @@
 use craft\helpers\App;
 
 return [
+    'id' => App::env('APP_ID') ?: 'CraftCMS',
     'modules' => [
         'site-module' => [
             'class' => \modules\sitemodule\SiteModule::class,
@@ -29,6 +30,7 @@ return [
     'components' => [
         'cache' => [
             'class' => yii\redis\Cache::class,
+            'keyPrefix' => App::env('APP_ID') ?: 'CraftCMS',
             'redis' => [
                 'hostname' => App::env('REDIS_HOSTNAME'),
                 'port' => App::env('REDIS_PORT'),
