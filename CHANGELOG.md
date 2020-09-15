@@ -1,5 +1,14 @@
 # nystudio107/craft Change Log
 
+## 2.3.11 - 2020.09.15
+### Changed
+* Explicitly set `id` from APP_ID and use `keyPrefix` for cache component
+* 
+
+## 2.3.10 - 2020.09.10
+### Changed
+* Sessions should use `REDIS_DEFAULT_DB`
+
 ## 2.3.9 - 2020.09.09
 ### Changed
 * Better nginx config for local dev, based on `nystudio107/nginx`

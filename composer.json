@@ -1,7 +1,7 @@
 {
   "name": "craftcms/craft",
   "description": "nystudio107 Craft 3.4 CMS scaffolding project",
-  "version": "2.3.9",
+  "version": "2.3.11",
   "keywords": [
     "craft",
     "cms",
@@ -25,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "modules\\": "modules/"
+      "modules\\sitemodule\\": "modules/sitemodule/src/"
     }
   },
   "config": {
@@ -41,7 +41,8 @@
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"unlink('composer.lock');\"",
       "@php -r \"unlink('LICENSE.md');\"",
-      "@php -r \"unlink('README.md');\""
+      "@php -r \"unlink('README.md');\"",
+      "@composer dump-autoload -o"
     ]
   }
 }
