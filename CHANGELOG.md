@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.3.12 - 2020.09.16
+### Changed
+* Removed unneeded `composer dump-autoload` from the project `composer.json`
+
 ## 2.3.11 - 2020.09.15
 ### Changed
 * Explicitly set `id` from APP_ID and use `keyPrefix` for cache component
