@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.3.13 - 2020.09.23
+### Added
+* Added a `db-seed` directory, and moved the `seed_db.sql` there
+
 ## 2.3.12 - 2020.09.16
 ### Changed
 * Removed unneeded `composer dump-autoload` from the project `composer.json`
