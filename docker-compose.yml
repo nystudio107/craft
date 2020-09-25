@@ -38,11 +38,11 @@ services:
       - ./cms:/var/www/project/cms:cached
       - ./cms/vendor:/var/www/project/cms/vendor:delegated
       - ./cms/storage/logs:/var/www/project/cms/storage/logs:delegated
-  # queue - runs queue jobs via ./craft queue/listen
+  # queue - runs queue jobs via php craft queue/listen
   queue:
     build:
       *php-build
-    command: ./craft queue/listen 10
+    command: php craft queue/listen 10
     depends_on:
       - "php"
     env_file:
