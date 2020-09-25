@@ -32,6 +32,7 @@ services:
     links: &php-links
       - mariadb
       - redis
+    user: www-data
     volumes: &php-volumes
       - cpresources:/var/www/project/cms/web/cpresources
       - storage:/var/www/project/cms/storage
@@ -52,6 +53,7 @@ services:
     init: true
     links:
       *php-links
+    user: www-data
     volumes:
       *php-volumes
   # mariadb - database
