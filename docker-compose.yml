@@ -32,17 +32,18 @@ services:
     links: &php-links
       - mariadb
       - redis
+    user: www-data
     volumes: &php-volumes
       - cpresources:/var/www/project/cms/web/cpresources
       - storage:/var/www/project/cms/storage
       - ./cms:/var/www/project/cms:cached
       - ./cms/vendor:/var/www/project/cms/vendor:delegated
       - ./cms/storage/logs:/var/www/project/cms/storage/logs:delegated
-  # queue - runs queue jobs via ./craft queue/listen
+  # queue - runs queue jobs via php craft queue/listen
   queue:
     build:
       *php-build
-    command: ./craft queue/listen 10
+    command: php craft queue/listen 10
     depends_on:
       - "php"
     env_file:
@@ -52,6 +53,7 @@ services:
     init: true
     links:
       *php-links
+    user: www-data
     volumes:
       *php-volumes
   # mariadb - database
@@ -71,6 +73,7 @@ services:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
+      - ./db-seed/:/docker-entrypoint-initdb.d
   # redis - key/value database for caching & php sessions
   redis:
     build:

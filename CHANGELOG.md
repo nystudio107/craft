@@ -1,5 +1,13 @@
 # nystudio107/craft Change Log
 
+## 2.3.12 - 2020.09.25
+### Added
+* Added a `db-seed` directory, and moved the `seed_db.sql` there
+* Added `--set-gtid-purged=OFF` to the `common_mysql.sh` to avoid permissions issues with some database dumps
+* Explicitly set the `user` that the PHP & queue containers run as to `www-data`
+### Changed
+* Removed unneeded `composer dump-autoload` from the project `composer.json`
+
 ## 2.3.11 - 2020.09.15
 ### Changed
 * Explicitly set `id` from APP_ID and use `keyPrefix` for cache component
