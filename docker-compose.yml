@@ -32,7 +32,6 @@ services:
     links: &php-links
       - mariadb
       - redis
-    user: www-data
     volumes: &php-volumes
       - cpresources:/var/www/project/cms/web/cpresources
       - storage:/var/www/project/cms/storage
@@ -43,7 +42,7 @@ services:
   queue:
     build:
       *php-build
-    command: php craft queue/listen 10
+    command: /var/www/project/run_queue.sh
     depends_on:
       - "php"
     env_file:
