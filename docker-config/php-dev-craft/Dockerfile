@@ -26,6 +26,9 @@ RUN apt-get update \
 
 WORKDIR /var/www/project
 
+COPY ./run_queue.sh .
+RUN chmod a+x run_queue.sh
+
 # Create the storage directory and make it writeable by PHP
 RUN mkdir -p /var/www/project/cms/storage && \
     mkdir -p /var/www/project/cms/storage/runtime && \
