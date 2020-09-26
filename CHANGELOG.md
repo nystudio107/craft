@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.3.13 - 2020.09.25
+### Added
+* Add `run_queue.sh` keep alive script
+
 ## 2.3.12 - 2020.09.25
 ### Added
 * Added a `db-seed` directory, and moved the `seed_db.sql` there
