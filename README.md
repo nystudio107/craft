@@ -75,9 +75,9 @@ rm cms/composer.lock
 docker-compose up
 ```
 
-To update to the latest npm packages (as constrained by the `docker-config/webpack-dev-craft/package.json` semvers), do:
+To update to the latest npm packages (as constrained by the `docker-config/node-dev-webpack/package.json` semvers), do:
 ```
-rm docker-config/webpack-dev-craft/package-lock.json
+rm docker-config/node-dev-webpack/package-lock.json
 docker-compose up
 ```
 
