@@ -11,7 +11,7 @@
       docker_image_name: "nystudio107/webpack-dev-base"
       docker_image_tag: "latest"
       execute_commands:
-        - "cd docker-config/webpack-dev-craft"
+        - "cd docker-config/node-dev-webpack"
         - "npm ci"
         - "npm run build"
       volume_mappings:
