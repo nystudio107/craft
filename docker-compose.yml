@@ -16,10 +16,10 @@ services:
     volumes:
       - cpresources:/var/www/project/cms/web/cpresources
       - ./cms/web:/var/www/project/cms/web:cached
-  # php - personal home page
+  # php - run php-fpm
   php:
     build: &php-build
-      context: ./docker-config/php-dev-craft
+      context: ./docker-config/php-prod-craft
       dockerfile: ./Dockerfile
     depends_on:
       - "mariadb"
@@ -38,6 +38,23 @@ services:
       - ./cms:/var/www/project/cms:cached
       - ./cms/vendor:/var/www/project/cms/vendor:delegated
       - ./cms/storage/logs:/var/www/project/cms/storage/logs:delegated
+  # php - run php-fpm with xdebug
+  php_xdebug:
+    build:
+      context: ./docker-config/php-dev-craft
+      dockerfile: ./Dockerfile
+    depends_on:
+      - "php"
+    env_file:
+      *env
+    expose:
+      - "9000"
+    init: true
+    links:
+      *php-links
+    user: www-data
+    volumes:
+      *php-volumes
   # queue - runs queue jobs via php craft queue/listen
   queue:
     build:
