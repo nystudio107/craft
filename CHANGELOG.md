@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.3.14 - 2020.10.25
+### Added
+* Added `/cms/web/dist/*` to root `.gitignore`
+* Use a separate php_xdebug container only when the `XDEBUG_SESSION` cookie is set, so regular requests are more performant
+
 ## 2.3.13 - 2020.09.25
 ### Added
 * Add `run_queue.sh` keep alive script

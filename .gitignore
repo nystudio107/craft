@@ -24,6 +24,7 @@
 # ASSETS
 /cms/web/assets/*
 /cms/web/cpresources/*
+/cms/web/dist/*
 
 # BUILD FILES
 node_modules
