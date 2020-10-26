@@ -12,6 +12,9 @@
     "nystudio107/craft-webperf": "^1.0.0",
     "nystudio107/craft-twigpack": "^1.1.0"
   },
+  "require-dev": {
+    "yiisoft/yii2-shell": "^2.0.3"
+  },
   "autoload": {
     "psr-4": {
       "modules\\sitemodule\\": "modules/sitemodule/src/"
