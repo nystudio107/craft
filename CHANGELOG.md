@@ -7,6 +7,8 @@
 
 ### Changed
 * Ignore Nginx requests for `favicon.ico`
+* Removed deprecated `links` from `docker-compose.yaml`
+* Use Composer 2.x
 
 ## 2.3.14 - 2020.10.25
 ### Added
