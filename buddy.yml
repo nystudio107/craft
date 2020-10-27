@@ -25,7 +25,7 @@
       docker_image_tag: "latest"
       execute_commands:
         - "cd cms"
-        - "composer install --no-scripts --no-interaction --prefer-dist --optimize-autoloader --ignore-platform-reqs"
+        - "composer install --no-dev --no-progress --no-scripts --no-interaction --prefer-dist --optimize-autoloader --ignore-platform-reqs"
       setup_commands:
         - "echo \"memory_limit=-1\" >> /usr/local/etc/php/conf.d/buddy.ini"
         - "apt-get update && apt-get install -y git zip"

@@ -1,9 +1,19 @@
 # nystudio107/craft Change Log
 
+## 2.3.15 - 2020.10.26
+### Added
+* Added `yiisoft/yii2-shell` to `require-dev`
+* Add `--no-dev --no-progress` to the composer install command
+
+### Changed
+* Ignore Nginx requests for `favicon.ico`
+* Removed deprecated `links` from `docker-compose.yaml`
+* Use Composer 2.x
+
 ## 2.3.14 - 2020.10.25
 ### Added
 * Added `/cms/web/dist/*` to root `.gitignore`
-* Use a separate php_xdebug container only when the `XDEBUG_SESSION` cookie is set, so regular requests are more performant
+* Use a separate `php_xdebug` container only when the `XDEBUG_SESSION` cookie is set, so regular requests are more performant
 
 ## 2.3.13 - 2020.09.25
 ### Added

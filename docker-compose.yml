@@ -9,8 +9,6 @@ services:
     env_file: &env
       - ./cms/.env
     init: true
-    links:
-      - php
     ports:
       - "8000:80"
     volumes:
@@ -29,9 +27,6 @@ services:
     expose:
       - "9000"
     init: true
-    links: &php-links
-      - mariadb
-      - redis
     volumes: &php-volumes
       - cpresources:/var/www/project/cms/web/cpresources
       - storage:/var/www/project/cms/storage
@@ -50,8 +45,6 @@ services:
     expose:
       - "9000"
     init: true
-    links:
-      *php-links
     user: www-data
     volumes:
       *php-volumes
@@ -67,8 +60,6 @@ services:
     expose:
       - "9001"
     init: true
-    links:
-      *php-links
     user: www-data
     volumes:
       *php-volumes
