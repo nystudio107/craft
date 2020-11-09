@@ -25,6 +25,8 @@
 /cms/web/assets/*
 /cms/web/cpresources/*
 /cms/web/dist/*
+/cms/web/favicon.*
+/cms/web/sw.*
 
 # BUILD FILES
 node_modules
