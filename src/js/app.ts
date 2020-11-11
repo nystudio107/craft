@@ -1,25 +1,14 @@
-// Import our CSS
-import '../css/app.pcss';
+import App from '../vue/App.vue';
+import { createApp } from 'vue';
 
 // App main
 const main = async () => {
     // Async load the Vue 3 APIs we need from the Vue ESM
-    const { createApp, defineAsyncComponent } = await import(/* webpackChunkName: "vue" */ 'vue');
     // Create our vue instance
-    const app = createApp({
-        components: {
-            'confetti': defineAsyncComponent(() => import(/* webpackChunkName: "confetti" */ '../vue/Confetti.vue')),
-        },
-        data: () => ({
-        }),
-        methods: {
-        },
-        mounted() {
-        },
-    });
+    const app = createApp(App);
 
     // Mount the app
-    const root = app.mount("#page-container");
+    const root = app.mount('#component-container');
 
     return root;
 };
