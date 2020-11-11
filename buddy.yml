@@ -74,7 +74,6 @@
         - "echo \"Symlinking: persistent files & directories\""
         - "ln -nfs $REMOTE_PROJECT_ROOT/.env $REMOTE_PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION"
         - "ln -nfs $REMOTE_PROJECT_ROOT/storage $REMOTE_PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION"
-        - "ln -nfs $REMOTE_PROJECT_ROOT/transcoder $REMOTE_PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION/web"
         - "echo \"Linking current to revision: $BUDDY_EXECUTION_REVISION\""
         - "rm -f current"
         - "ln -s releases/$BUDDY_EXECUTION_REVISION current"
@@ -93,8 +92,6 @@
       commands:
         - "# Ensure the craft script is executable"
         - "chmod a+x craft"
-        - "# Turn Craft off"
-        - "php craft off --retry=60"
         - "# Restart our long running queue listener process"
         - "echo \"\" | sudo -S supervisorctl restart all"
         - "# Backup the database just in case any migrations or Project Config changes have issues"
@@ -103,8 +100,6 @@
         - "php craft clear-caches/all"
         - "php craft migrate/all"
         - "php craft project-config/apply"
-        - "# Turn Craft on"
-        - "php craft on"
       trigger_condition: "ALWAYS"
       run_as_script: true
       shell: "BASH"
