@@ -72,8 +72,8 @@
 
     {#-- Site-wide JavaScript --#}
     {{ craft.twigpack.includeSafariNomoduleFix() }}
+    {{ craft.twigpack.includeJsModule("runtime.js", true) }}
     {{ craft.twigpack.includeJsModule("app.js", true) }}
-    {{ craft.twigpack.includeJsModule("styles.js", true) }}
 
     {# -- Inline JS #}
     {% include "_boilerplate/_partials/body-js.twig" %}

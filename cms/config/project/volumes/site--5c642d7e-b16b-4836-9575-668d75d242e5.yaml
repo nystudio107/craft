@@ -1,0 +1,8 @@
+handle: site
+hasUrls: true
+name: Site
+settings:
+  path: '@webroot/assets/site'
+sortOrder: 1
+type: craft\volumes\Local
+url: '@assetsUrl/assets/site'
