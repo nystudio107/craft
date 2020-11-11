@@ -20,7 +20,7 @@
     "rss": "https://craftcms.com/changelog.rss"
   },
   "require": {
-    "craftcms/cms": "^3.4.0",
+    "craftcms/cms": "^3.5.15.1",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "autoload": {
