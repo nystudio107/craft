@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: d08a0d16-0e00-49e6-9cd4-465fa2d65d7d
+handle: errorText
+instructions: ''
+name: 'Error Text'
+searchable: true
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: '1'
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText
