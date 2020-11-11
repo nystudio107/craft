@@ -1,7 +1,8 @@
 # nystudio107/craft Change Log
 
-## 2.3.15 - 2020.10.26
+## 2.4.0 - 2020.11.10
 ### Added
+* Updated buildchain to a modular webpack config system, using webpack 5 & PostCSS 8
 * Added `yiisoft/yii2-shell` to `require-dev`
 * Add `--no-dev --no-progress` to the composer install command
 
