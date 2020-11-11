@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.1- 2020.11.11
+### Changed
+* Sync Craft version
+
 ## 2.4.0 - 2020.11.10
 ### Added
 * Updated buildchain to a modular webpack config system, using webpack 5 & PostCSS 8
