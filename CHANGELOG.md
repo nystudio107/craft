@@ -1,6 +1,10 @@
 # nystudio107/craft Change Log
 
-## 2.4.1- 2020.11.11
+## 2.4.2 - 2020.11.11
+### Fixed
+* Removed unused `path` attribute passed to `MiniCssExtractPlugin` in the `production.config.js`
+
+## 2.4.1 - 2020.11.11
 ### Changed
 * Sync Craft version
 
