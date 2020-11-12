@@ -62,7 +62,6 @@ module.exports = (type = 'modern', settings) => {
                 },
                 plugins: [
                     new MiniCssExtractPlugin({
-                        path: path.resolve(__dirname, settings.paths.dist),
                         filename: path.join('./css', '[name].[contenthash].css'),
                     }),
                 ],
