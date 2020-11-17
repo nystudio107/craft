@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.3 - 2020.11.17
+### Fixed
+* Removed `xdebug.remote_connect_back` from the `php-dev-base` container's `xdebug.ini` file to allow xdebug to connect properly
+
 ## 2.4.2 - 2020.11.11
 ### Fixed
 * Removed unused `path` attribute passed to `MiniCssExtractPlugin` in the `production.config.js`
