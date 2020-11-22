@@ -87,7 +87,7 @@ To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.
             "name": "Listen for Xdebug",
             "type": "php",
             "request": "launch",
-            "port": 9001,
+            "port": 9003,
             "log": true,
             "externalConsole": false,
             "pathMappings": {
