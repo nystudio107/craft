@@ -78,7 +78,7 @@ rm buildchain/package-lock.json
 docker-compose up
 ```
 
-To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug ) and use the following configuration:
+To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug ) and use the following configuration in your `.vscode/launch.json`:
 ```json
 {
     "version": "0.2.0",
