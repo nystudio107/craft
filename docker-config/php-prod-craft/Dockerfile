@@ -5,7 +5,12 @@ RUN apt-get update \
     && \
     # apt Debian packages
     apt-get install -y \
+        mysql-client \
         nano \
+        jpegoptim \
+        optipng \
+        gifsicle \
+        webp \
     && \
     # Install PHP extensions
     docker-php-ext-install \
