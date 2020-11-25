@@ -5,7 +5,7 @@ RUN apt-get update \
     && \
     # apt Debian packages
     apt-get install -y \
-        mysql-client \
+        mariadb-client \
         nano \
         jpegoptim \
         optipng \
