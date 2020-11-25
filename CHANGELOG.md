@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.6 - 2020.11.25
+### Changed
+* Change `mysql-client` to `mariadb-client`
+
 ## 2.4.5 - 2020.11.25
 ### Added
 * Add `mysql-client` in the `php-dev-craft` & `php-prod-craft` MariaDB containers so we get `mysqldump`
