@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.4.5 - 2020.11.25
+### Added
+* Add `mysql-client` in the `php-dev-craft` & `php-prod-craft` MariaDB containers so we get `mysqldump`
+* Added image optimization tools to the `php-dev-craft` & `php-prod-craft` MariaDB containers
+
 ## 2.4.4 - 2020.11.21
 ### Changed
 * Ignore `/admin` routes in the Service Worker
