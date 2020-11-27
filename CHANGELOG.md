@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.7 - 2020.11.26
+### Changed
+* Remove `postcss-preset-env`, add `autoprefixer` & `postcss-nested`
+
 ## 2.4.6 - 2020.11.25
 ### Changed
 * Change `mysql-client` to `mariadb-client`
