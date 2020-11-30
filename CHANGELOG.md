@@ -1,5 +1,12 @@
 # nystudio107/craft Change Log
 
+## 2.4.8 - 2020.11.30
+### Added
+* Added `nodemon` so `webpack-dev-server` will automatically restart if we change any of the webpack configs
+
+### Changed
+* Use `webpack-dev-server` version `^4.0.0-beta.0` for additional speed & better webpack 5 support
+
 ## 2.4.7 - 2020.11.26
 ### Changed
 * Remove `postcss-preset-env`, add `autoprefixer` & `postcss-nested`
