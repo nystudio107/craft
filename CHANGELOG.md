@@ -1,5 +1,11 @@
 # nystudio107/craft Change Log
 
+## 2.4.9 - UNRELEASED
+### Changed
+* Fixed craftcms/redactor#278
+* config/redactor/Standard.json → Default.json
+* Unlicense → BSD Zero Clause License
+
 ## 2.4.8 - 2020.11.30
 ### Added
 * Added `nodemon` so `webpack-dev-server` will automatically restart if we change any of the webpack configs
