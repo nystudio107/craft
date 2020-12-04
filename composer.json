@@ -1,14 +1,14 @@
 {
   "name": "craftcms/craft",
   "description": "nystudio107 Craft 3.4 CMS scaffolding project",
-  "version": "2.4.8",
+  "version": "2.4.9",
   "keywords": [
     "craft",
     "cms",
     "craftcms",
     "project"
   ],
-  "license": "Unlicense",
+  "license": "0BSD",
   "homepage": "https://craftcms.com/",
   "type": "project",
   "support": {
