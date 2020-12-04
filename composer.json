@@ -38,6 +38,7 @@
     "post-create-project-cmd": [
       "@php -r \"copy('./cms/example.env', './cms/.env');\"",
       "@php -r \"copy('./scripts/example.env.sh', './scripts/.env.sh');\"",
+      "@php -r \"unlink('vendor/');\"",
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"unlink('composer.lock');\"",
       "@php -r \"unlink('LICENSE.md');\"",
