@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.10 - 2020.12.05
+### Changed
+* Updated to latest buildchain semver deps
+
 ## 2.4.9 - 2020.12.05
 ### Changed
 * config/redactor/Standard.json → Default.json
