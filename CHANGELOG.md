@@ -1,10 +1,13 @@
 # nystudio107/craft Change Log
 
-## 2.4.9 - UNRELEASED
+## 2.4.9 - 2020.12.05
 ### Changed
-* Fixed craftcms/redactor#278
 * config/redactor/Standard.json → Default.json
 * Unlicense → BSD Zero Clause License
+
+### Fixed
+* Fixed import WebpackManifestPlugin from webpack-manifest-plugin 3.x
+* Fixed craftcms/redactor#278
 
 ## 2.4.8 - 2020.11.30
 ### Added
