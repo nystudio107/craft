@@ -1,8 +1,9 @@
 # nystudio107/craft Change Log
 
-## 2.4.11 - UNRELEASED
+## 2.4.11 - 2020.12.06
 ### Changed
 * Ensure poll is always an integer
+* Updated seed db
 
 ## 2.4.10 - 2020.12.05
 ### Changed
