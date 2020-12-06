@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.11 - UNRELEASED
+### Changed
+* Ensure poll is always an integer
+
 ## 2.4.10 - 2020.12.05
 ### Changed
 * Updated to latest buildchain semver deps
