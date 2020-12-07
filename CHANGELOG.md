@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.12 - UNRELEASED
+### Added
+* Added some useful PostCSS plugins
+
 ## 2.4.11 - 2020.12.06
 ### Changed
 * Ensure poll is always an integer
