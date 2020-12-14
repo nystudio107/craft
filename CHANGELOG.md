@@ -6,6 +6,7 @@
 
 ### Changed
 * Don't try to remove `vendor/` after project install
+* Use named `chunkIds`
 
 ## 2.4.11 - 2020.12.06
 ### Changed
