@@ -1,5 +1,14 @@
 # nystudio107/craft Change Log
 
+## 2.4.12 - 2020.12.17
+### Added
+* Added some useful PostCSS plugins
+
+### Changed
+* Don't try to remove `vendor/` after project install
+* Use named `chunkIds`
+* Allow HMR through Craft CMS error pages by including the now-separate `runtime.js`
+
 ## 2.4.11 - 2020.12.06
 ### Changed
 * Ensure poll is always an integer

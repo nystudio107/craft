@@ -1,7 +1,7 @@
 {
   "name": "craftcms/craft",
   "description": "nystudio107 Craft 3.4 CMS scaffolding project",
-  "version": "2.4.11",
+  "version": "2.4.12",
   "keywords": [
     "craft",
     "cms",
@@ -38,7 +38,6 @@
     "post-create-project-cmd": [
       "@php -r \"copy('./cms/example.env', './cms/.env');\"",
       "@php -r \"copy('./scripts/example.env.sh', './scripts/.env.sh');\"",
-      "@php -r \"unlink('vendor/');\"",
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"unlink('composer.lock');\"",
       "@php -r \"unlink('LICENSE.md');\"",

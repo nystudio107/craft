@@ -29,7 +29,7 @@ return [
     // If `devMode` is on, use webpack-dev-server to all for HMR (hot module reloading)
     'useDevServer' => App::env('DEV_MODE'),
     // The JavaScript entry from the manifest.json to inject on Twig error pages
-    'errorEntry' => 'app.js',
+    'errorEntry' => ['runtime.js', 'app.js'],
     // Manifest file names
     'manifest' => [
         'legacy' => 'manifest-legacy.json',
