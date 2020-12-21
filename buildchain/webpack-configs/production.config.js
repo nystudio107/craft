@@ -84,7 +84,7 @@ module.exports = (type = 'modern', settings) => {
                     },
                 },
                 output: {
-                    filename: path.join('./js', '[name]-legacy.[contenthash].js'),
+                    filename: path.join('./js', '[name].[contenthash].js'),
                     publicPath: settings.urls.publicPath(),
                 },
             },
