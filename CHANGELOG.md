@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.13 - UNRELEASED
+### Changed
+* Refactored `output.path` to `app.config.js`
+
 ## 2.4.12 - 2020.12.17
 ### Added
 * Added some useful PostCSS plugins
