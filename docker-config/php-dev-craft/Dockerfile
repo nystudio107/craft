@@ -1,4 +1,4 @@
-FROM nystudio107/php-dev-base
+FROM nystudio107/php-dev-base:7.4
 
 # Install packages
 RUN apt-get update \

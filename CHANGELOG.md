@@ -1,5 +1,11 @@
 # nystudio107/craft Change Log
 
+## 2.4.13 - 2020.12.21
+### Changed
+* Refactored `output.path` to `app.config.js`
+* Remove unused base Docker configs
+* Use PHP 7.4
+
 ## 2.4.12 - 2020.12.17
 ### Added
 * Added some useful PostCSS plugins
