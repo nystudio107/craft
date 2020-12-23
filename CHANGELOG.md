@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.14 - UNRELEASED
+### Changed
+* Added `--no-install-recommends` to all `apt-get install` commands
+
 ## 2.4.13 - 2020.12.21
 ### Changed
 * Refactored `output.path` to `app.config.js`
