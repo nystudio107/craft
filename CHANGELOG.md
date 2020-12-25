@@ -4,6 +4,7 @@
 ### Changed
 * Added `--no-install-recommends` to all `apt-get install` commands
 * Put complete output in each config
+* Remove `imagemin-gifsicle` due to build issues (and also we rarely use `.gif` files)
 
 ## 2.4.13 - 2020.12.21
 ### Changed
