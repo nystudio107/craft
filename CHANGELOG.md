@@ -3,6 +3,7 @@
 ## 2.4.14 - UNRELEASED
 ### Changed
 * Added `--no-install-recommends` to all `apt-get install` commands
+* Put complete output in each config
 
 ## 2.4.13 - 2020.12.21
 ### Changed
