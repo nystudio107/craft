@@ -1,4 +1,4 @@
-FROM nystudio107/node-dev-base
+FROM nystudio107/node-dev-base:12-alpine
 
 WORKDIR /var/www/project/buildchain/
 
