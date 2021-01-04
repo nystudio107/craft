@@ -1,7 +1,8 @@
 # nystudio107/craft Change Log
 
-## 2.4.14 - UNRELEASED
+## 2.4.14 - 2021.01.04
 ### Changed
+* Use slimmed down Alpine images for Docker
 * Added `--no-install-recommends` to all `apt-get install` commands
 * Put complete output in each config
 * Remove `imagemin-gifsicle` due to build issues (and also we rarely use `.gif` files)
