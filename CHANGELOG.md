@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.15 - UNRELEASED
+### Changed
+* Update to Axios `^0.21.1`
+
 ## 2.4.14 - 2021.01.04
 ### Changed
 * Use slimmed down Alpine images for Docker
