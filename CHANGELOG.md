@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.4.15 - 2021.01.09
+### Changed
+* Update to Axios `^0.21.1`
+* Tabs -> Spaces in the Dockerfiles
+
 ## 2.4.14 - 2021.01.04
 ### Changed
 * Use slimmed down Alpine images for Docker
