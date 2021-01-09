@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.16 - UNRELEASED
+### Changed
+* `gzip` the seed database
+
 ## 2.4.15 - 2021.01.09
 ### Changed
 * Update to Axios `^0.21.1`
