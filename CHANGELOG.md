@@ -3,6 +3,7 @@
 ## 2.4.16 - UNRELEASED
 ### Changed
 * `gzip` the seed database
+* Explcitly require `favicons` in the `buildchain/package.json`
 
 ## 2.4.15 - 2021.01.09
 ### Changed
