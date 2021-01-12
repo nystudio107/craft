@@ -11,7 +11,7 @@
     "nystudio107/craft-seomatic": "^3.2.0",
     "nystudio107/craft-templatecomments": "^1.0.0",
     "nystudio107/craft-webperf": "^1.0.0",
-    "nystudio107/craft-twigpack": "^1.1.0"
+    "nystudio107/craft-twigpack": "^1.2.8"
   },
   "require-dev": {
     "yiisoft/yii2-shell": "^2.0.3"

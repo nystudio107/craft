@@ -35,6 +35,7 @@
 {% block headCss %}
     {% include "_partials/amp-inline-css.css" %}
     {% include "_inline-css/site-fonts.css" %}
+    {{ craft.twigpack.includeFileFromManifest('styles.css') }}
 {% endblock %}
 
 {# -- Page body -- #}

@@ -12,11 +12,6 @@ module.exports = (type = 'modern', settings) => {
                 const criticalDest = settings.critical.base + row.template + settings.critical.suffix;
                 let criticalWidth = settings.critical.criticalWidth;
                 let criticalHeight = settings.critical.criticalHeight;
-                // Handle Google AMP templates
-                if (row.template.indexOf(settings.critical.ampPrefix) !== -1) {
-                    criticalWidth = settings.critical.ampCriticalWidth;
-                    criticalHeight = settings.critical.ampCriticalHeight;
-                }
                 return new CriticalCssPlugin({
                     base: './',
                     src: criticalSrc,
