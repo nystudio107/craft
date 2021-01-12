@@ -3,7 +3,7 @@
 ## 2.4.16 - UNRELEASED
 ### Changed
 * `gzip` the seed database
-* Explcitly require `favicons` in the `buildchain/package.json`
+* Update to deps required for `favicons-webpack-plugin` `^5.0.0-alpha.4`
 
 ## 2.4.15 - 2021.01.09
 ### Changed
