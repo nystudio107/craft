@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.4.16 - UNRELEASED
+## 2.4.16 - 2021.01.12
 ### Changed
 * `gzip` the seed database
 * Update to deps required for `favicons-webpack-plugin` `^5.0.0-alpha.4`
