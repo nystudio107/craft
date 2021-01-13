@@ -3,6 +3,7 @@
 ## 2.4.17 - UNRELEASED
 ### Changed
 * Clean up AMP CSS approach
+* Change the URL to a path, so we can include it server-side
 
 ## 2.4.16 - 2021.01.12
 ### Changed
