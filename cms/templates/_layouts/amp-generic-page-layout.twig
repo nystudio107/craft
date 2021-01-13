@@ -35,7 +35,9 @@
 {% block headCss %}
     {% include "_partials/amp-inline-css.css" %}
     {% include "_inline-css/site-fonts.css" %}
-    {{ craft.twigpack.includeFileFromManifest('styles.css') }}
+    {# Change the URL to a path, so we can include it server-side #}
+    {% set stylesPath = craft.twigpack.getModuleUri('styles.css', 'legacy') | replace(getenv('ASSETS_URL'), '@webroot/') %}
+    {{ craft.twigpack.includeFile(stylesPath) }}
 {% endblock %}
 
 {# -- Page body -- #}
