@@ -38,7 +38,7 @@
     {# Change the URL to a path, so we can include it server-side #}
     {% set stylesPath = craft.twigpack.getModuleUri('styles.css', 'legacy') | replace(getenv('ASSETS_URL'), '@webroot/') %}
     {# Just in case any !important rules slip through #}
-    {{ craft.twigpack.includeFile(stylesPath) | replace('!important', '') }}
+    {{ craft.twigpack.includeFile(stylesPath) | replace('!important', '') | raw }}
 {% endblock %}
 
 {# -- Page body -- #}
