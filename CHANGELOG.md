@@ -1,10 +1,11 @@
 # nystudio107/craft Change Log
 
-## 2.4.17 - UNRELEASED
+## 2.4.17 - 2021.01.14
 ### Changed
 * Clean up AMP CSS approach
 * Change AMP CSS URL to a path, so we can include it server-side
-* Strip !important rules from AMP CSS
+* Strip `!important` rules from AMP CSS
+* Clean up critical CSS config
 
 ## 2.4.16 - 2021.01.12
 ### Changed
