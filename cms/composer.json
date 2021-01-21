@@ -22,10 +22,10 @@
     }
   },
   "config": {
-    "sort-packages": true,
     "optimize-autoloader": true,
+    "sort-packages": true,
     "platform": {
-      "php": "7.0"
+      "php":  "7.2.5"
     }
   },
   "scripts": {
