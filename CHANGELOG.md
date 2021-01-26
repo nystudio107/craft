@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
 ## 2.4.19 - UNRELEASED
+### Added
+* Added Docker bind mount for `compiled_templates` so XDebug can be used with Twig templates
+
 ### Changed
 * Remove vestigial `HotModuleReplacementPlugin`
 
