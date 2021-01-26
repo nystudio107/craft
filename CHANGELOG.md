@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.19 - UNRELEASED
+### Changed
+* Remove vestigial `HotModuleReplacementPlugin`
+
 ## 2.4.18 - 2021.01.21
 ### Changed
 * Set the minimum platform reqs to PHP  `7.2.5`
