@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.4.20 - UNRELEASED
+## 2.4.20 - 2021.01.27
 ### Changed
 * Changed `--interactive 0` to `--interactive=0` just for consistency (either works)
 
