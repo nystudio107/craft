@@ -6,6 +6,7 @@
 
 ### Changed
 * Remove vestigial `HotModuleReplacementPlugin`
+* Set ` --interactive 0` on console commands in the `composer.json` to force non-interactivity for CI commands
 
 ## 2.4.18 - 2021.01.21
 ### Changed
