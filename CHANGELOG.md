@@ -1,12 +1,12 @@
 # nystudio107/craft Change Log
 
-## 2.4.19 - UNRELEASED
+## 2.4.19 - 2021.01.27
 ### Added
 * Added Docker bind mount for `compiled_templates` so XDebug can be used with Twig templates
 
 ### Changed
 * Remove vestigial `HotModuleReplacementPlugin`
-* Set ` --interactive 0` on console commands in the `composer.json` to force non-interactivity for CI commands
+* Set `--interactive 0` on console commands in the `composer.json` to force non-interactivity for CI commands
 
 ## 2.4.18 - 2021.01.21
 ### Changed
