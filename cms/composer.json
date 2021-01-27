@@ -22,10 +22,10 @@
     }
   },
   "config": {
-    "sort-packages": true,
     "optimize-autoloader": true,
+    "sort-packages": true,
     "platform": {
-      "php": "7.0"
+      "php":  "7.2.5"
     }
   },
   "scripts": {
@@ -36,9 +36,9 @@
     "pre-craft-update": [
     ],
     "post-craft-update": [
-      "@php craft install/check && php craft clear-caches/all || return 0",
-      "@php craft install/check && php craft migrate/all || return 0",
-      "@php craft install/check && php craft project-config/apply || return 0"
+      "@php craft install/check && php craft clear-caches/all --interactive 0 || return 0",
+      "@php craft install/check && php craft migrate/all --interactive 0 || return 0",
+      "@php craft install/check && php craft project-config/apply --interactive 0 || return 0"
     ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
