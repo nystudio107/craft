@@ -36,9 +36,9 @@
     "pre-craft-update": [
     ],
     "post-craft-update": [
-      "@php craft install/check && php craft clear-caches/all --interactive=0 || return 0",
-      "@php craft install/check && php craft migrate/all --interactive=0 || return 0",
-      "@php craft install/check && php craft project-config/apply --interactive=0 || return 0"
+      "@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",
+      "@php craft install/check && php craft migrate/all --interactive=0 || exit 0",
+      "@php craft install/check && php craft project-config/apply --interactive=0 || exit 0"
     ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
