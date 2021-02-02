@@ -59,7 +59,7 @@ plugins:
                   - includeBucketPrefix
                   - ''
       lowerQualityRetinaImageVariants: false
-      transformClass: nystudio107\imageoptimizesharp\imagetransforms\SharpImageTransform
+      transformClass: nystudio107\imageoptimize\imagetransforms\CraftImageTransform
   minify:
     edition: standard
     enabled: true
