@@ -1,5 +1,12 @@
 # nystudio107/craft Change Log
 
+## 2.4.21 - 2021.02.02
+### Changed
+* Changed `return 0` to `exit 0` in the `composer.json` scripts
+
+### Fixed
+* Fixed an issue where the default ImageOptimize transform was set to ServerlessSharp, causing mayhem and confusion
+
 ## 2.4.20 - 2021.01.27
 ### Changed
 * Changed `--interactive 0` to `--interactive=0` just for consistency (either works)
