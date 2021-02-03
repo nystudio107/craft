@@ -46,7 +46,7 @@ return [
         'publicPath' => App::env('TWIGPACK_DEV_SERVER_PUBLIC_PATH'),
     ],
     // Bundle to use with the webpack-dev-server
-    'devServerBuildType' => 'combined',
+    'devServerBuildType' => 'modern',
     // Whether to include a Content Security Policy "nonce" for inline
     // CSS or JavaScript. Valid values are 'header' or 'tag' for how the CSP
     // should be included. c.f.:
