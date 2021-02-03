@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.23 - 2021.02.02
+### Changed
+* Use `get-webpack-config` package
+
 ## 2.4.22 - 2021.02.02
 ### Fixed
 * Fix setting that’d cause HMR to fail to work unless a production build existed
