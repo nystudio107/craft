@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.24 - 2021.02.03
+### Fixed
+* Fixed an issue with favicon generation caused by changes in `favicons-webpack-plugin`
+
 ## 2.4.23 - 2021.02.02
 ### Changed
 * Use `get-webpack-config` package
