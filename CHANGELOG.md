@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.25 - UNRELEASED
+### Fixed
+* Updated `buddy.yaml` to match with Alpine update
+
 ## 2.4.24 - 2021.02.03
 ### Fixed
 * Fixed an issue with favicon generation caused by changes in `favicons-webpack-plugin`
