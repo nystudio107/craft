@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
 ## 2.4.25 - UNRELEASED
+### Changed
+* Ensure that the `cms/config` directory has the right permissions
+
 ### Fixed
 * Updated `buddy.yaml` to match with Alpine update
 
