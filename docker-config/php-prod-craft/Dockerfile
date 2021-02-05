@@ -73,9 +73,11 @@ WORKDIR /var/www/project/cms
 # when working with teams or multiple environments
 CMD composer install --verbose --no-progress --no-scripts --optimize-autoloader --no-interaction \
     && \
-    chown -R www-data:www-data /var/www/project/cms/vendor \
+    chown -R www-data:www-data /var/www/project/cms/config \
     && \
     chown -R www-data:www-data /var/www/project/cms/storage \
+    && \
+    chown -R www-data:www-data /var/www/project/cms/vendor \
     && \
     chown -R www-data:www-data /var/www/project/cms/web \
     && \
