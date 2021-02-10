@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
-## 2.4.25 - UNRELEASED
+## 2.4.25 - 2021.02.09
+### Added
+* Use PHP 8.0 Alpine images for the prod & dev containers
+
 ### Changed
 * Ensure that the `cms/config` directory has the right permissions
 
