@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.26 - UNRELEASED
+### Changed
+* Use aliases for import paths
+
 ## 2.4.25 - 2021.02.09
 ### Added
 * Use PHP 8.0 Alpine images for the prod & dev containers
