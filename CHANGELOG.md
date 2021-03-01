@@ -3,6 +3,7 @@
 ## 2.4.26 - UNRELEASED
 ### Changed
 * Use aliases for import paths
+* Remove version, require, autoload, and config from the project `composer.json`
 
 ## 2.4.25 - 2021.02.09
 ### Added
