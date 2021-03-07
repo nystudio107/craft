@@ -1,5 +1,14 @@
 # nystudio107/craft Change Log
 
+## 2.4.26 - 2021.03.07
+### Changed
+* Use aliases for import paths
+* Remove version, require, autoload, and config from the project `composer.json`
+* Use Tailwind CSS `^2.0.3`
+* Use official MariaDB images
+* Use `craftcms/cms` version `^3.6.7`
+* Updated db-seed & Project Config to match `craftcms/cms` version `^3.6.7`
+
 ## 2.4.25 - 2021.02.09
 ### Added
 * Use PHP 8.0 Alpine images for the prod & dev containers

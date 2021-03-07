@@ -1,7 +1,6 @@
 {
   "name": "craftcms/craft",
-  "description": "nystudio107 Craft 3.4 CMS scaffolding project",
-  "version": "2.4.25",
+  "description": "nystudio107 Craft 3 CMS scaffolding project",
   "keywords": [
     "craft",
     "cms",
@@ -18,22 +17,6 @@
     "source": "https://github.com/craftcms/cms",
     "docs": "https://craftcms.com/docs",
     "rss": "https://craftcms.com/changelog.rss"
-  },
-  "require": {
-    "craftcms/cms": "^3.5.15.1",
-    "vlucas/phpdotenv": "^3.4.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "modules\\sitemodule\\": "modules/sitemodule/src/"
-    }
-  },
-  "config": {
-    "optimize-autoloader": true,
-    "sort-packages": true,
-    "platform": {
-      "php":  "7.2.5"
-    }
   },
   "scripts": {
     "post-create-project-cmd": [
