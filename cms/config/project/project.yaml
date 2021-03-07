@@ -1,4 +1,4 @@
-dateModified: 1605065696
+dateModified: 1615144400
 email:
   fromEmail: andrew@nystudio107.com
   fromName: Craft
@@ -96,7 +96,7 @@ system:
   live: true
   name: Project
   retryDuration: 60
-  schemaVersion: 3.5.13
+  schemaVersion: 3.6.6
   timeZone: America/New_York
 users:
   allowPublicRegistration: false
