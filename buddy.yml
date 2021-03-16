@@ -7,15 +7,15 @@
   actions:
     - action: "Execute: webpack build"
       type: "BUILD"
-      working_directory: "/buddy/$PROJECT_SHORTNAME"
-      docker_image_name: "nystudio107/webpack-dev-base"
-      docker_image_tag: "latest"
+      working_directory: "/buddy/${PROJECT_SHORTNAME}"
+      docker_image_name: "nystudio107/node-dev-base"
+      docker_image_tag: "14-alpine"
       execute_commands:
         - "cd buildchain"
-        - "npm ci"
+        - "npm install"
         - "npm run build"
       volume_mappings:
-        - "/:/buddy/$PROJECT_SHORTNAME"
+        - "/:/buddy/${PROJECT_SHORTNAME}"
       trigger_condition: "ALWAYS"
       shell: "BASH"
     - action: "Execute: composer install"
