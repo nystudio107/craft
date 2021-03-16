@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.27 - UNRELEASED
+### Fixed
+* Fix webpack buildchain pipeline
+
 ## 2.4.26 - 2021.03.07
 ### Changed
 * Use aliases for import paths
