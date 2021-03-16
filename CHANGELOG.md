@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
 ## 2.4.27 - UNRELEASED
+### Changed
+* Use `@tailwindcss/jit` for the CSS generation
+
 ### Fixed
 * Fix webpack buildchain pipeline
 
