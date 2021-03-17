@@ -30,8 +30,6 @@
         - "echo \"memory_limit=-1\" >> /usr/local/etc/php/conf.d/buddy.ini"
         - "apk update && apk add git zip"
         - "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer"
-        - "# php ext pdo_mysql"
-        - "docker-php-ext-install pdo_pgsql pgsql"
       volume_mappings:
         - "/:/buddy/$PROJECT_SHORTNAME"
       trigger_condition: "ALWAYS"
@@ -111,7 +109,7 @@
       channel_name: "nystudio107"
       trigger_condition: "ALWAYS"
       integration_hash: "5ef0d26820cfeb531cb10738"
-    - action: "Send notification to nystudio107 channel"
+    - action: "Send failure to nystudio107 channel"
       type: "SLACK"
       trigger_time: "ON_FAILURE"
       content: "[#$BUDDY_EXECUTION_ID] $BUDDY_EXECUTION_REVISION_SUBJECT - $BUDDY_EXECUTION_REVISION_COMMITTER_NAME"
