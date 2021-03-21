@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
 ## 2.4.27 - UNRELEASED
+### Added
+* Added `make` command aliases
+
 ### Changed
 * Use `@tailwindcss/jit` for the CSS generation
 

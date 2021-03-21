@@ -56,7 +56,7 @@ You'll need Docker desktop for your platform installed to run the project in loc
 
 * Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
 * Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
-* Start up the site with `docker-compose up` (the first build will be somewhat lengthy)
+* Start up the site with `make dev` (the first build will be somewhat lengthy)
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 
 The CP login credentials are initially set as follows:
@@ -71,13 +71,13 @@ Obviously change these to whatever you like as needed
 To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers), do:
 ```
 rm cms/composer.lock
-docker-compose up
+make dev
 ```
 
 To update to the latest npm packages (as constrained by the `buildchain/package.json` semvers), do:
 ```
 rm buildchain/package-lock.json
-docker-compose up
+make dev
 ```
 
 To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug ) and use the following configuration in your `.vscode/launch.json`:
