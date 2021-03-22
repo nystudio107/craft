@@ -56,7 +56,7 @@ You'll need Docker desktop for your platform installed to run the project in loc
 
 * Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
 * Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
-* Start up the site with `make dev` (the first build will be somewhat lengthy)
+* Start up the site by typing `make dev` in terminal in the project's root directory (the first build will be somewhat lengthy)
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 
 The CP login credentials are initially set as follows:
@@ -66,7 +66,7 @@ Password: `letmein`
 
 Obviously change these to whatever you like as needed
 
-**N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes
+**N.B.:** Without authorization & credentials (which are private), the `make pulldb` will not work (it just runs `scripts/docker_pull_db.sh`). It's provided here for instructional purposes.
 
 To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers), do:
 ```
