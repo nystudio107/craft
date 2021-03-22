@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.4.27 - UNRELEASED
+## 2.4.27 - 2021.03.22
 ### Added
 * Added `make` command aliases
 
