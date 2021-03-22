@@ -5,7 +5,6 @@ CONTAINER?=$(shell basename $(CURDIR))_php_1
 build: up
 	cd scripts/ && ./docker_prod_build.sh
 dev: up
-	echo ${CONTAINER}
 pulldb: up
 	cd scripts/ && ./docker_pull_db.sh
 restoredb: up
