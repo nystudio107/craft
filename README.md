@@ -11,7 +11,7 @@ The project is based on [Craft CMS](https://CraftCMS.com) using a unique `templa
 * [webpack 5](https://webpack.js.org/) is used for the build system as per [An Annotated webpack 4 Config for Frontend Web Development](https://nystudio107.com/blog/an-annotated-webpack-4-config-for-frontend-web-development)
 * [TypeScript](https://www.typescriptlang.org/) for strictly typed JavaScript code
 * [Vue.js 3.0](https://vuejs.org/) is used for some of the interactive bits on the website, and Vue.js 3.x allows us to leverage the [Composition API](https://composition-api.vuejs.org/) 
-* [Tailwind CSS](https://tailwindcss.com/) for the site-wide CSS with CSS splitting as per the [Speeding Up Tailwind CSS Builds](https://nystudio107.com/blog/speeding-up-tailwind-css-builds) article
+* [Tailwind CSS](https://tailwindcss.com/) for the site-wide CSS using the [@tailwindcss/jit](https://blog.tailwindcss.com/just-in-time-the-next-generation-of-tailwind-css)
 * JSON-LD structured data as per [Annotated JSON-LD Structured Data Examples](https://nystudio107.com/blog/annotated-json-ld-structured-data-examples)
 * [Google AMP](https://developers.google.com/amp/) versions of the podcast episode and other pages
 * Image transforms are done via a [Serverless Image Handler](https://aws.amazon.com/solutions/serverless-image-handler/) lambda function, as described in the [Setting Up Your Own Image Transform Service](https://nystudio107.com/blog/setting-up-your-own-image-transform-service) article
@@ -56,7 +56,7 @@ You'll need Docker desktop for your platform installed to run the project in loc
 
 * Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
 * Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
-* Start up the site with `docker-compose up` (the first build will be somewhat lengthy)
+* Start up the site by typing `make dev` in terminal in the project's root directory (the first build will be somewhat lengthy)
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 
 The CP login credentials are initially set as follows:
@@ -64,20 +64,22 @@ The CP login credentials are initially set as follows:
 Login: `andrew@nystudio107.com` \
 Password: `letmein`
 
-Obviously change these to whatever you like as needed
+Obviously change these to whatever you like as needed.
 
-**N.B.:** Without authorization & credentials (which are private), the `./docker_pull_db.sh` will not work. It's provided here for instructional purposes
+Build the production assets by typing `make build` to build the critical CSS, fonts, and other production assets. They will appear in `cms/web/dist/` (just double-click on the `report-legacy.html` and `report-modern.html` files to view them).
+
+**N.B.:** Without authorization & credentials (which are private), the `make pulldb` will not work (it just runs `scripts/docker_pull_db.sh`). It's provided here for instructional purposes.
 
 To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers), do:
 ```
 rm cms/composer.lock
-docker-compose up
+make dev
 ```
 
 To update to the latest npm packages (as constrained by the `buildchain/package.json` semvers), do:
 ```
 rm buildchain/package-lock.json
-docker-compose up
+make dev
 ```
 
 To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug ) and use the following configuration in your `.vscode/launch.json`:
