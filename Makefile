@@ -1,9 +1,12 @@
 CONTAINER?=$(shell basename $(CURDIR))_php_1
 
-.PHONY: build dev pulldb restoredb up
+.PHONY: build clean dev pulldb restoredb up
 
 build: up
 	cd scripts/ && ./docker_prod_build.sh
+clean:
+	docker-compose down -v
+	docker-compose up --build
 dev: up
 pulldb: up
 	cd scripts/ && ./docker_pull_db.sh
