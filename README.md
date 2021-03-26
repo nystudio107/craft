@@ -77,10 +77,12 @@ This project uses Docker to shrink-wrap the devops it needs to run around the pr
 To make using it easier, we're using a Makefile and the built-in `make` utility to create local aliases. You can run the following from terminal in the project directory:
 
 - `make dev` - starts up the local dev server listening on `http://localhost:8000/`
-- `make build` - builds the static assets via the webpack 5 buildchain, to the `cms/web/dist/` directory; the `scripts/.env.sh` must be set up first
+- `make build` - builds the static assets via the webpack 5 buildchain
 - `make clean` - shuts down the Docker containers, removes any mounted volumes (including the database), and then rebuilds the containers from scratch
+- `make composer xxx` - runs the `composer` command passed in, e.g. `make composer install`
+- `make npm xxx` - runs the `npm` command passed in, e.g. `make npm install`
 - `make pulldb` - runs the `scripts/docker_pull_db.sh` script to pull a remote database into the database container; the `scripts/.env.sh` must be set up first
-- `make restoredb xxxx` - runs the `scripts/docker_restore_db.sh` script to restore a local database dump into the database container; the `scripts/.env.sh` must be set up first
+- `make restoredb xxx` - runs the `scripts/docker_restore_db.sh` script to restore a local database dump into the database container; the `scripts/.env.sh` must be set up first
 
 ### Other notes
 
