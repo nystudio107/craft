@@ -1,6 +1,15 @@
 # nystudio107/craft Change Log
 
-## 2.4.28 - 2021.03.22
+## 2.4.29 - 2021.03.25
+### Added
+* Added `make clean` to the Makefile
+* Added **Makefile Project Commands** to `README.md`
+* Added `make composer xxx` & `make npm xxx` commands
+
+### Changed
+* Remove deprecated `scripts/docker_prod_build.sh` in favor of `make build`
+
+## 2.4.28 - 2021.03.24
 ### Fixed
 * Fixed an issue with the `webpack-dev-server` version `^4.0.0-beta.1` by moving the `overlay` config setting to `client` (https://github.com/nystudio107/craft/issues/54)
 

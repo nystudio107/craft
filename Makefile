@@ -1,10 +1,20 @@
 CONTAINER?=$(shell basename $(CURDIR))_php_1
+BUILDCHAIN?=$(shell basename $(CURDIR))_webpack_1
 
-.PHONY: build dev pulldb restoredb up
+.PHONY: build clean composer dev npm pulldb restoredb up
 
 build: up
-	cd scripts/ && ./docker_prod_build.sh
+	docker exec -it ${BUILDCHAIN} npm run build
+clean:
+	docker-compose down -v
+	docker-compose up --build
+composer: up
+	docker exec -it ${CONTAINER} composer \
+		$(filter-out $@,$(MAKECMDGOALS))
 dev: up
+npm: up
+	docker exec -it ${BUILDCHAIN} npm \
+		$(filter-out $@,$(MAKECMDGOALS))
 pulldb: up
 	cd scripts/ && ./docker_pull_db.sh
 restoredb: up
