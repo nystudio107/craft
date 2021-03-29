@@ -59,6 +59,21 @@ You'll need Docker desktop for your platform installed to run the project in loc
 * Start up the site by typing `make dev` in terminal in the project's root directory (the first build will be somewhat lengthy)
 * Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
 
+Wait until you see the following to indicate that the PHP container is ready:
+
+```
+php_1         | Craft is installed.
+php_1         | Applying changes from your project config files ... done
+php_1         | [01-Dec-2020 18:38:46] NOTICE: fpm is running, pid 22
+php_1         | [01-Dec-2020 18:38:46] NOTICE: ready to handle connections
+```
+
+...and the following to indicate that the webpack container is ready:
+```
+webpack_1     | <i> devmode-fm (webpack 5.9.0) compiled successfully in 12097 ms
+webpack_1     | <i> [webpack-dev-middleware] Child "devmode-fm": Compiled successfully.
+```
+
 The CP login credentials are initially set as follows:
 
 Login: `andrew@nystudio107.com` \
