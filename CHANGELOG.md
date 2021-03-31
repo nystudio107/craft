@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.30 - UNRELEASED
+### Fixed
+* Fixed `make up` command by removing an errant `$`
+
 ## 2.4.29 - 2021.03.25
 ### Added
 * Added `make clean` to the Makefile
