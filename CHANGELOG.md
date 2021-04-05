@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.32 - 2021.04.05
+### Changed
+* Use Tailwind CSS `^2.1.0` with JIT
+
 ## 2.4.31 - 2021.04.05
 ### Added
 * Added `make update` to update Composer & NPM packages
