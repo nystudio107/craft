@@ -94,6 +94,8 @@ To make using it easier, we're using a Makefile and the built-in `make` utility 
 - `make dev` - starts up the local dev server listening on `http://localhost:8000/`
 - `make build` - builds the static assets via the webpack 5 buildchain
 - `make clean` - shuts down the Docker containers, removes any mounted volumes (including the database), and then rebuilds the containers from scratch
+- `make update` - causes the project to update to the latest Composer and NPM dependencies
+- `make update-clean` - completely removes `node_modules/` & `vendor/`, then causes the project to update to the latest Composer and NPM dependencies
 - `make composer xxx` - runs the `composer` command passed in, e.g. `make composer install`
 - `make npm xxx` - runs the `npm` command passed in, e.g. `make npm install`
 - `make pulldb` - runs the `scripts/docker_pull_db.sh` script to pull a remote database into the database container; the `scripts/.env.sh` must be set up first
@@ -101,16 +103,14 @@ To make using it easier, we're using a Makefile and the built-in `make` utility 
 
 ### Other notes
 
-To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers), do:
+To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers) and latest npm packages (as constrained by the `docker-config/webpack-dev-devmode/package.json` semvers), do:
 ```
-rm cms/composer.lock
-make dev
+make update
 ```
 
-To update to the latest npm packages (as constrained by the `buildchain/package.json` semvers), do:
+To start from scratch by removing `buildchain/node_modules/` & `cms/vendor/`, then update to the latest Composer packages (as constrained by the `cms/composer.json` semvers) and latest npm packages (as constrained by the `docker-config/webpack-dev-devmode/package.json` semvers), do:
 ```
-rm buildchain/package-lock.json
-make dev
+make update-clean
 ```
 
 To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug ) and use the following configuration in your `.vscode/launch.json`:
