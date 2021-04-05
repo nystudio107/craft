@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.4.31 - UNRELEASED
+## 2.4.31 - 2021.04.05
 ### Added
 * Added `make update` to update Composer & NPM packages
 * Added `make update-clean` to completely remove `vendor/` and `node_modules/`, then update Composer & NPM packages
