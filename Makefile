@@ -20,6 +20,18 @@ pulldb: up
 restoredb: up
 	cd scripts/ && ./docker_restore_db.sh \
 		$(filter-out $@,$(MAKECMDGOALS))
+update:
+	docker-compose down
+	rm cms/composer.lock
+	rm buildchain/package-lock.json
+	docker-compose up
+update-clean:
+	docker-compose down
+	rm cms/composer.lock
+	rm -rf cms/vendor/
+	rm buildchain/package-lock.json
+	rm -rf buildchain/node_modules/
+	docker-compose up
 up:
 	if [ ! "$$(docker ps -q -f name=${CONTAINER})" ]; then \
         docker-compose up; \
