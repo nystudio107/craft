@@ -3,6 +3,7 @@
 ## 2.4.30 - UNRELEASED
 ### Fixed
 * Fixed `make up` command by removing an errant `$`
+* Add `storage/config-deltas/` to prevent permissions issues
 
 ## 2.4.29 - 2021.03.25
 ### Added
