@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.4.30 - 2021.04.05
+### Fixed
+* Fixed `make up` command by removing an errant `$`
+* Add `storage/config-deltas/` to prevent permissions issues
+
 ## 2.4.29 - 2021.03.25
 ### Added
 * Added `make clean` to the Makefile

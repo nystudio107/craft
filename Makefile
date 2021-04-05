@@ -21,7 +21,7 @@ restoredb: up
 	cd scripts/ && ./docker_restore_db.sh \
 		$(filter-out $@,$(MAKECMDGOALS))
 up:
-	if [ ! "$$(docker ps -q -f name=$${CONTAINER})" ]; then \
+	if [ ! "$$(docker ps -q -f name=${CONTAINER})" ]; then \
         docker-compose up; \
     fi
 %:
