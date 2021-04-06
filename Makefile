@@ -22,14 +22,14 @@ restoredb: up
 		$(filter-out $@,$(MAKECMDGOALS))
 update:
 	docker-compose down
-	rm cms/composer.lock
-	rm buildchain/package-lock.json
+	rm -f cms/composer.lock
+	rm -f buildchain/package-lock.json
 	docker-compose up
 update-clean:
 	docker-compose down
-	rm cms/composer.lock
+	rm -f cms/composer.lock
 	rm -rf cms/vendor/
-	rm buildchain/package-lock.json
+	rm -f buildchain/package-lock.json
 	rm -rf buildchain/node_modules/
 	docker-compose up
 up:
