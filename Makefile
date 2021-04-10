@@ -11,6 +11,9 @@ clean:
 composer: up
 	docker exec -it ${CONTAINER} composer \
 		$(filter-out $@,$(MAKECMDGOALS))
+craft: up
+	docker exec -it ${CONTAINER} php craft \
+		$(filter-out $@,$(MAKECMDGOALS))
 dev: up
 npm: up
 	docker exec -it ${BUILDCHAIN} npm \

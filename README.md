@@ -97,6 +97,7 @@ To make using it easier, we're using a Makefile and the built-in `make` utility 
 - `make update` - causes the project to update to the latest Composer and NPM dependencies
 - `make update-clean` - completely removes `node_modules/` & `vendor/`, then causes the project to update to the latest Composer and NPM dependencies
 - `make composer xxx` - runs the `composer` command passed in, e.g. `make composer install`
+- `make craft xxx` - runs the `craft` [console command](https://craftcms.com/docs/3.x/console-commands.html) passed in, e.g. `make craft project-config/apply` in the php container
 - `make npm xxx` - runs the `npm` command passed in, e.g. `make npm install`
 - `make pulldb` - runs the `scripts/docker_pull_db.sh` script to pull a remote database into the database container; the `scripts/.env.sh` must be set up first
 - `make restoredb xxx` - runs the `scripts/docker_restore_db.sh` script to restore a local database dump into the database container; the `scripts/.env.sh` must be set up first
