@@ -1,7 +1,7 @@
 # nystudio107/craft Change Log
 
 ## 2.4.35 - 2021.04.27
-###
+### Changed
 * Delegate all of `storage` & `cpresources` volumes, let the container own it
 
 ## 2.4.34 - 2021.04.10
