@@ -12,7 +12,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - cpresources:/var/www/project/cms/web/cpresources
+      - cpresources:/var/www/project/cms/web/cpresources:delegated
       - ./cms/web:/var/www/project/cms/web:cached
   # php - run php-fpm
   php:
@@ -28,12 +28,10 @@ services:
       - "9000"
     init: true
     volumes: &php-volumes
-      - cpresources:/var/www/project/cms/web/cpresources
-      - storage:/var/www/project/cms/storage
+      - cpresources:/var/www/project/cms/web/cpresources:delegated
+      - storage:/var/www/project/cms/storage:delegated
       - ./cms:/var/www/project/cms:cached
       - ./cms/vendor:/var/www/project/cms/vendor:delegated
-      - ./cms/storage/logs:/var/www/project/cms/storage/logs:delegated
-      - ./cms/storage/runtime/compiled_templates:/var/www/project/cms/storage/runtime/compiled_templates:delegated
   # php - run php-fpm with xdebug
   php_xdebug:
     build:
