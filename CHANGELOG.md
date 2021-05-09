@@ -1,8 +1,11 @@
 # nystudio107/craft Change Log
 
-## 2.4.36 - UNRELEASED
+## 2.4.36 - 2020.05.09
 ### Changed
 * Silence errors from the root `post-create-project-cmd` script
+
+### Fixed
+* Fixed a breaking change of `dev` to `devMiddleware` in `webpack-dev-server` `^4.0.0-beta.3`
 
 ## 2.4.35 - 2021.04.27
 ### Changed
