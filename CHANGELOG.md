@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.4.37 - UNRELEASED
+## 2.4.37 - 2021.05.14
 ### Changed
 * Added `logs` and `compiled_templates` dirs back in, so they appear on the client side
 
