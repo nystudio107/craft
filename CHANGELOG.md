@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.37 - 2021.05.14
+### Changed
+* Added `logs` and `compiled_templates` dirs back in, so they appear on the client side
+
 ## 2.4.36 - 2020.05.09
 ### Changed
 * Silence errors from the root `post-create-project-cmd` script
