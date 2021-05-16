@@ -62,7 +62,7 @@ This project package works exactly the way Pixel & Tonic's [craftcms/craft](http
 
 Make sure that `PATH` is the path to your project, including the name you want for the project, e.g.:
 
-    composer create-project nystudio107/craft:dev-craft-vite vitetest --no-install
+    composer create-project nystudio107/craft:dev-craft-vite vitecraft --no-install
 
 We use `--no-install` so that the composer packages for the root project are not installed.
 
@@ -70,8 +70,6 @@ We use `--no-install` so that the composer packages for the root project are not
 
 You'll need Docker desktop for your platform installed to run the project in local development
 
-* Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
-* Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
 * Start up the site by typing `make dev` in terminal in the project's root directory (the first build will be somewhat lengthy)
 * Navigate to `http://localhost:8000` to use the site; the `vite-dev-server` runs off of `http://localhost:3000`
 
