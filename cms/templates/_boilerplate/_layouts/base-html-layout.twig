@@ -51,7 +51,7 @@
 
     {# -- Any JavaScript that should be included before </head> -- #}
     {% block headJs %}
-        {{ craft.vite.script("/src/js/app.ts") }}
+        {{ craft.vite.script("/src/js/app.ts", false) }}
     {% endblock headJs %}
 
     {# -- Inline and critical CSS #}
