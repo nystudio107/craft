@@ -51,6 +51,7 @@
 
     {# -- Any JavaScript that should be included before </head> -- #}
     {% block headJs %}
+        {{ craft.vite.script("/src/js/app.ts") }}
     {% endblock headJs %}
 
     {# -- Inline and critical CSS #}
@@ -69,11 +70,6 @@
     {# -- Page content that should be included in the <body> -- #}
     {% block bodyHtml %}
     {% endblock bodyHtml %}
-
-    {#-- Site-wide JavaScript --#}
-    {{ craft.twigpack.includeSafariNomoduleFix() }}
-    {{ craft.twigpack.includeJsModule("runtime.js", true) }}
-    {{ craft.twigpack.includeJsModule("app.js", true) }}
 
     {# -- Inline JS #}
     {% include "_boilerplate/_partials/body-js.twig" %}

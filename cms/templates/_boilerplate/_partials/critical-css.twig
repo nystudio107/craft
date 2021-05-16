@@ -1,14 +1,12 @@
 {# -- Critical CSS -- #}
-{% set cssHash = craft.twigpack.getModuleHash("styles.css", "legacy") %}
+{# @TODO - not implemented yet with Vite #}
 
+{% set cssHash = "TODO" %}
 <!--# if expr="$HTTP_COOKIE=/critical\-css\={{ cssHash }}/" -->
-{{ craft.twigpack.includeCssModule("styles.css", false) }}
+{# Load CSS stylesheet synchronously #}
 <!--# else -->
 <script>
      Cookie.set("critical-css", "{{ cssHash }}", { expires: "7D", secure: true });
 </script>
-
-{{ craft.twigpack.includeCriticalCssTags() }}
-
-{{ craft.twigpack.includeCssModule("styles.css", true) }}
+{# include Critical CSS and load the full stylesheet asynchronously #}
 <!--# endif -->

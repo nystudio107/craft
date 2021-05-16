@@ -90,18 +90,17 @@ services:
     expose:
       - "6379"
     init: true
-  # webpack - frontend build system
-  webpack:
+  # vite - frontend build system
+  vite:
     build:
-      context: ./docker-config/node-dev-webpack
+      context: ./docker-config/node-dev-vite
       dockerfile: ./Dockerfile
     env_file:
       *env
     init: true
     ports:
-      - "8080:8080"
+      - "3000:3000"
     volumes:
-      - ./tsconfig.json:/var/www/project/tsconfig.json:cached
       - ./buildchain:/var/www/project/buildchain:cached
       - ./buildchain/node_modules:/var/www/project/buildchain/node_modules:delegated
       - ./cms/web:/var/www/project/cms/web:delegated

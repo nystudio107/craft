@@ -13,4 +13,4 @@ WORKDIR /var/www/project/buildchain/
 # when working with teams or multiple environments
 CMD npm install \
     && \
-    npm run debug
+    npm run dev

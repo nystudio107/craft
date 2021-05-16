@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "buildchain/node_modules",
+    "baseUrl": "node_modules",
     "declaration": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "noEmit": true,
     "noImplicitAny": true,
-    "outDir": "./cms/web/dist/",
+    "outDir": "./dist",
     "paths": {
       "@/*": [
         "./src/*"
@@ -26,7 +26,7 @@
     "strictNullChecks": true,
     "target": "esnext",
     "typeRoots": [
-      "buildchain/node_modules/@types"
+      "node_modules/@types"
     ]
   },
   "include": [

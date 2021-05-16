@@ -1,14 +1,14 @@
 <template>
-  <confetti></confetti>
+    <confetti></confetti>
 </template>
 
 <script lang="ts">
 // Async load the Vue 3 APIs we need from the Vue ESM
 import {defineAsyncComponent, defineComponent } from 'vue';
-
+import Confetti from '@/vue/Confetti.vue';
 export default defineComponent({
   components: {
-    'confetti': defineAsyncComponent(() => import(/* webpackChunkName: "confetti" */ '@/vue/Confetti.vue')),
+    'confetti': Confetti,
   },
   data: () => ({
   }),
