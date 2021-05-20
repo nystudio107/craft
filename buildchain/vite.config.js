@@ -1,4 +1,5 @@
 import vue from '@vitejs/plugin-vue'
+import legacy from '@vitejs/plugin-legacy'
 import ViteRestart from 'vite-plugin-restart';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import path from 'path';
@@ -19,6 +20,9 @@ export default ({ command }) => ({
     }
   },
   plugins: [
+    legacy({
+      targets: ['defaults', 'not IE 11']
+    }),
     nodeResolve({
       moduleDirectories: [
         path.resolve('./node_modules'),
