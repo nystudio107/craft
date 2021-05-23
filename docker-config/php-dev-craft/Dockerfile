@@ -54,4 +54,7 @@ RUN mkdir -p /var/www/project/cms/storage && \
 RUN mkdir -p /var/www/project/cms/web/cpresources && \
     chown -R www-data:www-data /var/www/project/cms/web/cpresources
 
+# run container as the www-data user
+USER www-data
+
 WORKDIR /var/www/project/cms

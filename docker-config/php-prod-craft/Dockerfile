@@ -60,6 +60,9 @@ RUN mkdir -p /var/www/project/cms/web/cpresources && \
 # Permissions
 RUN chown -R www-data:www-data /var/www/project/cms/web
 
+# run container as the www-data user
+USER www-data
+
 WORKDIR /var/www/project/cms
 
 # Force permissions, update Craft, and start php-fpm
