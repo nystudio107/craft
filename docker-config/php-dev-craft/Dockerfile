@@ -55,3 +55,6 @@ RUN mkdir -p /var/www/project/cms/web/cpresources && \
     chown -R www-data:www-data /var/www/project/cms/web/cpresources
 
 WORKDIR /var/www/project/cms
+
+# run container as the www-data user
+USER www-data
