@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.38 - 2021.05.23
+### Changed
+* Run php container as the `www-data` user to avoid permissions issues
+
 ## 2.4.37 - 2021.05.14
 ### Changed
 * Added `logs` and `compiled_templates` dirs back in, so they appear on the client side
