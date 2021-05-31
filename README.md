@@ -11,7 +11,7 @@ This project uses a [Vite.js](https://vitejs.dev/) for the build system as per [
 Some things are still unfinished:
 
 * Favicon generation isn't done; this probably would be done with the [rollup-favicons-plugin](https://www.npmjs.com/package/rollup-plugin-favicons)
-* Critical CSS isn't integrated as part of the build yet. This will likely be done via npm scripts or via a Rollup plugin that we will write
+* Critical CSS isn't integrated as part of the build yet. This will be done via the [rollup-plugin-critical](https://github.com/nystudio107/rollup-plugin-critical) we wrote
 * AMP CSS isn't included; this will likely be done the same way the Critical CSS is done
 
 But if these things aren't important to you, by all means, dive in.
