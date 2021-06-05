@@ -2,6 +2,7 @@ import vue from '@vitejs/plugin-vue'
 import legacy from '@vitejs/plugin-legacy'
 import ViteRestart from 'vite-plugin-restart';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import critical from 'rollup-plugin-critical';
 import path from 'path';
 
 // https://vitejs.dev/config/
@@ -20,6 +21,15 @@ export default ({ command }) => ({
     }
   },
   plugins: [
+    critical({
+      criticalUrl: 'https://nystudio107.com',
+      criticalBase: '../cms/web/dist/criticalcss/',
+      criticalPages: [
+        { uri: '/', template: 'index' },
+      ],
+      criticalConfig: {
+      }
+    }),
     legacy({
       targets: ['defaults', 'not IE 11']
     }),

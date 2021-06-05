@@ -11,7 +11,6 @@ This project uses a [Vite.js](https://vitejs.dev/) for the build system as per [
 Some things are still unfinished:
 
 * Favicon generation isn't done; this probably would be done with the [rollup-favicons-plugin](https://www.npmjs.com/package/rollup-plugin-favicons)
-* Critical CSS isn't integrated as part of the build yet. This will be done via the [rollup-plugin-critical](https://github.com/nystudio107/rollup-plugin-critical) we wrote
 * AMP CSS isn't included; this will likely be done the same way the Critical CSS is done
 
 But if these things aren't important to you, by all means, dive in.
@@ -33,7 +32,7 @@ The project is based on [Craft CMS](https://CraftCMS.com) using a unique `templa
 * Image transforms are done via a [Serverless Image Handler](https://aws.amazon.com/solutions/serverless-image-handler/) lambda function, as described in the [Setting Up Your Own Image Transform Service](https://nystudio107.com/blog/setting-up-your-own-image-transform-service) article
 * Static assets are stored in AWS S3 buckets with CloudFront as the CDN, as per the [Setting Up AWS S3 Buckets + CloudFront CDN for your Assets](https://nystudio107.com/blog/using-aws-s3-buckets-cloudfront-distribution-with-craft-cms) article
 * Implements a Service Worker via Google's [Workbox](https://developers.google.com/web/tools/workbox/) as per [Service Workers and Offline Browsing](https://nystudio107.com/blog/service-workers-and-offline-browsing)
-* Critical CSS as per [Implementing Critical CSS on your website](https://nystudio107.com/blog/implementing-critical-css)
+* Critical CSS as per [Implementing Critical CSS on your website](https://nystudio107.com/blog/implementing-critical-css) using the [rollup-plugin-critical](https://github.com/nystudio107/rollup-plugin-critical)
 * Frontend error handling as per [Handling Errors Gracefully in Craft CMS](https://nystudio107.com/blog/handling-errors-gracefully-in-craft-cms)
 * A custom site module as per [Enhancing a Craft CMS 3 Website with a Custom Module](https://nystudio107.com/blog/enhancing-a-craft-cms-3-website-with-a-custom-module)
 * CLI-based queue as per [Robust queue job handling in Craft CMS](https://nystudio107.com/blog/robust-queue-job-handling-in-craft-cms)

@@ -1,12 +1,15 @@
 {# -- Critical CSS -- #}
-{# @TODO - not implemented yet with Vite #}
-
+{#  @TODO: cssHash not implemented yet #}
 {% set cssHash = "TODO" %}
+
 <!--# if expr="$HTTP_COOKIE=/critical\-css\={{ cssHash }}/" -->
-{# Load CSS stylesheet synchronously #}
+{{ craft.vite.script("/src/js/app.ts", false) }}
 <!--# else -->
 <script>
      Cookie.set("critical-css", "{{ cssHash }}", { expires: "7D", secure: true });
 </script>
-{# include Critical CSS and load the full stylesheet asynchronously #}
+
+{{ craft.vite.includeCriticalCssTags() }}
+
+{{ craft.vite.script("/src/js/app.ts", true) }}
 <!--# endif -->
