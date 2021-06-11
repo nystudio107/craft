@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.39 - UNRELEASED
+### Changed
+* Removed whitelist settings in `tailwind.conf.js`
+
 ## 2.4.38 - 2021.05.23
 ### Changed
 * Run php container as the `www-data` user to avoid permissions issues
