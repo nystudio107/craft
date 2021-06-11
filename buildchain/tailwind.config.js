@@ -13,9 +13,6 @@ module.exports = {
     ],
     mode: 'layers',
     options: {
-      whitelist: [
-        '../src/css/components/**/*.{css}',
-      ],
     }
   },
   theme: {
