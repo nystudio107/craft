@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.4.39 - UNRELEASED
+## 2.4.39 - 2021.06.11
 ### Changed
 * Removed whitelist settings in `tailwind.conf.js`
 * Cleaned up the `php-dev-craft` & `php-prod-craft` Dockerfile file permissions
