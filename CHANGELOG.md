@@ -3,6 +3,7 @@
 ## 2.4.39 - UNRELEASED
 ### Changed
 * Removed whitelist settings in `tailwind.conf.js`
+* Cleaned up the `php-dev-craft` & `php-prod-craft` Dockerfile file permissions
 
 ## 2.4.38 - 2021.05.23
 ### Changed
