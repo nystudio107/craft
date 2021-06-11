@@ -46,19 +46,13 @@ RUN set -eux; \
 WORKDIR /var/www/project
 
 COPY ./run_queue.sh .
-RUN chmod a+x run_queue.sh
-
-# Create the storage directory and make it writeable by PHP
-RUN mkdir -p /var/www/project/cms/storage && \
-    mkdir -p /var/www/project/cms/storage/runtime && \
-    chown -R www-data:www-data /var/www/project/cms/storage
-
-# Create the cpresources directory and make it writeable by PHP
-RUN mkdir -p /var/www/project/cms/web/cpresources && \
-    chown -R www-data:www-data /var/www/project/cms/web/cpresources
-
-# Permissions
-RUN chown -R www-data:www-data /var/www/project/cms/web
+RUN chmod a+x run_queue.sh \
+    && \
+    mkdir -p /var/www/project/cms/storage \
+    && \
+    mkdir -p /var/www/project/cms/web/cpresources \
+    && \
+    chown -R www-data:www-data /var/www/project
 
 WORKDIR /var/www/project/cms
 
@@ -75,14 +69,6 @@ USER www-data
 # but saves far more time in not having to deal with out of sync versions
 # when working with teams or multiple environments
 CMD composer install --verbose --no-progress --no-scripts --optimize-autoloader --no-interaction \
-    && \
-    chown -R www-data:www-data /var/www/project/cms/config \
-    && \
-    chown -R www-data:www-data /var/www/project/cms/storage \
-    && \
-    chown -R www-data:www-data /var/www/project/cms/vendor \
-    && \
-    chown -R www-data:www-data /var/www/project/cms/web \
     && \
     composer craft-update \
     && \
