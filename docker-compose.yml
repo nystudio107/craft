@@ -30,9 +30,10 @@ services:
     volumes: &php-volumes
       - cpresources:/var/www/project/cms/web/cpresources:delegated
       - storage:/var/www/project/cms/storage:delegated
+      - ./cms:/var/www/project/cms:cached
+      # Specific directories that need to be bind-mounted
       - ./cms/storage/logs:/var/www/project/cms/storage/logs:delegated
       - ./cms/storage/runtime/compiled_templates:/var/www/project/cms/storage/runtime/compiled_templates:delegated
-      - ./cms:/var/www/project/cms:cached
       - ./cms/vendor:/var/www/project/cms/vendor:delegated
   # php - run php-fpm with xdebug
   php_xdebug:
