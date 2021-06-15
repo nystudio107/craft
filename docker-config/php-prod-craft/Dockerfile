@@ -67,7 +67,7 @@ WORKDIR /var/www/project/cms
 # when working with teams or multiple environments
 CMD composer install --verbose --no-progress --no-scripts --optimize-autoloader --no-interaction \
     && \
-    chown -R www-data:www-data /var/www/project
+    chown -R www-data:www-data /var/www/project \
     && \
     composer craft-update \
     && \
