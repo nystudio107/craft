@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.41 - 2021.06.15
+### Fixed
+* Fixed typo in Dockerfile that would cause the PHP container to not build
+
 ## 2.4.40 - 2021.06.15
 ### Changed
 * Removed `USER` directive in the PHP containers, since the pool runs as `www-data` already
