@@ -52,6 +52,3 @@ RUN mkdir -p /var/www/project/cms/storage \
     chown -R www-data:www-data /var/www/project
 
 WORKDIR /var/www/project/cms
-
-# run container as the www-data user
-USER www-data

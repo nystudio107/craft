@@ -56,9 +56,6 @@ RUN chmod a+x run_queue.sh \
 
 WORKDIR /var/www/project/cms
 
-# run container as the www-data user
-USER www-data
-
 # Force permissions, update Craft, and start php-fpm
 
 # Do a `composer install` without running any Composer scripts
@@ -69,6 +66,8 @@ USER www-data
 # but saves far more time in not having to deal with out of sync versions
 # when working with teams or multiple environments
 CMD composer install --verbose --no-progress --no-scripts --optimize-autoloader --no-interaction \
+    && \
+    chown -R www-data:www-data /var/www/project
     && \
     composer craft-update \
     && \
