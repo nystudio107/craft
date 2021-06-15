@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.4.40 - 2021.06.15
+### Changed
+* Removed `USER` directive in the PHP containers, since the pool runs as `www-data` already
+* Fix permissions regression
+
 ## 2.4.39 - 2021.06.11
 ### Changed
 * Removed whitelist settings in `tailwind.conf.js`
