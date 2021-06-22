@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.42 - 2021.06.22
+### Changed
+* Continue running the `php-fpm` containers as root (since `php-fpm` uses worker pools with the proper user/group), but switch to `su-exec` to ensure any craft CLI commands are run as `www-data`
+
 ## 2.4.41 - 2021.06.15
 ### Fixed
 * Fixed typo in Dockerfile that would cause the PHP container to not build
