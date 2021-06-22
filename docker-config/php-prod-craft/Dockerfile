@@ -23,6 +23,7 @@ RUN set -eux; \
     && \
     # Packages to install
     apk add --no-cache \
+        su-exec \
         gifsicle \
         jpegoptim \
         libwebp-tools \
@@ -65,10 +66,10 @@ WORKDIR /var/www/project/cms
 # This automatic running adds to the startup overhead of `docker-compose up`
 # but saves far more time in not having to deal with out of sync versions
 # when working with teams or multiple environments
-CMD composer install --verbose --no-progress --no-scripts --optimize-autoloader --no-interaction \
+CMD chown -R www-data:www-data /var/www/project \
     && \
-    chown -R www-data:www-data /var/www/project \
+    su-exec www-data composer install --verbose --no-progress --no-scripts --optimize-autoloader --no-interaction \
     && \
-    composer craft-update \
+    su-exec www-data composer craft-update \
     && \
     php-fpm
