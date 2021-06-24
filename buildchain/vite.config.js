@@ -9,6 +9,7 @@ import path from 'path';
 export default ({ command }) => ({
   base: command === 'serve' ? '' : '/dist/',
   build: {
+    emptyOutDir: true,
     manifest: true,
     outDir: '../cms/web/dist',
     rollupOptions: {
