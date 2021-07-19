@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.43 - 2021.07.19
+### Changed
+* Remove `storage/` dir
+
 ## 2.4.42 - 2021.06.22
 ### Changed
 * Continue running the `php-fpm` containers as root (since `php-fpm` uses worker pools with the proper user/group), but switch to `su-exec` to ensure any craft CLI commands are run as `www-data`
