@@ -19,7 +19,6 @@
 
 # CRAFT STORAGE
 */storage/*
-!*/storage/.gitkeep
 
 # ASSETS
 /cms/web/assets/*
