@@ -12,8 +12,8 @@ module.exports = (type = 'modern', settings) => {
     // common config
     const common = () => ({
         devServer: {
+            allowedHosts: "all",
             client: {
-                allowedHosts: "all",
                 overlay: true,
                 progress: false,
                 webSocketURL: {
