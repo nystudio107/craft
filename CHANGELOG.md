@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.44 - 2021.07.20
+### Fixed
+* Fix breaking changes due to `webpack-dev-server` `^4.0.0-rc.0`
+
 ## 2.4.43 - 2021.07.19
 ### Changed
 * Remove `storage/` dir
