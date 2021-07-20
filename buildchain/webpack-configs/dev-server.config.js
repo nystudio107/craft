@@ -13,13 +13,17 @@ module.exports = (type = 'modern', settings) => {
     const common = () => ({
         devServer: {
             client: {
+                allowedHosts: "all",
                 overlay: true,
                 progress: false,
+                webSocketURL: {
+                    hostname: settings.host(),
+                    port: settings.port(),
+                },
             },
             devMiddleware: {
                 publicPath: '/',
             },
-            firewall: false,
             headers: {
                 'Access-Control-Allow-Origin': '*'
             },
@@ -27,7 +31,6 @@ module.exports = (type = 'modern', settings) => {
             hot: true,
             https: !!parseInt(settings.https()),
             port: settings.port(),
-            public: settings.public(),
             static: {
                 directory: path.resolve(__dirname, settings.contentBase()),
                 publicPath: '/',
