@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.45 - 2021.07.20
+### Fixed
+* Add `publicPath` back in, and fix `allowedHosts` location in the config
+
 ## 2.4.44 - 2021.07.20
 ### Fixed
 * Fix breaking changes due to `webpack-dev-server` `^4.0.0-rc.0`
