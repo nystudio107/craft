@@ -12,8 +12,8 @@ module.exports = (type = 'modern', settings) => {
     // common config
     const common = () => ({
         devServer: {
+            allowedHosts: "all",
             client: {
-                allowedHosts: "all",
                 overlay: true,
                 progress: false,
                 webSocketURL: {
@@ -50,7 +50,6 @@ module.exports = (type = 'modern', settings) => {
         output: {
             filename: path.join('./js', '[name].js'),
             path: path.resolve(__dirname, settings.paths.dist),
-            publicPath: settings.public() + '/',
         },
         plugins: [
             new webpack.EvalSourceMapDevToolPlugin({
