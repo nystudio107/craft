@@ -12,7 +12,7 @@ module.exports = (type = 'modern', settings) => {
     // common config
     const common = () => ({
         devServer: {
-            allowedHosts: "all",
+            allowedHosts: 'all',
             client: {
                 overlay: true,
                 progress: false,
