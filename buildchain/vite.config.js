@@ -45,6 +45,7 @@ export default ({ command }) => ({
       ],
     }),
     vue(),
+    // Static Asset Fixer, see: https://github.com/vitejs/vite/issues/2394
     {
       name: 'static-asset-fixer',
       enforce: 'post',
