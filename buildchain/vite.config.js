@@ -52,7 +52,7 @@ export default ({ command }) => ({
       apply: 'serve',
       transform: (code, id) => {
         return {
-          code: code.replace(/\/src\/(.*)\.(svg|jp?g|png|webp)/, 'http://localhost:3000/src/$1.$2'),
+          code: code.replace(/\/src\/(.*)\.(svg|jp?g|png|webp)/g, 'http://localhost:3000/src/$1.$2'),
           map: null,
         }
       },
