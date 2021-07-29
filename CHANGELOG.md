@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.46 - 2021.07.29
+### Added
+* Added `putyourlightson/craft-autocomplete` for the Twig + Symfony plugin auto-complete, removed FauxTwigExtension.php
+
 ## 2.4.45 - 2021.07.20
 ### Fixed
 * Add `publicPath` back in, and fix `allowedHosts` location in the config
