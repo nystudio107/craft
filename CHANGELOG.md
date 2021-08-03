@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.47 - UNRELEASED
+### Added
+* Handle both `XDEBUG_SESSION` and `XDEBUG_PROFILE` cookies
+
 ## 2.4.46 - 2021.07.29
 ### Added
 * Added `putyourlightson/craft-autocomplete` for the Twig + Symfony plugin auto-complete, removed FauxTwigExtension.php
