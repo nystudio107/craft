@@ -3,6 +3,7 @@
 ## 2.4.47 - UNRELEASED
 ### Added
 * Handle both `XDEBUG_SESSION` and `XDEBUG_PROFILE` cookies
+* Added `compiled_templates` as a bind mount in `docker-compose.yaml` for IDE autocompletion
 
 ## 2.4.46 - 2021.07.29
 ### Added
