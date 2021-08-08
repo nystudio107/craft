@@ -1,5 +1,11 @@
 # nystudio107/craft Change Log
 
+## 2.4.47 - 2021.08.07
+### Added
+* Handle both `XDEBUG_SESSION` and `XDEBUG_PROFILE` cookies
+* Added `compiled_templates` as a bind mount in `docker-compose.yaml` for IDE autocompletion
+* Added `nystudio107/craft-autocomplete` for autocomplete of variables in Twig templates
+
 ## 2.4.46 - 2021.07.29
 ### Added
 * Added `putyourlightson/craft-autocomplete` for the Twig + Symfony plugin auto-complete, removed FauxTwigExtension.php

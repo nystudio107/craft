@@ -34,6 +34,7 @@ services:
       # Specific directories that need to be bind-mounted
       - ./cms/storage/logs:/var/www/project/cms/storage/logs:delegated
       - ./cms/storage/runtime/compiled_templates:/var/www/project/cms/storage/runtime/compiled_templates:delegated
+      - ./cms/storage/runtime/compiled_classes:/var/www/project/cms/storage/runtime/compiled_classes:delegated
       - ./cms/vendor:/var/www/project/cms/vendor:delegated
   # php - run php-fpm with xdebug
   php_xdebug:
