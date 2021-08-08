@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.4.47 - UNRELEASED
+## 2.4.47 - 2021.08.07
 ### Added
 * Handle both `XDEBUG_SESSION` and `XDEBUG_PROFILE` cookies
 * Added `compiled_templates` as a bind mount in `docker-compose.yaml` for IDE autocompletion
