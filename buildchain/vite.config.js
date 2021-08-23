@@ -14,7 +14,7 @@ export default ({ command }) => ({
     outDir: '../cms/web/dist',
     rollupOptions: {
       input: {
-        app: '/src/js/app.ts',
+        app: 'src/js/app.ts',
       },
       output: {
         sourcemap: true
