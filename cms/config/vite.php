@@ -68,4 +68,24 @@ return [
      * @var bool Should we check for the presence of the dev server by pinging $devServerInternal to make sure it's running?
      */
     'checkDevServer' => true,
+
+    /**
+     * @var bool Whether the react-refresh-shim should be included
+     */
+    'includeReactRefreshShim' => false,
+
+    /**
+     * @var bool Whether the modulepreload-polyfill shim should be included
+     */
+    'includeModulePreloadShim' => true,
+
+    /**
+     * @var string File system path (or URL) to where the Critical CSS files are stored
+     */
+    'criticalPath' => '@webroot/dist/criticalcss',
+
+    /**
+     * @var string the suffix added to the name of the currently rendering template for the critical css file name
+     */
+    'criticalSuffix' =>'_critical.min.css',
 ];
