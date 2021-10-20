@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.48 - 2021.10.20
+### Changed
+* Updated the `Makefile` to accommodate the change in Docker to using `-` instead of `_` in container names
+
 ## 2.4.47 - 2021.08.07
 ### Added
 * Handle both `XDEBUG_SESSION` and `XDEBUG_PROFILE` cookies
