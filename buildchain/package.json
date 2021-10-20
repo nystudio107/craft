@@ -19,7 +19,7 @@
     "postcss": "^8.2.12",
     "rollup-plugin-critical": "^1.0.4",
     "tailwindcss": "^2.1.2",
-    "vite": "^2.3.2",
+    "vite": "^2.6.0",
     "vite-plugin-restart": "0.0.2"
   },
   "scripts": {
