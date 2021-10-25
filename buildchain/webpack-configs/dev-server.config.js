@@ -35,7 +35,7 @@ module.exports = (type = 'modern', settings) => {
                 directory: path.resolve(__dirname, settings.contentBase()),
                 publicPath: '/',
                 watch: {
-                    poll: settings.poll() | 0,
+                    usePolling: settings.poll() | 0,
                     ignored: /node_modules/,
                 },
             },
