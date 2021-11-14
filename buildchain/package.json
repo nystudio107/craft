@@ -20,7 +20,8 @@
     "rollup-plugin-critical": "^1.0.4",
     "tailwindcss": "^2.1.2",
     "vite": "^2.6.0",
-    "vite-plugin-restart": "0.0.2"
+    "vite-plugin-restart": "^0.0.2",
+    "vite-plugin-favicon2": "^1.1.3"
   },
   "scripts": {
     "dev": "vite",

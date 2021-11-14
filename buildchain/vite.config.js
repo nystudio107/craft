@@ -3,6 +3,7 @@ import legacy from '@vitejs/plugin-legacy'
 import ViteRestart from 'vite-plugin-restart';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import critical from 'rollup-plugin-critical';
+import { ViteFaviconsPlugin } from "vite-plugin-favicon2";
 import path from 'path';
 
 // https://vitejs.dev/config/
@@ -38,6 +39,11 @@ export default ({ command }) => ({
       moduleDirectories: [
         path.resolve('./node_modules'),
       ],
+    }),
+    ViteFaviconsPlugin({
+      logo: "./src/img/favicon-src.png",
+      inject: false,
+      outputPath: 'favicons',
     }),
     ViteRestart({
       reload: [
