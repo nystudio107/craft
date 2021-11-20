@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
-## 2.4.49 - UNRELEASED
+## 2.4.49 - 2021.11.20
+### Added
+* Use `tty: true` for nicer output in terminal from the PHP & webpack Docker containers
+
 ### Changed
 * Move Craft Autocomplete to `require-dev`
 * `poll` -> `usePolling`
