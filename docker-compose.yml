@@ -27,6 +27,7 @@ services:
     expose:
       - "9000"
     init: true
+    tty: true
     volumes: &php-volumes
       - cpresources:/var/www/project/cms/web/cpresources:delegated
       - storage:/var/www/project/cms/storage:delegated
@@ -48,6 +49,7 @@ services:
     expose:
       - "9000"
     init: true
+    tty: true
     volumes:
       *php-volumes
   # queue - runs queue jobs via php craft queue/listen
@@ -60,6 +62,7 @@ services:
     env_file:
       *env
     init: true
+    tty: true
     volumes:
       *php-volumes
   # mariadb - database
@@ -98,6 +101,7 @@ services:
     init: true
     ports:
       - "8080:8080"
+    tty: true
     volumes:
       - ./tsconfig.json:/var/www/project/tsconfig.json:cached
       - ./buildchain:/var/www/project/buildchain:cached
