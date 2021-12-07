@@ -11,6 +11,6 @@ WORKDIR /var/www/project/buildchain/
 # This automatic running adds to the startup overhead of `docker-compose up`
 # but saves far more time in not having to deal with out of sync versions
 # when working with teams or multiple environments
-CMD npm install --legacy-peer-deps \
+CMD npm install \
     && \
     npm run dev
