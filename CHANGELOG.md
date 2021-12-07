@@ -1,5 +1,11 @@
 # nystudio107/craft Change Log
 
+## 2.4.50 - 2021.12.07
+### Changed
+* Use Node 16 for the webpack buildchain container
+* Updated deps for native ARM buildchain container
+* Updated the `Makefile` to accommodate _another_ change in Docker that switches back to using `_` instead of `-` in container names
+
 ## 2.4.49 - 2021.11.20
 ### Added
 * Use `tty: true` for nicer output in terminal from the PHP & webpack Docker containers
