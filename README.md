@@ -8,13 +8,6 @@ This is an alternate scaffolding package for Craft 3 CMS projects to Pixel & Ton
 
 This project uses a [Vite.js](https://vitejs.dev/) for the build system as per [Vite.js Next Generation Frontend Tooling + Craft CMS](https://nystudio107.com/blog/using-vite-js-next-generation-frontend-tooling-with-craft-cms), as opposed to the usual webpack buildchain.
 
-Some things are still unfinished:
-
-* Favicon generation isn't done; this probably would be done with the [rollup-favicons-plugin](https://www.npmjs.com/package/rollup-plugin-favicons)
-* AMP CSS isn't included; this will likely be done the same way the Critical CSS is done
-
-But if these things aren't important to you, by all means, dive in.
-
 Vite is _fast_ ⚡
 
 ### The project
@@ -154,6 +147,10 @@ To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.
 
 
 Below is the entire intact, unmodified `README.md` from Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft):
+
+## Roadmap
+
+* Update to Tailwind CSS `^3.0.0`
 
 .....
 
