@@ -36,8 +36,9 @@
     {% include "_partials/amp-inline-css.css" %}
     {% include "_inline-css/site-fonts.css" %}
     {# Change the URL to a path, so we can include it server-side #}
+    {% set stylesPath = craft.vite.entry('app.css') | replace(getenv('ASSETS_URL'), '@webroot/') | replace('//', '/') %}
     {# Just in case any !important rules slip through #}
-    {# @TODO - include the full CSS #}
+    {{ craft.vite.inline(stylesPath) | replace('!important', '') | raw }}
 {% endblock %}
 
 {# -- Page body -- #}
