@@ -16,6 +16,7 @@ export default ({ command }) => ({
     rollupOptions: {
       input: {
         app: './src/js/app.ts',
+        'lazysizes-wrapper': './src/js/utils/lazysizes-wrapper.ts',
       },
       output: {
         sourcemap: true

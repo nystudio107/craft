@@ -11,9 +11,10 @@ if ('loading' in HTMLImageElement.prototype) {
         source.srcset = source.dataset.srcset;
     });
 } else {
-   // Dynamically import the LazySizes library
+    // Dynamically import the LazySizes library
     const script = document.createElement('script');
+    script.type = 'module';
     script.src =
-        '{# @TODO - include lazyload shim JS script #}';
+        '{{ craft.vite.entry("src/js/utils/lazysizes-wrapper.ts") }}';
     document.body.appendChild(script);
 }
