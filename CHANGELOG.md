@@ -1,9 +1,10 @@
 # nystudio107/craft Change Log
 
-## 2.4.50 - 2021.12.22
+## 2.4.51 - 2021.12.22
 ### Changed
 * Updated to use a unified `bootstrap.php`
 * Updated to use `vlucas/phpdotenv` `^5.4.0`
+* Updated to Tailwind CSS `^3.0.0`
 
 ## 2.4.50 - 2021.12.07
 ### Changed
