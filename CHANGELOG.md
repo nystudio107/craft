@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.4.50 - 2021.12.22
+### Changed
+* Updated to use a unified `bootstrap.php`
+* Updated to use `vlucas/phpdotenv` `^5.4.0`
+
 ## 2.4.50 - 2021.12.07
 ### Changed
 * Use Node 16 for the webpack buildchain container
