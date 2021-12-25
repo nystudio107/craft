@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.54 - 2021.12.25
+### Fixed
+* Fixed an issue with Critical CSS not generating properly out of the box
+
 ## 2.4.53 - 2021.12.25
 ### Fixed
 * Fix `node-dev-webpack/Dockerfile` so `npm install` is run
