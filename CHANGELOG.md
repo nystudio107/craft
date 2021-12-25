@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.53 - 2021.12.25
+### Fixed
+* Fix `node-dev-webpack/Dockerfile` so `npm install` is run
+
 ## 2.4.52 - 2021.12.25
 ### Fixed
 * Fix Composer [2.2.0 error](https://getcomposer.org/doc/06-config.md#allow-plugins) by adding `allow-plugins`

@@ -13,4 +13,6 @@ WORKDIR /var/www/project/buildchain/
 # when working with teams or multiple environments
 CMD export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" \
     && \
+    npm install \
+    && \
     npm run debug
