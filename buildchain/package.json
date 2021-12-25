@@ -7,6 +7,7 @@
     "url": "https://nystudio107.com"
   },
   "dependencies": {
+    "lazysizes": "^5.2.2",
     "vue": "^3.0.5",
     "vue-confetti": "^2.0.8"
   },
