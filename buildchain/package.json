@@ -13,12 +13,18 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
     "@vitejs/plugin-legacy": "^1.3.3",
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.12",
+    "eslint": "^7.4.0",
+    "eslint-plugin-vue": "^7.2.0",
     "rollup-plugin-critical": "^1.0.4",
+    "stylelint": "^13.7.0",
+    "stylelint-config-recommended": "^3.0.0",
     "tailwindcss": "^3.0.0",
     "vite": "^2.7.0",
     "vite-plugin-restart": "^0.0.2",
@@ -26,6 +32,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "lint": "tsc --noEmit && eslint '../../src/**/*.{js,ts,vue}' --fix"
   }
 }
