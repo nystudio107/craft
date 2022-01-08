@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.4.55 - 2022.01.07
+### Fixed
+* fix: Use `su-exec www-data` in the Makefile so `craft` and `composer` commands are not run as root
+
 ## 2.4.54 - 2021.12.25
 ### Fixed
 * Fixed an issue with Critical CSS not generating properly out of the box
