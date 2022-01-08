@@ -9,10 +9,10 @@ clean:
 	docker-compose down -v
 	docker-compose up --build
 composer: up
-	docker exec -it ${CONTAINER} composer \
+	docker exec -it ${CONTAINER} su-exec www-data composer \
 		$(filter-out $@,$(MAKECMDGOALS))
 craft: up
-	docker exec -it ${CONTAINER} php craft \
+	docker exec -it ${CONTAINER} su-exec www-data php craft \
 		$(filter-out $@,$(MAKECMDGOALS))
 dev: up
 npm: up
