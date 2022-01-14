@@ -8,12 +8,12 @@ import '@/css/app.pcss';
 const main = async () => {
     // Create our vue instance
     const app = createApp(App);
+    
     // Mount the app
-    const root = app.mount('#component-container');
-
-    return root;
+    return app.mount('#component-container');
 };
 
 // Execute async function
-main().then( (root) => {
+main().then( () => {
+    console.log();
 });
