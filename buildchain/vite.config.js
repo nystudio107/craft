@@ -1,13 +1,13 @@
 import vue from '@vitejs/plugin-vue'
 import legacy from '@vitejs/plugin-legacy'
 import ViteRestart from 'vite-plugin-restart';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
 import critical from 'rollup-plugin-critical';
-import { ViteFaviconsPlugin } from "vite-plugin-favicon2";
+import {ViteFaviconsPlugin} from "vite-plugin-favicon2";
 import path from 'path';
 
 // https://vitejs.dev/config/
-export default ({ command }) => ({
+export default ({command}) => ({
   base: command === 'serve' ? '' : '/dist/',
   build: {
     emptyOutDir: true,
@@ -28,10 +28,9 @@ export default ({ command }) => ({
       criticalUrl: 'https://nystudio107.com',
       criticalBase: '../cms/web/dist/criticalcss/',
       criticalPages: [
-        { uri: '/', template: 'index' },
+        {uri: '/', template: 'index'},
       ],
-      criticalConfig: {
-      }
+      criticalConfig: {}
     }),
     legacy({
       targets: ['defaults', 'not IE 11']
@@ -52,6 +51,17 @@ export default ({ command }) => ({
       ],
     }),
     vue(),
+    viteCompression({
+      filter: /\.(js|mjs|json|css|map)$/i
+    }),
+    visualizer({
+      filename: '../src/web/assets/dist/stats.html',
+      template: 'treemap',
+      sourcemap: true,
+    }),
+    eslintPlugin({
+      cache: false,
+    }),
   ],
   publicDir: './src/public',
   resolve: {
