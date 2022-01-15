@@ -6,14 +6,14 @@ import '@/css/app.css';
 
 // App main
 const main = async () => {
-    // Create our vue instance
-    const app = createApp(App);
+  // Create our vue instance
+  const app = createApp(App);
 
-    // Mount the app
-    return app.mount('#component-container');
+  // Mount the app
+  return app.mount('#component-container');
 };
 
 // Execute async function
 main().then(() => {
-    console.log();
+  console.log();
 });
