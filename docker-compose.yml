@@ -102,6 +102,7 @@ services:
     ports:
       - "3000:3000"
     tty: true
+    user: "node"
     volumes:
       - ./buildchain:/var/www/project/buildchain:cached
       - ./buildchain/node_modules:/var/www/project/buildchain/node_modules:delegated
