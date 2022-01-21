@@ -102,6 +102,7 @@ services:
     ports:
       - "8080:8080"
     tty: true
+    user: "node"
     volumes:
       - ./tsconfig.json:/var/www/project/tsconfig.json:cached
       - ./buildchain:/var/www/project/buildchain:cached
