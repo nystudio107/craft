@@ -1,16 +1,18 @@
-import vue from '@vitejs/plugin-vue'
-import legacy from '@vitejs/plugin-legacy'
+import {defineConfig} from 'vite';
+import vue from '@vitejs/plugin-vue';
+import legacy from '@vitejs/plugin-legacy';
 import ViteRestart from 'vite-plugin-restart';
 import viteCompression from 'vite-plugin-compression';
+import manifestSRI from 'vite-plugin-manifest-sri';
 import {visualizer} from 'rollup-plugin-visualizer';
 import eslintPlugin from 'vite-plugin-eslint';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import critical from 'rollup-plugin-critical';
-import {ViteFaviconsPlugin} from "vite-plugin-favicon2";
-import path from 'path';
+import {ViteFaviconsPlugin} from 'vite-plugin-favicon2';
+import * as path from 'path';
 
 // https://vitejs.dev/config/
-export default ({command}) => ({
+export default defineConfig(({command}) => ({
   base: command === 'serve' ? '' : '/dist/',
   build: {
     emptyOutDir: true,
@@ -57,6 +59,7 @@ export default ({command}) => ({
     viteCompression({
       filter: /\.(js|mjs|json|css|map)$/i
     }),
+    manifestSRI(),
     visualizer({
       filename: '../src/web/assets/dist/stats.html',
       template: 'treemap',
@@ -82,4 +85,4 @@ export default ({command}) => ({
     port: 3000,
     strictPort: true,
   }
-});
+}));
