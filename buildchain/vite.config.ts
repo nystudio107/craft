@@ -61,7 +61,7 @@ export default defineConfig(({command}) => ({
     }),
     manifestSRI(),
     visualizer({
-      filename: '../src/web/assets/dist/stats.html',
+      filename: '../src/web/dist/assets/stats.html',
       template: 'treemap',
       sourcemap: true,
     }),
