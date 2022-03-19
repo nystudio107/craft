@@ -1,14 +1,23 @@
 {# -- Critical CSS -- #}
-{% set cssHash = craft.twigpack.getModuleHash("styles.css", "legacy") %}
-
+{#
+# Use Nginx Server Sider Includes (SSI) to render different HTML depending on
+# the value in the `critical-css` cookie. ref: http://nginx.org/en/docs/http/ngx_http_ssi_module.html
+#}
+{% set cssHash = craft.vite.getCssHash("src/js/app.ts") %}
+{#
+ # If the `critical-css` cookie is set, the client already has the CSS file download,
+ # so don't include the critical CSS, and load the full stylesheet(s) synchronously
+ #}
 <!--# if expr="$HTTP_COOKIE=/critical\-css\={{ cssHash }}/" -->
-{{ craft.twigpack.includeCssModule("styles.css", false) }}
+{{ craft.vite.script("src/js/app.ts", false) }}
 <!--# else -->
+{#
+# If the cookie is not set, set the cookie, then include the critical CSS for this page,
+# and load the full stylesheet(s) asychronously
+#}
 <script>
      Cookie.set("critical-css", "{{ cssHash }}", { expires: "7D", secure: true });
 </script>
-
-{{ craft.twigpack.includeCriticalCssTags() }}
-
-{{ craft.twigpack.includeCssModule("styles.css", true) }}
+{{ craft.vite.includeCriticalCssTags() }}
+{{ craft.vite.script("src/js/app.ts", true) }}
 <!--# endif -->

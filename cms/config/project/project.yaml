@@ -1,4 +1,4 @@
-dateModified: 1615144400
+dateModified: 1621127449
 email:
   fromEmail: andrew@nystudio107.com
   fromName: Craft
@@ -78,11 +78,11 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
-  twigpack:
+  typogrify:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
-  typogrify:
+  vite:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0

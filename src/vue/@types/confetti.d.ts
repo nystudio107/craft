@@ -1,7 +1,20 @@
 declare module "vue-confetti/src/confetti.js";
 
+interface ConfettiInterface {
+    start(opts: Partial<ConfettiConfig>): void,
+    update(opts: Partial<ConfettiConfig>): void,
+    stop(): void,
+}
+
+enum ParticlesType {
+    circle = "circle",
+    rect = "rect",
+    heart = "heart",
+    image = "image",
+}
+
 interface ParticlesConfig {
-    type : string,
+    type : ParticlesType,
     size : number,
     dropRate : number,
     colors : string[],
@@ -10,7 +23,7 @@ interface ParticlesConfig {
 
 interface ConfettiConfig {
     particles : Partial<ParticlesConfig>[],
-    defaultType : string,
+    defaultType : ParticlesType,
     defaultSize : number,
     defaultDropRate : number,
     defaultColors : string[],

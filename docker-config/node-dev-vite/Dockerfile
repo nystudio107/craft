@@ -17,4 +17,4 @@ CMD export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" \
     && \
     npm install \
     && \
-    npm run debug
+    npm run dev

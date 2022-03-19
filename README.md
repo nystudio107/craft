@@ -4,11 +4,19 @@
 
 This is an alternate scaffolding package for Craft 3 CMS projects to Pixel & Tonic's canonical [craftcms/craft](https://github.com/craftcms/craft) package.
  
+### Vite buildchain
+
+This project uses a [Vite.js](https://vitejs.dev/) for the build system as per [Vite.js Next Generation Frontend Tooling + Craft CMS](https://nystudio107.com/blog/using-vite-js-next-generation-frontend-tooling-with-craft-cms), as opposed to the usual webpack buildchain.
+
+Vite is _fast_ ⚡
+
+### The project
+
 The project is based on [Craft CMS](https://CraftCMS.com) using a unique `templates/_boilerplate` system for web/AJAX/AMP pages, and implements a number of technologies/techniques:
  
 * [Docker](https://www.docker.com/) Docker is used for local development; see **Setting Up Local Dev** below for details
 * A base Twig templating setup as described in [An Effective Twig Base Templating Setup](https://nystudio107.com/blog/an-effective-twig-base-templating-setup)
-* [webpack 5](https://webpack.js.org/) is used for the build system as per [An Annotated webpack 4 Config for Frontend Web Development](https://nystudio107.com/blog/an-annotated-webpack-4-config-for-frontend-web-development)
+* [Vite.js](https://vitejs.dev/) is used for the build system as per [Vite.js Next Generation Frontend Tooling + Craft CMS](https://nystudio107.com/blog/using-vite-js-next-generation-frontend-tooling-with-craft-cms)
 * [TypeScript](https://www.typescriptlang.org/) for strictly typed JavaScript code
 * [Vue.js 3.0](https://vuejs.org/) is used for some of the interactive bits on the website, and Vue.js 3.x allows us to leverage the [Composition API](https://composition-api.vuejs.org/) 
 * [Tailwind CSS](https://tailwindcss.com/) for the site-wide CSS using the [@tailwindcss/jit](https://blog.tailwindcss.com/just-in-time-the-next-generation-of-tailwind-css)
@@ -17,7 +25,7 @@ The project is based on [Craft CMS](https://CraftCMS.com) using a unique `templa
 * Image transforms are done via a [Serverless Image Handler](https://aws.amazon.com/solutions/serverless-image-handler/) lambda function, as described in the [Setting Up Your Own Image Transform Service](https://nystudio107.com/blog/setting-up-your-own-image-transform-service) article
 * Static assets are stored in AWS S3 buckets with CloudFront as the CDN, as per the [Setting Up AWS S3 Buckets + CloudFront CDN for your Assets](https://nystudio107.com/blog/using-aws-s3-buckets-cloudfront-distribution-with-craft-cms) article
 * Implements a Service Worker via Google's [Workbox](https://developers.google.com/web/tools/workbox/) as per [Service Workers and Offline Browsing](https://nystudio107.com/blog/service-workers-and-offline-browsing)
-* Critical CSS as per [Implementing Critical CSS on your website](https://nystudio107.com/blog/implementing-critical-css)
+* Critical CSS as per [Implementing Critical CSS on your website](https://nystudio107.com/blog/implementing-critical-css) using the [rollup-plugin-critical](https://github.com/nystudio107/rollup-plugin-critical)
 * Frontend error handling as per [Handling Errors Gracefully in Craft CMS](https://nystudio107.com/blog/handling-errors-gracefully-in-craft-cms)
 * A custom site module as per [Enhancing a Craft CMS 3 Website with a Custom Module](https://nystudio107.com/blog/enhancing-a-craft-cms-3-website-with-a-custom-module)
 * CLI-based queue as per [Robust queue job handling in Craft CMS](https://nystudio107.com/blog/robust-queue-job-handling-in-craft-cms)
@@ -32,7 +40,7 @@ The following Craft CMS plugins are used on this site:
 * [Minify](https://nystudio107.com/plugins/minify) - to minify the HTML and inline JS/CSS
 * [Retour](https://nystudio107.com/plugins/retour) - for setting up 404 redirects
 * [SEOmatic](https://nystudio107.com/plugins/seomatic) - for handling site-side SEO
-* [Twigpack](https://nystudio107.com/plugins/twigpack) - for loading webpack-generated `manifest.json` resources in a modern way
+* [Vite](https://nystudio107.com/plugins/vite) - for loading Vite-generated `manifest.json` resources in a modern way
 * [Typogrify](https://nystudio107.com/plugins/typogrify) - for smart quotes and other typographic ligatures
 * [Webperf](https://nystudio107.com/plugins/webperf) - for monitoring web performance
 
@@ -42,11 +50,11 @@ You can read more about it in the [Setting up a New Craft 3 CMS Project](https:/
 
 This project package works exactly the way Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft) package works; you create a new project by first creating & installing the project:
 
-    composer create-project nystudio107/craft PATH --no-install --remove-vcs
+    composer create-project nystudio107/craft:dev-craft-vite PATH --no-install
 
 Make sure that `PATH` is the path to your project, including the name you want for the project, e.g.:
 
-    composer create-project nystudio107/craft craft3 --no-install --remove-vcs
+    composer create-project nystudio107/craft:dev-craft-vite vitecraft --no-install --remove-vcs
 
 We use `--no-install` so that the composer packages for the root project are not installed.
 
@@ -54,10 +62,8 @@ We use `--no-install` so that the composer packages for the root project are not
 
 You'll need Docker desktop for your platform installed to run the project in local development
 
-* Set up a `.env` file in the `cms/` directory, based off of the provided `example.env`
-* Set up a `.env.sh.` file in the `scripts/` directory, based off of the provided `example.env.sh`
 * Start up the site by typing `make dev` in terminal in the project's root directory (the first build will be somewhat lengthy)
-* Navigate to `http://localhost:8000` to use the site; the `webpack-dev-server` runs off of `http://localhost:8080`
+* Navigate to `http://localhost:8000` to use the site; the `vite-dev-server` runs off of `http://localhost:3000`
 
 Wait until you see the following to indicate that the PHP container is ready:
 
@@ -68,10 +74,14 @@ php_1         | [01-Dec-2020 18:38:46] NOTICE: fpm is running, pid 22
 php_1         | [01-Dec-2020 18:38:46] NOTICE: ready to handle connections
 ```
 
-...and the following to indicate that the webpack container is ready:
+...and the following to indicate that the Vite container is ready:
 ```
-webpack_1     | <i> devmode-fm (webpack 5.9.0) compiled successfully in 12097 ms
-webpack_1     | <i> [webpack-dev-middleware] Child "devmode-fm": Compiled successfully.
+vite_1        |   vite v2.3.2 dev server running at:
+vite_1        |
+vite_1        |   > Local:    http://localhost:3000/
+vite_1        |   > Network:  http://172.22.0.5:3000/
+vite_1        |
+vite_1        |   ready in 1573ms.
 ```
 
 The CP login credentials are initially set as follows:
@@ -92,7 +102,7 @@ This project uses Docker to shrink-wrap the devops it needs to run around the pr
 To make using it easier, we're using a Makefile and the built-in `make` utility to create local aliases. You can run the following from terminal in the project directory:
 
 - `make dev` - starts up the local dev server listening on `http://localhost:8000/`
-- `make build` - builds the static assets via the webpack 5 buildchain
+- `make build` - builds the static assets via the Vite buildchain
 - `make clean` - shuts down the Docker containers, removes any mounted volumes (including the database), and then rebuilds the containers from scratch
 - `make update` - causes the project to update to the latest Composer and NPM dependencies
 - `make update-clean` - completely removes `node_modules/` & `vendor/`, then causes the project to update to the latest Composer and NPM dependencies
@@ -104,12 +114,12 @@ To make using it easier, we're using a Makefile and the built-in `make` utility 
 
 ### Other notes
 
-To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers) and latest npm packages (as constrained by the `docker-config/webpack-dev-devmode/package.json` semvers), do:
+To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers) and latest npm packages (as constrained by the `buildchain/package.json` semvers), do:
 ```
 make update
 ```
 
-To start from scratch by removing `buildchain/node_modules/` & `cms/vendor/`, then update to the latest Composer packages (as constrained by the `cms/composer.json` semvers) and latest npm packages (as constrained by the `docker-config/webpack-dev-devmode/package.json` semvers), do:
+To start from scratch by removing `buildchain/node_modules/` & `cms/vendor/`, then update to the latest Composer packages (as constrained by the `cms/composer.json` semvers) and latest npm packages (as constrained by the `buildchain/package.json` semvers), do:
 ```
 make update-clean
 ```
@@ -137,6 +147,10 @@ To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.
 
 
 Below is the entire intact, unmodified `README.md` from Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft):
+
+## Roadmap
+
+* Update to Tailwind CSS `^3.0.0`
 
 .....
 

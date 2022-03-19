@@ -1,5 +1,5 @@
 CONTAINER?=$(shell basename $(CURDIR))_php_1
-BUILDCHAIN?=$(shell basename $(CURDIR))_webpack_1
+BUILDCHAIN?=$(shell basename $(CURDIR))_vite_1
 
 .PHONY: build clean composer dev npm pulldb restoredb up
 
