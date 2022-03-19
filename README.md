@@ -50,17 +50,21 @@ You can read more about it in the [Setting up a New Craft 3 CMS Project](https:/
 
 This project package works exactly the way Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft) package works; you create a new project by first creating & installing the project:
 
-    composer create-project nystudio107/craft:dev-craft-vite PATH --no-install
+    composer create-project nystudio107/craft PATH --no-install
 
 Make sure that `PATH` is the path to your project, including the name you want for the project, e.g.:
 
-    composer create-project nystudio107/craft:dev-craft-vite vitecraft --no-install --remove-vcs
+    composer create-project nystudio107/craft craft3 --no-install
 
 We use `--no-install` so that the composer packages for the root project are not installed.
 
 ## Setting Up Local Dev
 
-You'll need Docker desktop for your platform installed to run the project in local development
+You'll need [Docker desktop](https://www.docker.com/products/docker-desktop) for your platform installed to run devMode in local development
+
+Ensure you're using the [Docker Compose API v2](https://stackoverflow.com/questions/69464001/docker-compose-container-name-use-dash-instead-of-underscore/70295720#70295720) for the `make` commands to all work properly.
+
+Ensure no other local development environments are running that might have port conflicts, then:
 
 * Start up the site by typing `make dev` in terminal in the project's root directory (the first build will be somewhat lengthy)
 * Navigate to `http://localhost:8000` to use the site; the `vite-dev-server` runs off of `http://localhost:3000`
@@ -103,26 +107,18 @@ To make using it easier, we're using a Makefile and the built-in `make` utility 
 
 - `make dev` - starts up the local dev server listening on `http://localhost:8000/`
 - `make build` - builds the static assets via the Vite buildchain
-- `make clean` - shuts down the Docker containers, removes any mounted volumes (including the database), and then rebuilds the containers from scratch
-- `make update` - causes the project to update to the latest Composer and NPM dependencies
-- `make update-clean` - completely removes `node_modules/` & `vendor/`, then causes the project to update to the latest Composer and NPM dependencies
+- `make clean` - removes the `cms/composer.lock` & the entire `cms/vendor/` directory as well as the `buildchain/package-lock.json` & the entire `buildchain/node_modules/` directory
 - `make composer xxx` - runs the `composer` command passed in, e.g. `make composer install`
 - `make craft xxx` - runs the `craft` [console command](https://craftcms.com/docs/3.x/console-commands.html) passed in, e.g. `make craft project-config/apply` in the php container
 - `make npm xxx` - runs the `npm` command passed in, e.g. `make npm install`
+- `make nuke` - restarts the project from scratch by running `make clean` (above), then shuts down the Docker containers, removes any mounted volumes (including the database), and then rebuilds the containers from scratch
 - `make pulldb` - runs the `scripts/docker_pull_db.sh` script to pull a remote database into the database container; the `scripts/.env.sh` must be set up first
 - `make restoredb xxx` - runs the `scripts/docker_restore_db.sh` script to restore a local database dump into the database container; the `scripts/.env.sh` must be set up first
+- `make ssh` - opens up a Unix shell inside the PHP container for the project
+
+**Tip:** If you try a command like `make craft project-config/apply --force` you’ll see an error, because the shell thinks the `--force` flag should be applied to the `make` command. To side-step this, use the `--` (double-dash) to disable further option processing, like this: `make -- craft project-config/apply --force`
 
 ### Other notes
-
-To update to the latest Composer packages (as constrained by the `cms/composer.json` semvers) and latest npm packages (as constrained by the `buildchain/package.json` semvers), do:
-```
-make update
-```
-
-To start from scratch by removing `buildchain/node_modules/` & `cms/vendor/`, then update to the latest Composer packages (as constrained by the `cms/composer.json` semvers) and latest npm packages (as constrained by the `buildchain/package.json` semvers), do:
-```
-make update-clean
-```
 
 To use Xdebug with VSCode install the [PHP Debug extension](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug ) and use the following configuration in your `.vscode/launch.json`:
 ```json

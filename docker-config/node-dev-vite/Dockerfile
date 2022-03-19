@@ -1,8 +1,9 @@
 FROM nystudio107/node-dev-base:16-alpine
 
-USER node
+WORKDIR /var/www/project/
 
-WORKDIR /var/www/project/buildchain/
+COPY ./npm_install.sh .
+RUN chmod a+x npm_install.sh
 
 # Run our webpack build in debug mode
 
@@ -13,6 +14,10 @@ WORKDIR /var/www/project/buildchain/
 # This automatic running adds to the startup overhead of `docker-compose up`
 # but saves far more time in not having to deal with out of sync versions
 # when working with teams or multiple environments
-CMD npm install \
+CMD export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" \
+    && \
+    ./npm_install.sh \
+    && \
+    cd /var/www/project/buildchain/ \
     && \
     npm run dev
