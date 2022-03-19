@@ -60,7 +60,11 @@ We use `--no-install` so that the composer packages for the root project are not
 
 ## Setting Up Local Dev
 
-You'll need Docker desktop for your platform installed to run the project in local development
+You'll need [Docker desktop](https://www.docker.com/products/docker-desktop) for your platform installed to run devMode in local development
+
+Ensure you're using the [Docker Compose API v2](https://stackoverflow.com/questions/69464001/docker-compose-container-name-use-dash-instead-of-underscore/70295720#70295720) for the `make` commands to all work properly.
+
+Ensure no other local development environments are running that might have port conflicts, then:
 
 * Start up the site by typing `make dev` in terminal in the project's root directory (the first build will be somewhat lengthy)
 * Navigate to `http://localhost:8000` to use the site; the `vite-dev-server` runs off of `http://localhost:3000`
