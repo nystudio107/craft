@@ -42,11 +42,11 @@ You can read more about it in the [Setting up a New Craft 3 CMS Project](https:/
 
 This project package works exactly the way Pixel & Tonic's [craftcms/craft](https://github.com/craftcms/craft) package works; you create a new project by first creating & installing the project:
 
-    composer create-project nystudio107/craft PATH --no-install --remove-vcs
+    composer create-project nystudio107/craft:dev-craft-webpack PATH --no-install --remove-vcs
 
 Make sure that `PATH` is the path to your project, including the name you want for the project, e.g.:
 
-    composer create-project nystudio107/craft craft3 --no-install --remove-vcs
+    composer create-project craft:dev-craft-webpack craft3 --no-install --remove-vcs
 
 We use `--no-install` so that the composer packages for the root project are not installed.
 
