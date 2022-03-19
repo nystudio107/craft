@@ -1,25 +1,23 @@
-{# -- Root global variables that all templates inherit from -- #}
-{# -- This allows for defining site-wide Twig variables as needed -- #}
-{#
- ┌─────────────────────────────────────────────────────────────────────────────┐
- │                                                                             │
- │                                                                             │
- │                                                                             │
- │                                  htmlPage                                   │
- └─────────────────────────────────────────────────────────────────────────────┘
-#}
-{% spaceless %}
+{% spaceless %}{# -- Root global variables that all templates inherit from -- #}
+    {# -- This allows for defining site-wide Twig variables as needed -- #}
+    {#
+    ┌─────────────────────────────────────────────────────────────────────────────┐
+    │                                                                             │
+    │                                                                             │
+    │                                                                             │
+    │                                  htmlPage                                   │
+    └─────────────────────────────────────────────────────────────────────────────┘
+    #}
 
-{# -- Prefetch & preconnect headers and links -- #}
-{% set prefetchUrls = [
-    alias("@assetsUrl"),
-] %}
-{# -- General global variables -- #}
-{% set baseUrl = alias('@assetsUrl') ~ '/' %}
-{% set gaTrackingId = getenv('GA_TRACKING_ID') %}
 
-{# -- Twig output from the render; this must be in a block -- #}
-{% block htmlPage %}
+    {# -- Prefetch & preconnect headers and links -- #}
+    {% set prefetchUrls = [
+        alias("@assetsUrl"),
+    ] %}
+    {# -- General global variables -- #}
+    {% set baseUrl = alias('@assetsUrl') ~ '/' %}
+    {% set gaTrackingId = getenv('GA_TRACKING_ID') %}
+
+    {# -- Twig output from the render; this must be in a block -- #}
+{% endspaceless %}{% block htmlPage %}
 {% endblock %}
-
-{% endspaceless %}
