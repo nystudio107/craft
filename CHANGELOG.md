@@ -1,7 +1,10 @@
 # nystudio107/craft Change Log
 
-## 2.5.0 - 2022.03.19
+## 2.5.1 - 2022.03.26
+### Added
+* Dramatically sped up the startup time for the PHP containers by moving the permissions setting script to run asynchronously in the queue container via the `run_queue.sh` script
 
+## 2.5.0 - 2022.03.19
 ### Added
 * Switch the main branch to `craft-vite` so the default project now uses Vite.js
 * Significantly increased startup times via a `composer_install.sh` script that only runs `composer install` at container startup time if `composer.lock` or `vendor/` is missing
