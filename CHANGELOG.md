@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.5.3 - 2022.03.26
+### Changed
+* Ensure permissions on directories Craft needs to write to
+
 ## 2.5.2 - 2022.03.26
 ### Added
 * Added more logging to indicate when a container is waiting for another service to start up, and when seeding a database is complete
