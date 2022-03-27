@@ -13,14 +13,14 @@
 # @license   MIT
 
 cd /var/www/project/cms
-# Force the permissions to be set properly
-chown -R www-data:www-data /var/www/project &
 # Wait until the MySQL db container responds
+echo "### Waiting for MySQL database"
 until eval "mysql -h mysql -u $DB_USER -p$DB_PASSWORD $DB_DATABASE -e 'select 1' > /dev/null 2>&1"
 do
   sleep 1
 done
 # Wait until the `composer install` is done by looking for the `vendor/autoload.php` file
+echo "### Waiting for vendor/autoload.php"
 while [ ! -f vendor/autoload.php ]
 do
   sleep 1
