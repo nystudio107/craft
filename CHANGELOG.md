@@ -1,5 +1,13 @@
 # nystudio107/craft Change Log
 
+## 2.5.2 - 2022.03.26
+### Added
+* Added more logging to indicate when a container is waiting for another service to start up, and when seeding a database is complete
+* Run `composer craft-update` after a `composer install` is done via `composer_install.sh`
+
+### Changed
+* Moved permissions setting to Docker image creation
+
 ## 2.5.1 - 2022.03.26
 ### Added
 * Dramatically sped up the startup time for the PHP containers by moving the permissions setting script to run asynchronously in the queue container via the `run_queue.sh` script
