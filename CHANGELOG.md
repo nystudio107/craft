@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.5.4 - 2022.03.28
+### Changed
+* Add `disableProcessTimeout` to the `post-craft-update` Composer scripts, and run Project Config before migrations
+* Add `import.meta.hot.accept()` to accept HMR as per: https://vitejs.dev/guide/api-hmr.html
+
 ## 2.5.3 - 2022.03.26
 ### Changed
 * Ensure permissions on directories Craft needs to write to
