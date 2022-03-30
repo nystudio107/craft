@@ -28,10 +28,7 @@
       "yiisoft/yii2-composer": true
     },
     "optimize-autoloader": true,
-    "sort-packages": true,
-    "platform": {
-      "php": "7.2.5"
-    }
+    "sort-packages": true
   },
   "scripts": {
     "craft-update": [
