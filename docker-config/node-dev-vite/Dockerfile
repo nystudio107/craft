@@ -5,6 +5,8 @@ WORKDIR /var/www/project/
 COPY ./npm_install.sh .
 RUN chmod a+x npm_install.sh
 
+WORKDIR /var/www/project/buildchain
+
 # Run our webpack build in debug mode
 
 # We'd normally use `npm ci` here, but by using `install`:
@@ -16,8 +18,6 @@ RUN chmod a+x npm_install.sh
 # when working with teams or multiple environments
 CMD export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" \
     && \
-    ./npm_install.sh \
-    && \
-    cd /var/www/project/buildchain/ \
+    /var/www/project/npm_install.sh \
     && \
     npm run dev
