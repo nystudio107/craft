@@ -1,5 +1,10 @@
 # nystudio107/craft Change Log
 
+## 2.5.5 - 2022.03.30
+### Changed
+* Remove deprecated `useProjectConfigFile` from `config/general.php`
+* Remove `platform` from `composer.json`
+
 ## 2.5.4 - 2022.03.28
 ### Changed
 * Add `disableProcessTimeout` to the `post-craft-update` Composer scripts, and run Project Config before migrations
