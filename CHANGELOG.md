@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.5.6 - UNRELEASED
+## 2.5.6 - 2022.03.30
 ### Changed
 * Fix `WORKDIR` in `php-prod-craft` container so `make craft` etc. commands work as expected
 * Fix `WORKDIR` in `node-dev-vite` container so `make npm` etc. commands work as expected
