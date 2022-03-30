@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.5.6 - UNRELEASED
+### Changed
+* Fix `WORKDIR` so `make craft` etc. commands work as expected
+
 ## 2.5.5 - 2022.03.30
 ### Changed
 * Remove deprecated `useProjectConfigFile` from `config/general.php`
