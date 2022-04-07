@@ -3,6 +3,7 @@
 ## 2.5.7 - UNRELEASED
 ### Changed
 * Run migrations first via `composer.json` scripts, because Craft won't apply Project Config if there are pending migrations
+* Added `tty: true` back in now that the issue has been fixed in the Docker Compose API `2.4.1` ([#9348](https://github.com/docker/compose/pull/9348))
 
 ## 2.5.6 - 2022.03.30
 ### Changed
