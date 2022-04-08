@@ -21,7 +21,7 @@ do
 done
 # Wait until the `composer install` is done by looking for the `vendor/autoload.php` file
 echo "### Waiting for vendor/autoload.php"
-while [ ! -f vendor/autoload.php ]
+while [ ! -f vendor/autoload.php ] || [ ! -f composer.lock ]
 do
   sleep 1
 done
