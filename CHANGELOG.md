@@ -1,5 +1,13 @@
 # nystudio107/craft Change Log
 
+## 2.5.8 - 2022.04.13
+### Fixed
+* Changed the hostname from `mysql` to `mariadb` in the `composer_install.sh` and `run_queue.sh` scripts, since we're using MariaDB
+
+### Changed
+* Use `"eslint": "^7.0.0"` to avoid package version conflicts with `vite-plugin-eslint`
+* Add correct at-rule-no-unknown config ([#80](https://github.com/nystudio107/craft/pull/80))
+
 ## 2.5.7 - 2022.04.08
 ### Changed
 * Run migrations first via `composer.json` scripts, because Craft won't apply Project Config if there are pending migrations
