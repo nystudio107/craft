@@ -1,5 +1,12 @@
 # nystudio107/craft Change Log
 
+## 2.5.9 - 2022.05.02
+### Fixed
+* Clean up initial check for `composer.lock` or `vendor/autoload.php` to ensure the first-time install is done
+
+### Changed
+* Changed `bootstrap.php` to allow `.env`-set environment variables override existing injected environment variables ([#82](https://github.com/craftcms/craft/issues/82))
+
 ## 2.5.8 - 2022.04.13
 ### Fixed
 * Changed the hostname from `mysql` to `mariadb` in the `composer_install.sh` and `run_queue.sh` scripts, since we're using MariaDB
