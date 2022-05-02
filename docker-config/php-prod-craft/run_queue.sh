@@ -19,9 +19,9 @@ until eval "mysql -h mariadb -u $DB_USER -p$DB_PASSWORD $DB_DATABASE -e 'select 
 do
   sleep 1
 done
-# Wait until the `composer install` is done by looking for the `vendor/autoload.php` file
+# Wait until the `composer install` is done by looking for the `vendor/autoload.php` and `composer.lock` files
 echo "### Waiting for vendor/autoload.php"
-while [ ! -f vendor/autoload.php ] || [ ! -f composer.lock ]
+while [ ! -f "vendor/autoload.php" ] || [ ! -f "composer.lock" ]
 do
   sleep 1
 done

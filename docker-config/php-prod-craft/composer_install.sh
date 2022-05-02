@@ -13,9 +13,9 @@
 # Ensure permissions on directories Craft needs to write to
 chown -R www-data:www-data /var/www/project/cms/storage
 chown -R www-data:www-data /var/www/project/cms/web/cpresources
-# Check for `composer.lock` & `vendor/`
+# Check for `composer.lock` & `vendor/autoload.php`
 cd /var/www/project/cms
-if [ ! -f "composer.lock" ] || [ ! -d "vendor" ]; then
+if [ ! -f "composer.lock" ] || [ ! -f "vendor/autoload.php" ]; then
     su-exec www-data composer install --verbose --no-progress --no-scripts --optimize-autoloader --no-interaction
     # Wait until the MySQL db container responds
     echo "### Waiting for MySQL database"
