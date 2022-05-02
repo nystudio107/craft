@@ -1,6 +1,9 @@
 # nystudio107/craft Change Log
 
 ## 2.5.9 - UNRELEASED
+### Fixed
+* Clean up initial check for `composer.lock` or `vendor/autoload.php` to ensure the first-time install is done
+
 ### Changed
 * Changed `bootstrap.php` to allow `.env`-set environment variables override existing injected environment variables ([#82](https://github.com/craftcms/craft/issues/82))
 
