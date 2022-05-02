@@ -1,6 +1,6 @@
 # nystudio107/craft Change Log
 
-## 2.5.9 - UNRELEASED
+## 2.5.9 - 2022.05.02
 ### Fixed
 * Clean up initial check for `composer.lock` or `vendor/autoload.php` to ensure the first-time install is done
 
