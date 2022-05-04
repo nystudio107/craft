@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.5.11 - 2022.05.03
+### Added
+* Determine the container name separator character by checking the Docker Compose API version at runtime
+
 ## 2.5.10 - 2022.05.02
 ### Changed
 * Ignore `max-line-length` rule
