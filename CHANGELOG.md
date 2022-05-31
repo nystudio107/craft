@@ -1,5 +1,9 @@
 # nystudio107/craft Change Log
 
+## 2.5.12 - 2022.05.31
+### Changed
+* Use `craft up` to run migrations & apply Project Config changes
+
 ## 2.5.11 - 2022.05.03
 ### Added
 * Determine the container name separator character by checking the Docker Compose API version at runtime
