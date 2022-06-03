@@ -11,6 +11,6 @@
 # @license   MIT
 
 cd /var/www/project/buildchain
-if [ ! -f "package-lock.json" ] || [ ! -d "node_modules" ]; then
+if [ ! -f "package-lock.json" ] || [ ! -n "$(ls -A node_modules 2>/dev/null)" ]; then
     npm install
 fi
