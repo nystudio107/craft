@@ -1,3 +1,4 @@
+{# Service Worker was removed due to questionable benefits vs. the caching issues it can present
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
@@ -9,5 +10,16 @@
                     console.log(`Service Worker registration failed: ${err}`);
                 });
         });
+    }
+</script>
+#}
+{# Unregister any lingering Service Workers #}
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
     }
 </script>
