@@ -1,4 +1,4 @@
-{# -- Handle tabs gracefully as per https://hackernoon.com/removing-that-ugly-focus-ring-and-keeping-it-too-6c8727fefcd2 -- #}
+{# -- Handle tabs gracefully as per https://david-gilbertson.medium.com/removing-that-ugly-focus-ring-and-keeping-it-too-6c8727fefcd2 -- #}
 <style>
     body:not(.user-is-tabbing) button:focus,
     body:not(.user-is-tabbing) input:focus,
@@ -10,7 +10,7 @@
 <script>
     function handleFirstTab(e) {
         if (e.keyCode === 9) {
-            document.body.classList.add('user-is-tabbing');
+            document.documentElement.classList.add('user-is-tabbing');
 
             window.removeEventListener('keydown', handleFirstTab);
             window.addEventListener('mousedown', handleMouseDownOnce);
@@ -18,7 +18,7 @@
     }
 
     function handleMouseDownOnce() {
-        document.body.classList.remove('user-is-tabbing');
+        document.documentElement.classList.remove('user-is-tabbing');
 
         window.removeEventListener('mousedown', handleMouseDownOnce);
         window.addEventListener('keydown', handleFirstTab);
