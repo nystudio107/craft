@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # NPM Install shell script
 #
